@@ -1,16 +1,10 @@
-from os import access
+from constants import *
 from numpy import cos, sin, arange, sqrt, zeros, exp
-import matplotlib.pyplot as plt
 import pygame
 import time
-pygame.init()
-width,height = 1360,720
-origin_x,origin_y = width/2,0
-window = pygame.display.set_mode((width,height))
 
-gamma, m, l, g = 0.1, 100, 500, 980
-F = g/l
-theta_initial = 3.14159/2
+
+
 def blip(window,x,y):
     image = pygame.image.load("bitmap.png")
     window.blit(image, (x,y))
@@ -59,28 +53,9 @@ def linear(Total_time,fps):
         t+=1
     return linear_solutions
 
-exact = nonlinear(1,20)
-appro = linear(1,20)
-# time = arange(0,5*60+0.1,1/20)
-# plt.plot(time,exact)
-# plt.plot(appro,time)
-# plt.show()
-
-
-
-
-# w = arange(0,100,1)
-# while c<100:
-    # t[c+1], sol[c+1], phi = N_ODE_RK4(t[c],sol[c],phi)
-    # sol2[c+1]=exp(-gamma*t[c]*0.5)*cos(sqrt(F)*t[c])*sol2[0]
-    # c+=1
-
-
-
 def position(l,theta):
     return origin_x+l*cos((1.5*3.141598)-theta),origin_y-l*sin((1.5*3.14159)-theta)
     
-t = time.perf_counter()
 def mainloop(window):
     global t
     run = True
@@ -113,4 +88,8 @@ def mainloop(window):
     pygame.quit()
 
 if __name__ == "__main__":
+    # pygame initializatoin and settings
+    pygame.init()
+    window = pygame.display.set_mode((width,height))
+    t = time.perf_counter()
     mainloop(window)
