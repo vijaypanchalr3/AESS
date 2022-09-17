@@ -6,7 +6,7 @@ import time
 
 
 def blip(window,x,y):
-    image = pygame.image.load("bitmap.png")
+    image = pygame.image.load("bitmap2.png")
     window.blit(image, (x,y))
 
 def blip2(window,x,y):
@@ -91,5 +91,7 @@ if __name__ == "__main__":
     # pygame initializatoin and settings
     pygame.init()
     window = pygame.display.set_mode((width,height))
+    exact = nonlinear(5,60)
+    appro = linear(5,60)
     t = time.perf_counter()
     mainloop(window)
