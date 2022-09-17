@@ -1,8 +1,11 @@
 
 # defining constants
 width,height = 1360,720
-origin_x,origin_y = width/2,0
-gamma, m, l, g = 0.1, 100, 500, 980
-F = g/l
-theta_initial = 3.14159/2
+origin_x,origin_y = width/2,height/8
+d_coffs, m, l, g = 100, 100, 500, 980
+gamma = d_coffs/m
+w0 = g/l
+theta_initial = 3.141591/20
+radius = 10
+fps = 60
 
