@@ -1,4 +1,4 @@
-% Created 2022-09-18 Sun 16:29
+% Created 2022-09-18 Sun 13:51
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
   \usepackage[utf8]{inputenc}
@@ -24,16 +24,17 @@
                 \usepackage{listings}
 \usepackage{xcolor}
 \lstset{language=Python,backgroundcolor=\color{black!5}, basicstyle=\footnotesize\ttfamily, columns=fullflexible, breaklines, frame= tb}
+\newcommand\pythonstyle{\lstset{language=Python,basicstyle=\ttm,morekeywords={self,def, if, else, for, while, return},keywordstyle=\ttb\color{deepblue},emph={MyClass,__init__},emphstyle=\ttb\color{deepred},stringstyle=\color{deepgreen},frame=tb,showstringspaces=false}}
 
   \linespread{1.1}
   \hypersetup{pdfborder=0 0 0}
-\author{vijay panchal}
+\author{Vijay Panchal}
 \date{\today}
 \title{Timebomb of approximation method in physics}
 \hypersetup{
- pdfauthor={vijay panchal},
+ pdfauthor={Vijay Panchal},
  pdftitle={Timebomb of approximation method in physics},
- pdfkeywords={},
+ pdfkeywords={Approximation methods, harmonic oscillator, non-linear differential equation, linear differential equation},
  pdfsubject={},
  pdfcreator={Emacs 27.1 (Org mode 9.4.6)}, 
  pdflang={English}}
@@ -45,7 +46,7 @@
 
 
 \section{Introduction}
-\label{sec:org6432014}
+\label{sec:orgaa9815f}
 
 Approximation method is yet most essential topic in physics. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to \textbf{doing physics} instead going in to maze of exactness in mathematics. Getting interpretation or more i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics \textbf{Navier-Stoke equation} can be imposible to solve but as physicist they know what it is.
 
@@ -56,106 +57,67 @@ Let's dive into one example, what do i imply by consequences of approximation me
 
 
 \section{Example of Approximate method}
-\label{sec:orgba1fc52}
+\label{sec:org39072e6d}
 
 Approximation is very used in almost every in physics. Not, just physics but every field in sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
 \subsection{Defining problem}
-\label{sec:org4c9762c}
+\label{sec:org18c8fc9}
 
 We learned simple pendulum from early time of physics course. But what if say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
 
 We took physical pendulum. By taking length \(l = 1 m\) string (assuming non expanding) attaching to bob of mass \(m = 0.1 kg\) . String attached to rigid wall as shown in figure. 
 
-\begin{figure}[htbp]
+\begin{figure}
 \centering
 \includegraphics[width=0.3 \textwidth]{./figure1.png}
-\caption{\label{fig:orgfadd38e}pendulum with string lenth \(l\) and mass \(m\)}
+\caption{\label{fig:org385783e}pendulum with string lenth \(l\) and mass \(m\)}
 \end{figure}
 
-For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used \textbf{Newtonian formulation} which is quite easy to work with in this type of problems, since we are working with \textbf{non conservative} system. This is our derivation of equation of motion.
+For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used \textbf{Newtonian formulation} which is quite easy to work with in this type of problems, since we are working with \textbf{neoconservative} system. This is our derivation of equation of motion,
 
 First of all, we took horizontal and vertical forces.
-\begin{equation}
-\label{eq:org69836c0}
-   F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
-\end{equation}
-\begin{equation}
-\label{eq:orgac295d3}
-   F_{damping}sin(\theta)+Tsin(\theta)-mg=ma_{y}
-\end{equation}
-
-Adding equation \ref{eq:org69836c0} and equation \ref{eq:orgac295d3} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
-
-\begin{equation*}
-\label{eq:org7f0de07}
-F_{damping}sin^{2}(\theta)+F_{damping}cos^{2}(\theta)-mgsin(\theta)=ma_{x}cos(\theta)+ma_{y}sin(\theta)
-\end{equation*}
-
-\begin{equation*}
-\label{eq:orgcca9551}
-F_{damping}-mgsin(\theta)=m(asin^{2}(\theta)+acos^{2}(\theta))
-\end{equation*}
 
 \begin{equation}
-\label{eq:org4841a7c}
-F_{damping}-mgsin(\theta)=ma
+  F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
+  \label{1}
 \end{equation}
-
-From,
-\begin{equation*}
-\label{eq:org1ddf0d4}
-a = (\ddot{r}-r\dot{\theta}^{2})\hat{r} + (r \ddot{\theta}+2\dot{r}\dot{\theta})\hat{\theta}
-\end{equation*}
-
-Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:org4841a7c} becomes,
-
-\begin{equation*}
-\label{eq:org8548022}
-F_{damping}-mgsin(\theta)=ml\ddot{\theta}
-\end{equation*}
-
-We are taking damping force to velocity proportional. So \(F_{damping}=-bl\dot{\theta}\) ( since, \(\dot{l}=0\)). Here, we are assuming that damping is linear. 
-
-\begin{equation*}
-\label{eq:org5a26533}
--bl\dot{\theta}-mgsin(\theta)=ml\ddot{\theta}
-\end{equation*}
-
-
-Rearranging this equation will give our equation of motion,
 
 \begin{equation}
-\label{eq:org8757d15}
-\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
+  Tcos(\theta)+F_{damping}sin(\theta)+F_{gravity}=ma_{y}
+  \label{2}
 \end{equation}
 
-This is \textbf{exact equation of motion}. Which is \textbf{second order non linear equation}. Finding it's exact solution is massive task. We will use numerical methods to find it's solution. This equation has much more to say than looks. Will learn about this in later.
 
-\subsection{Approximation of equation of motion : Linear differential equation}
-\label{sec:org30e4895}
+We took damping coefficient \(\Gamma = 1\) to
 
-Solving \ref{eq:org8757d15} is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. This becomes,
 
-\begin{equation}
-\label{eq:orgff494bc}
-\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
-\end{equation}
+
+\subsection{Approximate equation of motion : Linear}
+\label{sec:org5d9ee29}
+
+
+
+\subsection{Exact equation of motion : Nonlinear}
+\label{sec:orgef05271}
+
+
+
 
 \section{Result}
-\label{sec:orgf2cfdab}
+\label{sec:orgb201a18}
 
 graphs
 
 
 
 \section{Simulations}
-\label{sec:orgaa4dddd}
+\label{sec:org2864150}
 
 
 
 \subsection{Animations}
-\label{sec:org79ba692}
+\label{sec:orge05b339}
 I done animation with python's pygame library which is acurate in time. This library make sures that our system follows as real life as possible.
 
 \begin{lstlisting}[language=Python]

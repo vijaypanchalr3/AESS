@@ -1,6 +1,8 @@
 #+title: Timebomb of approximation method in physics
-
-
+#+LaTeX_HEADER: \usepackage{listings}
+#+LaTeX_HEADER: \usepackage{xcolor}
+#+LaTeX_HEADER: \lstset{language=Python,backgroundcolor=\color{black!5}, basicstyle=\footnotesize\ttfamily, columns=fullflexible, breaklines, frame= tb}
+# #+LateX_HEADER: \newcommand\pythonstyle{\lstset{language=Python,basicstyle=\ttm,morekeywords={self,def, if, else, for, while, return},keywordstyle=\ttb\color{deepblue},emph={MyClass,__init__},emphstyle=\ttb\color{deepred},stringstyle=\color{deepgreen},frame=tb,showstringspaces=false}}
 
 
 * Introduction
@@ -9,95 +11,159 @@ Approximation method is yet most essential topic in physics. Physicists love to 
 
 Be aware, that approximation is just approximation. We should remember everytime we do that. Sometime we forgot actual system which is far from ideal. We should know that we are on mission to know nature not just building new theories.
 
-Let's dive into one example, what do i imply by consequences of approximation methods. In classical mechanics, we have merely some major theories corelated . In Oscillation theory we studied *Simple Harmonic Osciallations*, but as we are going to see that simple harmonic oscillation is not exactly that simple. 
+Let's dive into one example, what do i imply by consequences of approximation methods. In classical mechanics, we have merely some major theories. In Oscillation theory we studied *Simple Harmonic Oscillation*, but as we are going to see that simple harmonic oscillation is not exactly that simple. 
+
+*Write more*
+
+* Example of Approximate method
+
+Approximation is very used in almost every in physics. Not, just physics but every field in sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
+
+** Defining problem
+
+We learned simple pendulum from early time of physics course. But what if say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
+
+We took physical pendulum. By taking length $l = 1 m$ string (assuming non expanding) attaching to bob of mass $m = 0.1 kg$ . String attached to rigid wall as shown in figure. 
+
+#+CAPTION: pendulum with string lenth $l$ and mass $m$
+#+NAME: pendulum
+#+ATTR_LATEX:  :width 0.3 \textwidth
+[[./figure1.png]]
+
+For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used *Newtonian formulation* which is quite easy to work with in this type of problems, since we are working with *non conservative* system. This is our derivation of equation of motion.
+
+First of all, we took horizontal and vertical forces.
+#+NAME: eqn:1
+\begin{equation}
+   F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
+\end{equation}
+#+NAME: eqn:2
+\begin{equation}
+   F_{damping}sin(\theta)+Tsin(\theta)-mg=ma_{y}
+\end{equation}
+
+Adding equation [[eqn:1]] and equation [[eqn:2]] with multiplication by $cos(\theta)$ and $sin(\theta)$ respectively.
+
+#+NAME:eqn:3
+\begin{equation*}
+F_{damping}sin^{2}(\theta)+F_{damping}cos^{2}(\theta)-mgsin(\theta)=ma_{x}cos(\theta)+ma_{y}sin(\theta)
+\end{equation*}
+
+#+NAME:eqn:4
+\begin{equation*}
+F_{damping}-mgsin(\theta)=m(asin^{2}(\theta)+acos^{2}(\theta))
+\end{equation*}
+
+#+NAME:eqn:5
+\begin{equation}
+F_{damping}-mgsin(\theta)=ma
+\end{equation}
+
+From,
+#+NAME:6
+\begin{equation*}
+a = (\ddot{r}-r\dot{\theta}^{2})\hat{r} + (r \ddot{\theta}+2\dot{r}\dot{\theta})\hat{\theta}
+\end{equation*}
+
+Where,  $r=l$ and since $\dot{l}=0$, $a=l\ddot{\theta}$. So, equation [[eqn:5]] becomes,
+
+#+NAME:eqn:7
+\begin{equation*}
+F_{damping}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+We are taking damping force to velocity proportional. So, $F_{damping}=-bl\dot{\theta}$ ( since, $\dot{l}=0$). Here, we are assuming that damping is linear. 
+
+#+NAME:eqn8
+\begin{equation*}
+-bl\dot{\theta}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+
+Rearranging this equation will give our equation of motion,
+
+#+NAME:eqn:9
+\begin{equation}
+\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
+\end{equation}
+
+This is *exact equation of motion*. Which is *second order non linear equation*. Finding it's exact solution is massive task. We will use numerical methods to find it's solution. This equation has much more to say than looks. Will learn about this in later.
+
+** Approximation of equation of motion : Linear differential equation
+
+Solving [[eqn:9]] is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as $\theta \to 0$ as $sin(\theta) \to \theta$. Consequently, this equation becomes very easy to solve. This becomes,
+
+#+NAME:eqn:10
+\begin{equation}
+\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
+\end{equation}
+
+
+*Solve linear equation*
+
+** Simulations
+*** Understand Runge-Kutta method
+
+*** Animations
 
 
 
-* Method of solving.
 
-
-
-** Harmonic Oscillator
-
-Classical example of oscillator as we studied in physics is pendulum. By understanding pendulum means understanding most of physics of oscillators, in sense atoms, dipoles or any periodic motion. Let's build our Pendulum. We take small bob (as we can structure) with mass $m$, which is attached to string of $l$ with rigid wall. Mass $m$ suspended vertically with gravity. We should take nonconservative force like damping to make our system feel more practical.
-
-
-
-
-
-
-
-
-** Linear
-
-
-
-** Nonlinear
-
-
-
-
-* Result
-
-graphs
-
-
-
-* Simulations
-
-
-
-** Animations
 I done animation with python's pygame library which is acurate in time. This library make sures that our system follows as real life as possible.
 
-#+begin_src python
-def bob1(window,x,y):
-    image = pygame.image.load("bitmap2.png")
-    window.blit(image, (x,y))
+#+begin_src latex
+  \begin{lstlisting}[language=Python]
+    def bob1(window,x,y):
+        image = pygame.image.load("bitmap2.png")
+        window.blit(image, (x,y))
 
-def bob2(window,x,y):
-    image = pygame.image.load("bitmap.png")
-    window.blit(image, (x,y))
+    def bob2(window,x,y):
+        image = pygame.image.load("bitmap.png")
+        window.blit(image, (x,y))
 
-def surface(window,x,y):
-    image = pygame.image.load("drawings.png")
-    window.blit(image, (x, y))
+    def surface(window,x,y):
+        image = pygame.image.load("drawings.png")
+        window.blit(image, (x, y))
     
-def position(l,theta):
-    return origin_x-10+l*cos((1.5*pi)-theta),origin_y-10-l*sin((1.5*pi)-theta)
+    def position(l,theta):
+        return origin_x-10+l*cos((1.5*pi)-theta),origin_y-10-l*sin((1.5*pi)-theta)
     
-def mainloop(window,fps):
-    global t
-    run = True
-    clock = pygame.time.Clock()
-    c = 0
-    while run:
-        for event in pygame.event.get():
-            if event.type== pygame.QUIT:
-                run= False
+    def mainloop(window,fps):
+        global t
+        run = True
+        clock = pygame.time.Clock()
+        c = 0
+        while run:
+            for event in pygame.event.get():
+                if event.type== pygame.QUIT:
+                    run= False
+                    break
+            clock.tick(fps)
+
+            x,y = position(l,exact[c])
+            x2,y2 = position(l,appro[c])
+            if c==len(exact):
                 break
-        clock.tick(fps)
+            window.fill("#ffffff")
+            surface(window,175,origin_y-25)
+            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
+            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
+            bob1(window,x,y)
+            bob2(window,x2,y2)
+            pygame.display.update()
+            c+=1
+        pygame.quit()
 
-        x,y = position(l,exact[c])
-        x2,y2 = position(l,appro[c])
-        if c==len(exact):
-            break
-        window.fill("#ffffff")
-        surface(window,175,origin_y-25)
-        pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
-        pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
-        bob1(window,x,y)
-        bob2(window,x2,y2)
-        pygame.display.update()
-        c+=1
-    pygame.quit()
-
-if __name__ == "__main__":
-    pygame.init()
-    window = pygame.display.set_mode((width,height))
-    exact = nonlinear(5,30)
-    appro = linear(5,30)
-    t = time.perf_counter()
-    mainloop(window, 30)
+    if __name__ == "__main__":
+        pygame.init()
+        window = pygame.display.set_mode((width,height))
+        exact = nonlinear(5,30)
+        appro = linear(5,30)
+        t = time.perf_counter()
+        mainloop(window, 30)
+\end{lstlisting}
 
 #+end_src
+
+* What is meaning of all this ?
+
