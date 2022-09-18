@@ -98,7 +98,42 @@ Solving [[eqn:9]] is very hard tasks. So, we as physics majors try to make this 
 \ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
 \end{equation}
 
+#+NAME:eqn:11
+\begin{equation}
+\ddot{\theta}+\Gamma\dot{\theta}+w_{0}^{2}\theta=0
+\end{equation}
 
+Where we took $\Gamma = \frac{b}{m}$ and $w_{0}^{2}$.
+
+We can solve this linear equation [[eqn:11]] by usual methods of linear differential equation. Simply taking $\theta=e^{\lambda t}$, which gives polynomials of second order.
+
+#+NAME:eqn:12
+\begin{equation}
+\lambda^{2}+\Gamma\lambda+w_{0}^{2}=0
+\end{equation}
+
+We can find roots of this quadratic equation.
+
+#+NAME:eqn:13
+\begin{equation}
+\lambda = \frac{-\Gamma}{2} \pm \frac{\sqrt{\Gamma^{2}-4w_{0}^{2}}}{2}
+\end{equation}
+
+#+NAME:eqn:14
+\begin{equation}
+\lambda = \frac{-\Gamma}{2} \pm \sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}
+\end{equation}
+
+Here we getting three type of roots,
+
+1) Roots where $\frac{\Gamma}{2}=w$. this is *critical damping condition*, where we getting $\lambda=\frac{-\Gamma}{2}$. Putting \lambda into our solutions, $\theta = e^{\frac{-\Gamma}{2}t}$. Which suggest this will only decay with time and never overshoots from equilibrium position. Which is desired in certain condition but not for us.
+   
+2)  Roots where $\frac{\Gamma}{2}>w$. this is *overdamping condition*, where we getting $\lambda=\frac{-\Gamma}{2}\pm\sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}$. So from here we get $\theta = e^{\frac{-\Gamma}{2}t}e^{\pm\sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}t}$. This also have exponential term in it which will only decay with time and never overshoots from equilibrium position.
+   
+3) Roots where $\frac{\Gamma}{2}<w$. this is *underdamping condition*, here  $\lambda=\frac{-\Gamma}{2}\pm i\sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}$. $\theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}$. This has complex term, which implicitly suggest that it'll overshoot and oscillate. This our topic of interest for this project.
+
+      
+   
 *Solve linear equation*
 
 ** Simulations

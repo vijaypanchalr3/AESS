@@ -17,16 +17,9 @@ def surface(window,x,y):
 
 
     
-# origin_x1 = origin_x-200
-
-# origin_x2 = origin_x+200
-
-
 def position1(l,theta):
     return origin_x-radius+l*cos((1.5*3.141598)-theta),origin_y-radius-l*sin((1.5*3.14159)-theta)
 
-# def position2(l,theta):
-    # return origin_x2-radius+l*cos((1.5*3.141598)-theta),origin_y-radius-l*sin((1.5*3.14159)-theta)
 
 def mainloop(window,fps):
     global t
