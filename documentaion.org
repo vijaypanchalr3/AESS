@@ -136,6 +136,10 @@ Here we getting three type of roots,
    
 *Solve linear equation*
 
+*Phase planes*
+
+
+
 ** Simulations
 *** Understand Runge-Kutta method
 
