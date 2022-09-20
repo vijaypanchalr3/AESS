@@ -13,6 +13,8 @@ def f2nonlinear(theta,phi):
 def f2linear(theta,phi):
     return -((gamma/m)*phi*phi)-(w0*theta)
 
+
+
 def N_ODE_RK4(t,theta,phi,h,K):
     h = h/8
     for i in range(8):
@@ -60,10 +62,8 @@ CNPF2 = -(4*w0*gamma)/(1+4*gamma*gamma)
 def nonlinear_phase_fun(theta,c):
     return sqrt(c*exp(-2*gamma*theta)+CNPF1*cos(theta)+CNPF2*sin(theta))
 
-def phase_plane(fun,space,deviation,c):
-    theta = arange(-space,space,deviation)
-    size = int(2*space/deviation)
-    phi = zeros([size])
-    for i in range(size):
-        phi[i] = fun(c,theta[i])    
-    return theta,phi
+def phase_plane(theta,phi):
+    f1 = phi
+    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+    return f1,f2
+

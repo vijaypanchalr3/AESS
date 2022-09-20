@@ -1,4 +1,4 @@
-#+title: Timebomb of approximation method in physics
+#+title: Timebomb of approximation in physics
 #+LaTeX_HEADER: \usepackage{listings}
 #+LaTeX_HEADER: \usepackage{xcolor}
 #+LaTeX_HEADER: \lstset{language=Python,backgroundcolor=\color{black!5}, basicstyle=\footnotesize\ttfamily, columns=fullflexible, breaklines, frame= tb}
@@ -15,7 +15,7 @@ Let's dive into one example, what do i imply by consequences of approximation me
 
 *Write more*
 
-* Example of Approximate method
+* Example of Approximation 
 
 Approximation is very used in almost every in physics. Not, just physics but every field in sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
