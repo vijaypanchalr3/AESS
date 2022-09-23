@@ -132,77 +132,149 @@ Here we getting three type of roots,
    
 3) Roots where $\frac{\Gamma}{2}<w$. this is *underdamping condition*, here  $\lambda=\frac{-\Gamma}{2}\pm i\sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}$. $\theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}$. This has complex term, which implicitly suggest that it'll overshoot and oscillate. This our topic of interest for this project.
 
-      
-   
-*Solve linear equation*
 
-*Phase planes*
+Without forgetting our initial system we came to we took third case as our solution.
+
+#+NAME:eqn:15
+\begin{fleqn}
+\therefore \qquad \qquad \qquad \qquad \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
+\\
+\end{fleqn}
+
+Taking $w^{2} = w_{0}^{2}-\frac{\Gamma}{2}^{2}$. And writing our solution in linear combination from above equation,
+
+#+NAME:eqn:16
+\begin{equation}
+\theta = e^{\frac{-\Gamma}{2}t}(C_{1}e^{iwt}+C_{2}e^{-iwt})
+\end{equation}
+
+Taking real part of equation [[eqn:16]]. Since it'll represent real motion of system. At last we get equation like this,
+
+#+NAME:eqn:17
+\begin{equation}
+\theta = e^{\frac{-\Gamma}{2}t}A cos(wt-\delta)
+\end{equation}
+
+Where, $A$ and $\delta$ can be find from initial conditions and $w = \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}$.
 
 
 
-** Simulations
+** Understanding with little simulations
+
+For understaning what is we want to tell. Basically we made simulation of both the equation of motion side by side. This simulation tales that motion of both solution will be very near onto small position where $\theta$ is quite small, but not from other. We also, try to compare with physical model *give nice view*.
+
+Firstly exact equation of motion is nonlinear differential equation. We can't get exact solution of it. So, we just use numerical methods. We use *fourth order Runge-Kutta method*. Basically, we elaborated whole method in short down here. 
+
 *** Understand Runge-Kutta method
 
 *** Animations
 
+Now, come animation part. Which we basically used *pygame* in *python*. We first get array of both solutions with interval of $\frac{1}{60} second$ and give this data in position function in my /main.py/ file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because /pygame/ screen rectangular coordinates with units in pixel of screen.
+
+Following data, we used as constant which i defined in /constant.py/ file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen.
+
+My /constant.py/ file
+
+#+begin_src latex
+  \begin{lstlisting}language=Python]
+    from math import sqrt
+
+    # defining constants in C.G.S.
 
 
+    width,height = 1360,720         # pygame window size in pixel units
+    origin_x,origin_y = width/2,height/8 # setting up the origin O
+    b = 100                              # damping coefficient
+    m = 100                              # 100 grams of mass
+    l = 100                              # 100 cm length
+    g = 980                              # gravitation accelaraiotion in cgs
 
-I done animation with python's pygame library which is acurate in time. This library make sures that our system follows as real life as possible.
+    gamma = b/m
+
+    w0 = sqrt(g/l)                  # natural frequncy of SHM
+    theta_initial = 3.141591/4      # initial theta in radian
+    radius = 10                     # radius of ball in pixel
+    fps = 60                        # frame per second
+  \end{lstlisting}
+#+end_src
+
+This is my /main.py/ file, in which i defined all functions for calculations. In which, i have Runge-Kutta method defined and solution and also phase planes defined.
 
 #+begin_src latex
   \begin{lstlisting}[language=Python]
-    def bob1(window,x,y):
-        image = pygame.image.load("bitmap2.png")
-        window.blit(image, (x,y))
+    from constants import *
+    from numpy import sin, sqrt, zeros
 
-    def bob2(window,x,y):
-        image = pygame.image.load("bitmap.png")
-        window.blit(image, (x,y))
+    def f2nonlinear(theta,phi):     # we defined second auxillary equation from nonlinear term.
+    return -((gamma/m)*phi*phi)-(w0*sin(theta))
 
-    def surface(window,x,y):
-        image = pygame.image.load("drawings.png")
-        window.blit(image, (x, y))
-    
-    def position(l,theta):
-        return origin_x-10+l*cos((1.5*pi)-theta),origin_y-10-l*sin((1.5*pi)-theta)
-    
-    def mainloop(window,fps):
-        global t
-        run = True
-        clock = pygame.time.Clock()
-        c = 0
-        while run:
-            for event in pygame.event.get():
-                if event.type== pygame.QUIT:
-                    run= False
-                    break
-            clock.tick(fps)
+    def f2linear(theta,phi):        # we defined second auxillary equation from linear term.
+    return -((gamma/m)*phi*phi)-(w0*theta)
 
-            x,y = position(l,exact[c])
-            x2,y2 = position(l,appro[c])
-            if c==len(exact):
-                break
-            window.fill("#ffffff")
-            surface(window,175,origin_y-25)
-            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
-            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
-            bob1(window,x,y)
-            bob2(window,x2,y2)
-            pygame.display.update()
-            c+=1
-        pygame.quit()
+    # range-kutta method defined
+    def RK4(t,theta,phi,h,K): 
+    h = h/8
+    for i in range(8):
+    k1 = h*phi
+    l1 = h*K(theta,phi)
+    k2 = h*(phi+(l1*0.5))
+    l2 = h*(K(theta+(k1*0.5),phi+(l1*0.5)))
+    k3 = h*(phi+(l2*0.5))
+    l3 = h*(K(theta+(k2*0.5),phi+(l2*0.5)))
+    k4 = h*(phi+l3)
+    l4 = h*(K(theta+k3,phi+l3))
+    k_ = (1/6)*(k1+k4+2*(k2+k3))
+    l_ = (1/6)*(l1+l4+2*(l2+l3))
+    t+=h
+    theta+=k_
+    phi+=l_
+    return  t,theta,phi
 
-    if __name__ == "__main__":
-        pygame.init()
-        window = pygame.display.set_mode((width,height))
-        exact = nonlinear(5,30)
-        appro = linear(5,30)
-        t = time.perf_counter()
-        mainloop(window, 30)
-\end{lstlisting}
+    # Solutions of linear term ---- gives array of length (Total_time*fps)
+    def linear(theta_initial,Total_time,fps):
+    linear_solutions = zeros([Total_time*fps])
+    linear_solutions[0] = theta_initial
+    phi = zeros([Total_time*fps])
+    phi[0],t,time = 0,0,0
+    while t-1<Total_time*fps:
+    time, linear_solutions[t+1], phi[t+1] = RK4(time,linear_solutions[t],phi[t],1/fps,f2linear)
+    t+=1
+    return linear_solutions
 
+    # Solutions of nonlinear term ---- gives array of length (Total_time*fps)
+    def nonlinear(theta_initial,Total_time,fps):
+    nonlinear_solutions = zeros([Total_time*fps])
+    nonlinear_solutions[0] = theta_initial
+    phi = zeros([Total_time*fps])
+    phi[0],t,time = 0,0,0
+    while t-1<Total_time*fps:
+    time, nonlinear_solutions[t+1], phi[t+1] = RK4(time,nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+    t+=1
+    return nonlinear_solutions
+
+
+    # ------------(for graphs)----------
+    # this describes frequncy of nonlinear term.
+    def w_nonliner(theta_initial):
+    T = (sqrt(l/g))*(1+(0.24*(sin(0.5*theta_initial))**2)+((9/24)*(sin(theta_initial*0.5))**4))
+    return 1/T
+
+    # phase plane definations
+    def linear_phase_plane(theta,phi):
+    f1 = phi
+    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+    return f1,f2
+
+    def nonlinear_phase_plane(theta,phi):
+    f1 = phi
+    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+    return f1,f2
+
+    # ----------------------------------
+
+  \end{lstlisting}
 #+end_src
+
 
 * What is meaning of all this ?
 

@@ -1,21 +1,14 @@
 from constants import *
-from numpy import arange, exp, sin, cos, size, sqrt, zeros, pi
+from numpy import sin, sqrt, zeros
 
-# phi = arctan(gamma/2)
-# A = theta_initial/cos(phi)
-# w = sqrt((w0*w0)-((gamma*gamma)/4))
-
-
-
-def f2nonlinear(theta,phi):
+def f2nonlinear(theta,phi):     # we defined second auxillary equation from nonlinear term.
     return -((gamma/m)*phi*phi)-(w0*sin(theta))
 
-def f2linear(theta,phi):
+def f2linear(theta,phi):        # we defined second auxillary equation from linear term.
     return -((gamma/m)*phi*phi)-(w0*theta)
 
-
-
-def N_ODE_RK4(t,theta,phi,h,K):
+# range-kutta method defined
+def RK4(t,theta,phi,h,K): 
     h = h/8
     for i in range(8):
         k1 = h*phi
@@ -32,38 +25,45 @@ def N_ODE_RK4(t,theta,phi,h,K):
         theta+=k_
         phi+=l_
     return  t,theta,phi
-    
-def linear(Total_time,fps):
-    linear_solutions = zeros([Total_time*fps+2])
+
+# Solutions of linear term ---- gives array of length (Total_time*fps)
+def linear(theta_initial,Total_time,fps):
+    linear_solutions = zeros([Total_time*fps])
     linear_solutions[0] = theta_initial
-    phi = zeros([Total_time*fps+2])
+    phi = zeros([Total_time*fps])
     phi[0],t,time = 0,0,0
-    while t<Total_time*fps:
-        time, linear_solutions[t+1], phi[t+1] = N_ODE_RK4(time,linear_solutions[t],phi[t],1/fps,f2linear)
+    while t-1<Total_time*fps:
+        time, linear_solutions[t+1], phi[t+1] = RK4(time,linear_solutions[t],phi[t],1/fps,f2linear)
         t+=1
     return linear_solutions
 
-def nonlinear(Total_time,fps):
-    nonlinear_solutions = zeros([Total_time*fps+2])
+# Solutions of nonlinear term ---- gives array of length (Total_time*fps)
+def nonlinear(theta_initial,Total_time,fps):
+    nonlinear_solutions = zeros([Total_time*fps])
     nonlinear_solutions[0] = theta_initial
-    phi = zeros([Total_time*fps+2])
+    phi = zeros([Total_time*fps])
     phi[0],t,time = 0,0,0
-    while t<Total_time*fps:
-        time, nonlinear_solutions[t+1], phi[t+1] = N_ODE_RK4(time,nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+    while t-1<Total_time*fps:
+        time, nonlinear_solutions[t+1], phi[t+1] = RK4(time,nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
         t+=1
     return nonlinear_solutions
 
+
+# ------------(for graphs)----------
+# this describes frequncy of nonlinear term.
 def w_nonliner(theta_initial):
     T = (sqrt(l/g))*(1+(0.24*(sin(0.5*theta_initial))**2)+((9/24)*(sin(theta_initial*0.5))**4))
     return 1/T
-CNPF1 = 2*w0/(1+4*gamma*gamma)
-CNPF2 = -(4*w0*gamma)/(1+4*gamma*gamma)
 
-def nonlinear_phase_fun(theta,c):
-    return sqrt(c*exp(-2*gamma*theta)+CNPF1*cos(theta)+CNPF2*sin(theta))
-
-def phase_plane(theta,phi):
+# phase plane definations
+def linear_phase_plane(theta,phi):
     f1 = phi
     f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
     return f1,f2
 
+def nonlinear_phase_plane(theta,phi):
+    f1 = phi
+    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+    return f1,f2
+
+# ----------------------------------

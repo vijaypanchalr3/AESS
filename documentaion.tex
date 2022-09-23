@@ -1,4 +1,4 @@
-% Created 2022-09-18 Sun 23:06
+% Created 2022-09-23 Fri 18:05
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
   \usepackage[utf8]{inputenc}
@@ -29,10 +29,10 @@
   \hypersetup{pdfborder=0 0 0}
 \author{vijay panchal}
 \date{\today}
-\title{Timebomb of approximation method in physics}
+\title{Timebomb of approximation in physics}
 \hypersetup{
  pdfauthor={vijay panchal},
- pdftitle={Timebomb of approximation method in physics},
+ pdftitle={Timebomb of approximation in physics},
  pdfkeywords={},
  pdfsubject={},
  pdfcreator={Emacs 27.1 (Org mode 9.4.6)}, 
@@ -45,7 +45,7 @@
 
 
 \section{Introduction}
-\label{sec:org313d79b}
+\label{sec:org7144f46}
 
 Approximation method is yet most essential topic in physics. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to \textbf{doing physics} instead going in to maze of exactness in mathematics. Getting interpretation or more i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics \textbf{Navier-Stoke equation} can be imposible to solve but as physicist they know what it is.
 
@@ -55,13 +55,13 @@ Let's dive into one example, what do i imply by consequences of approximation me
 
 \textbf{Write more}
 
-\section{Example of Approximate method}
-\label{sec:org8c245ec}
+\section{Example of Approximation}
+\label{sec:orgbb8d41a}
 
 Approximation is very used in almost every in physics. Not, just physics but every field in sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
 \subsection{Defining problem}
-\label{sec:org8984ee2}
+\label{sec:orgeeb96a9}
 
 We learned simple pendulum from early time of physics course. But what if say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
 
@@ -70,55 +70,55 @@ We took physical pendulum. By taking length \(l = 1 m\) string (assuming non exp
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.3 \textwidth]{./figure1.png}
-\caption{\label{fig:org6be9dbd}pendulum with string lenth \(l\) and mass \(m\)}
+\caption{\label{fig:org800f4ce}pendulum with string lenth \(l\) and mass \(m\)}
 \end{figure}
 
 For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used \textbf{Newtonian formulation} which is quite easy to work with in this type of problems, since we are working with \textbf{non conservative} system. This is our derivation of equation of motion.
 
 First of all, we took horizontal and vertical forces.
 \begin{equation}
-\label{eq:org09a7556}
+\label{eq:org3414f20}
    F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
 \end{equation}
 \begin{equation}
-\label{eq:orge6f8987}
+\label{eq:orgc1e8885}
    F_{damping}sin(\theta)+Tsin(\theta)-mg=ma_{y}
 \end{equation}
 
-Adding equation \ref{eq:org09a7556} and equation \ref{eq:orge6f8987} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
+Adding equation \ref{eq:org3414f20} and equation \ref{eq:orgc1e8885} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
 
 \begin{equation*}
-\label{eq:org5a23d30}
+\label{eq:orgcb04107}
 F_{damping}sin^{2}(\theta)+F_{damping}cos^{2}(\theta)-mgsin(\theta)=ma_{x}cos(\theta)+ma_{y}sin(\theta)
 \end{equation*}
 
 \begin{equation*}
-\label{eq:org7279efb}
+\label{eq:org80b5f60}
 F_{damping}-mgsin(\theta)=m(asin^{2}(\theta)+acos^{2}(\theta))
 \end{equation*}
 
 \begin{equation}
-\label{eq:orgaee488c}
+\label{eq:org924218a}
 F_{damping}-mgsin(\theta)=ma
 \end{equation}
 
 From,
 \begin{equation*}
-\label{eq:orgde960f2}
+\label{eq:orgcb67140}
 a = (\ddot{r}-r\dot{\theta}^{2})\hat{r} + (r \ddot{\theta}+2\dot{r}\dot{\theta})\hat{\theta}
 \end{equation*}
 
-Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:orgaee488c} becomes,
+Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:org924218a} becomes,
 
 \begin{equation*}
-\label{eq:org11b111a}
+\label{eq:orgff68107}
 F_{damping}-mgsin(\theta)=ml\ddot{\theta}
 \end{equation*}
 
 We are taking damping force to velocity proportional. So, \(F_{damping}=-bl\dot{\theta}\) ( since, \(\dot{l}=0\)). Here, we are assuming that damping is linear. 
 
 \begin{equation*}
-\label{eq:org1eb51a8}
+\label{eq:org3933c19}
 -bl\dot{\theta}-mgsin(\theta)=ml\ddot{\theta}
 \end{equation*}
 
@@ -126,45 +126,45 @@ We are taking damping force to velocity proportional. So, \(F_{damping}=-bl\dot{
 Rearranging this equation will give our equation of motion,
 
 \begin{equation}
-\label{eq:orga29d2f5}
+\label{eq:org38b83cb}
 \ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
 \end{equation}
 
 This is \textbf{exact equation of motion}. Which is \textbf{second order non linear equation}. Finding it's exact solution is massive task. We will use numerical methods to find it's solution. This equation has much more to say than looks. Will learn about this in later.
 
 \subsection{Approximation of equation of motion : Linear differential equation}
-\label{sec:org6520315}
+\label{sec:orgb95765f}
 
-Solving \ref{eq:orga29d2f5} is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. This becomes,
+Solving \ref{eq:org38b83cb} is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. This becomes,
 
 \begin{equation}
-\label{eq:orgc9ebe6e}
+\label{eq:org217be5e}
 \ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
 \end{equation}
 
 \begin{equation}
-\label{eq:org1446dde}
+\label{eq:org7f1424d}
 \ddot{\theta}+\Gamma\dot{\theta}+w_{0}^{2}\theta=0
 \end{equation}
 
 Where we took \(\Gamma = \frac{b}{m}\) and \(w_{0}^{2}\).
 
-We can solve this linear equation \ref{eq:org1446dde} by usual methods of linear differential equation. Simply taking \(\theta=e^{\lambda t}\), which gives polynomials of second order.
+We can solve this linear equation \ref{eq:org7f1424d} by usual methods of linear differential equation. Simply taking \(\theta=e^{\lambda t}\), which gives polynomials of second order.
 
 \begin{equation}
-\label{eq:orgd505f63}
+\label{eq:org7932375}
 \lambda^{2}+\Gamma\lambda+w_{0}^{2}=0
 \end{equation}
 
 We can find roots of this quadratic equation.
 
 \begin{equation}
-\label{eq:org4a44d7f}
+\label{eq:org6611d7e}
 \lambda = \frac{-\Gamma}{2} \pm \frac{\sqrt{\Gamma^{2}-4w_{0}^{2}}}{2}
 \end{equation}
 
 \begin{equation}
-\label{eq:orgb5d6a37}
+\label{eq:org99d361b}
 \lambda = \frac{-\Gamma}{2} \pm \sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}
 \end{equation}
 
@@ -179,73 +179,148 @@ Here we getting three type of roots,
 \end{enumerate}
 
 
+Without forgetting our initial system we came to we took third case as our solution.
 
-\textbf{Solve linear equation}
+\begin{fleqn}
+\therefore \qquad \qquad \qquad \qquad \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
+\\
+\label{org3be4859}
+\end{fleqn}
 
-\subsection{Simulations}
-\label{sec:org51ee064}
+Taking \(w^{2} = w_{0}^{2}-\frac{\Gamma}{2}^{2}\). And writing our solution in linear combination from above equation,
+
+\begin{equation}
+\label{eq:org9c0837d}
+\theta = e^{\frac{-\Gamma}{2}t}(C_{1}e^{iwt}+C_{2}e^{-iwt})
+\end{equation}
+
+Taking real part of equation \ref{eq:org9c0837d}. Since it'll represent real motion of system. At last we get equation like this,
+
+\begin{equation}
+\label{eq:org0582501}
+\theta = e^{\frac{-\Gamma}{2}t}A cos(wt-\delta)
+\end{equation}
+
+Where, \(A\) and \(\delta\) can be find from initial conditions and \(w = \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}\).
+
+
+
+\subsection{Understanding with little simulations}
+\label{sec:org2787399}
+
+For understaning what is we want to tell. Basically we made simulation of both the equation of motion side by side. This simulation tales that motion of both solution will be very near onto small position where \(\theta\) is quite small, but not from other. We also, try to compare with physical model \textbf{give nice view}.
+
+Firstly exact equation of motion is nonlinear differential equation. We can't get exact solution of it. So, we just use numerical methods. We use \textbf{fourth order Runge-Kutta method}. Basically, we elaborated whole method in short down here. 
+
 \subsubsection{Understand Runge-Kutta method}
-\label{sec:org724955b}
+\label{sec:org7744c20}
 
 \subsubsection{Animations}
-\label{sec:org129aeed}
+\label{sec:org0c22d84}
+
+Now, come animation part. Which we basically used \textbf{pygame} in \textbf{python}. We first get array of both solutions with interval of \(\frac{1}{60} second\) and give this data in position function in my \emph{main.py} file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because \emph{pygame} screen rectangular coordinates with units in pixel of screen.
+
+Following data, we used as constant which i defined in \emph{constant.py} file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen.
+
+My \emph{constant.py} file
+
+\begin{lstlisting}language=Python]
+  from math import sqrt
+
+  # defining constants in C.G.S.
 
 
+  width,height = 1360,720         # pygame window size in pixel units
+  origin_x,origin_y = width/2,height/8 # setting up the origin O
+  b = 100                              # damping coefficient
+  m = 100                              # 100 grams of mass
+  l = 100                              # 100 cm length
+  g = 980                              # gravitation accelaraiotion in cgs
 
+  gamma = b/m
 
-I done animation with python's pygame library which is acurate in time. This library make sures that our system follows as real life as possible.
-
-\begin{lstlisting}[language=Python]
-    def bob1(window,x,y):
-        image = pygame.image.load("bitmap2.png")
-        window.blit(image, (x,y))
-
-    def bob2(window,x,y):
-        image = pygame.image.load("bitmap.png")
-        window.blit(image, (x,y))
-
-    def surface(window,x,y):
-        image = pygame.image.load("drawings.png")
-        window.blit(image, (x, y))
-    
-    def position(l,theta):
-        return origin_x-10+l*cos((1.5*pi)-theta),origin_y-10-l*sin((1.5*pi)-theta)
-    
-    def mainloop(window,fps):
-        global t
-        run = True
-        clock = pygame.time.Clock()
-        c = 0
-        while run:
-            for event in pygame.event.get():
-                if event.type== pygame.QUIT:
-                    run= False
-                    break
-            clock.tick(fps)
-
-            x,y = position(l,exact[c])
-            x2,y2 = position(l,appro[c])
-            if c==len(exact):
-                break
-            window.fill("#ffffff")
-            surface(window,175,origin_y-25)
-            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
-            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
-            bob1(window,x,y)
-            bob2(window,x2,y2)
-            pygame.display.update()
-            c+=1
-        pygame.quit()
-
-    if __name__ == "__main__":
-        pygame.init()
-        window = pygame.display.set_mode((width,height))
-        exact = nonlinear(5,30)
-        appro = linear(5,30)
-        t = time.perf_counter()
-        mainloop(window, 30)
+  w0 = sqrt(g/l)                  # natural frequncy of SHM
+  theta_initial = 3.141591/4      # initial theta in radian
+  radius = 10                     # radius of ball in pixel
+  fps = 60                        # frame per second
 \end{lstlisting}
 
+This is my \emph{main.py} file, in which i defined all functions for calculations. In which, i have Runge-Kutta method defined and solution and also phase planes defined.
+
+\begin{lstlisting}[language=Python]
+  from constants import *
+  from numpy import sin, sqrt, zeros
+
+  def f2nonlinear(theta,phi):     # we defined second auxillary equation from nonlinear term.
+  return -((gamma/m)*phi*phi)-(w0*sin(theta))
+
+  def f2linear(theta,phi):        # we defined second auxillary equation from linear term.
+  return -((gamma/m)*phi*phi)-(w0*theta)
+
+  # range-kutta method defined
+  def RK4(t,theta,phi,h,K): 
+  h = h/8
+  for i in range(8):
+  k1 = h*phi
+  l1 = h*K(theta,phi)
+  k2 = h*(phi+(l1*0.5))
+  l2 = h*(K(theta+(k1*0.5),phi+(l1*0.5)))
+  k3 = h*(phi+(l2*0.5))
+  l3 = h*(K(theta+(k2*0.5),phi+(l2*0.5)))
+  k4 = h*(phi+l3)
+  l4 = h*(K(theta+k3,phi+l3))
+  k_ = (1/6)*(k1+k4+2*(k2+k3))
+  l_ = (1/6)*(l1+l4+2*(l2+l3))
+  t+=h
+  theta+=k_
+  phi+=l_
+  return  t,theta,phi
+
+  # Solutions of linear term ---- gives array of length (Total_time*fps)
+  def linear(theta_initial,Total_time,fps):
+  linear_solutions = zeros([Total_time*fps])
+  linear_solutions[0] = theta_initial
+  phi = zeros([Total_time*fps])
+  phi[0],t,time = 0,0,0
+  while t-1<Total_time*fps:
+  time, linear_solutions[t+1], phi[t+1] = RK4(time,linear_solutions[t],phi[t],1/fps,f2linear)
+  t+=1
+  return linear_solutions
+
+  # Solutions of nonlinear term ---- gives array of length (Total_time*fps)
+  def nonlinear(theta_initial,Total_time,fps):
+  nonlinear_solutions = zeros([Total_time*fps])
+  nonlinear_solutions[0] = theta_initial
+  phi = zeros([Total_time*fps])
+  phi[0],t,time = 0,0,0
+  while t-1<Total_time*fps:
+  time, nonlinear_solutions[t+1], phi[t+1] = RK4(time,nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+  t+=1
+  return nonlinear_solutions
+
+
+  # ------------(for graphs)----------
+  # this describes frequncy of nonlinear term.
+  def w_nonliner(theta_initial):
+  T = (sqrt(l/g))*(1+(0.24*(sin(0.5*theta_initial))**2)+((9/24)*(sin(theta_initial*0.5))**4))
+  return 1/T
+
+  # phase plane definations
+  def linear_phase_plane(theta,phi):
+  f1 = phi
+  f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+  return f1,f2
+
+  def nonlinear_phase_plane(theta,phi):
+  f1 = phi
+  f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+  return f1,f2
+
+  # ----------------------------------
+
+\end{lstlisting}
+
+
 \section{What is meaning of all this ?}
-\label{sec:org0b3d3c5}
+\label{sec:org94dedd6}
 \end{document}
