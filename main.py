@@ -8,7 +8,7 @@ def f2linear(theta,phi):        # we defined second auxillary equation from line
     return -((gamma/m)*phi*phi)-(w0*theta)
 
 # range-kutta method defined
-def RK4(t,theta,phi,h,K): 
+def RK4(theta,phi,h,K): 
     h = h/8
     for i in range(8):
         k1 = h*phi
@@ -21,30 +21,29 @@ def RK4(t,theta,phi,h,K):
         l4 = h*(K(theta+k3,phi+l3))
         k_ = (1/6)*(k1+k4+2*(k2+k3))
         l_ = (1/6)*(l1+l4+2*(l2+l3))
-        t+=h
         theta+=k_
         phi+=l_
-    return  t,theta,phi
+    return theta,phi
 
 # Solutions of linear term ---- gives array of length (Total_time*fps)
 def linear(theta_initial,Total_time,fps):
-    linear_solutions = zeros([Total_time*fps])
+    linear_solutions = zeros([Total_time*fps+2])
     linear_solutions[0] = theta_initial
-    phi = zeros([Total_time*fps])
-    phi[0],t,time = 0,0,0
-    while t-1<Total_time*fps:
-        time, linear_solutions[t+1], phi[t+1] = RK4(time,linear_solutions[t],phi[t],1/fps,f2linear)
+    phi = zeros([Total_time*fps+2])
+    phi[0],t = 0,0
+    while t<Total_time*fps:
+        linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2linear)
         t+=1
     return linear_solutions
 
 # Solutions of nonlinear term ---- gives array of length (Total_time*fps)
 def nonlinear(theta_initial,Total_time,fps):
-    nonlinear_solutions = zeros([Total_time*fps])
+    nonlinear_solutions = zeros([Total_time*fps+2])
     nonlinear_solutions[0] = theta_initial
-    phi = zeros([Total_time*fps])
-    phi[0],t,time = 0,0,0
-    while t-1<Total_time*fps:
-        time, nonlinear_solutions[t+1], phi[t+1] = RK4(time,nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+    phi = zeros([Total_time*fps+2])
+    phi[0],t= 0,0
+    while t<Total_time*fps:
+        nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
         t+=1
     return nonlinear_solutions
 

@@ -1,7 +1,7 @@
 from main import *
 import pygame
 import time
-
+from numpy import cos, sin, pi
 
 
 # this part done.
@@ -55,7 +55,7 @@ def mainloop(window,fps):
 if __name__ == "__main__":
     pygame.init()
     window = pygame.display.set_mode((width,height))
-    exact = nonlinear(300,fps)
-    appro = linear(300,fps)
+    exact = nonlinear(theta_initial,300,fps)
+    appro = linear(theta_initial,300,fps)
     t = time.perf_counter()
     mainloop(window, fps)

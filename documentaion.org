@@ -167,11 +167,17 @@ Firstly exact equation of motion is nonlinear differential equation. We can't ge
 
 *** Understand Runge-Kutta method
 
+In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
+
+
+
+
+
 *** Animations
 
 Now, come animation part. Which we basically used *pygame* in *python*. We first get array of both solutions with interval of $\frac{1}{60} second$ and give this data in position function in my /main.py/ file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because /pygame/ screen rectangular coordinates with units in pixel of screen.
 
-Following data, we used as constant which i defined in /constant.py/ file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen.
+Following data, we used as constant which i defined in /constant.py/ file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen. Remember, we made this code for reconstruct purpose only.
 
 My /constant.py/ file
 
