@@ -7,6 +7,12 @@ def f2nonlinear(theta,phi):     # we defined second auxillary equation from nonl
 def f2linear(theta,phi):        # we defined second auxillary equation from linear term.
     return -((gamma/m)*phi*phi)-(w0*theta)
 
+def f2llinear(theta,phi):        # we defined second auxillary equation from linear term.
+    return -((gamma/m)*phi)-(w0*theta)
+
+
+
+
 # range-kutta method defined
 def RK4(theta,phi,h,K): 
     h = h/8
@@ -47,6 +53,15 @@ def nonlinear(theta_initial,Total_time,fps):
         t+=1
     return nonlinear_solutions
 
+def lnonlinear(theta_initial,Total_time,fps):
+    nonlinear_solutions = zeros([Total_time*fps+2])
+    nonlinear_solutions[0] = theta_initial
+    phi = zeros([Total_time*fps+2])
+    phi[0],t= 0,0
+    while t<Total_time*fps:
+        nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+        t+=1
+    return nonlinear_solutions
 
 # ------------(for graphs)----------
 # this describes frequncy of nonlinear term.

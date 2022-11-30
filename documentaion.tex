@@ -1,124 +1,129 @@
-% Created 2022-09-23 Fri 18:05
+% Created 2022-11-29 Tue 11:06
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
-  \usepackage{fixltx2e}
-  \usepackage{graphicx}
-  \usepackage{longtable}
-  \usepackage{float}
-  \usepackage{wrapfig}
-  \usepackage{rotating}
-  \usepackage[normalem]{ulem}
-  \usepackage{amsmath}
-  \usepackage{textcomp}
-  \usepackage{marvosym}
-  \usepackage{wasysym}
-  \usepackage{amssymb}
-  \usepackage{hyperref}
-  \usepackage{mathpazo}
-  \usepackage{color}
-  \usepackage{enumerate}
-  \definecolor{bg}{rgb}{0.95,0.95,0.95}
-  \tolerance=1000
-                \usepackage{listings}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage{fixltx2e}
+    \usepackage{graphicx}
+    \usepackage{longtable}
+    \usepackage{float}
+    \usepackage{wrapfig}
+    \usepackage{rotating}
+    \usepackage[normalem]{ulem}
+    \usepackage{amsmath}
+    \usepackage{textcomp}
+    \usepackage{marvosym}
+    \usepackage{wasysym}
+    \usepackage{amssymb}
+    \usepackage{hyperref}
+    \usepackage{mathpazo}
+    \usepackage{color}
+    \usepackage{enumerate}
+    \definecolor{bg}{rgb}{0.95,0.95,0.95}
+    \tolerance=1000
+                    \usepackage{listings}
 \usepackage{xcolor}
 \lstset{language=Python,backgroundcolor=\color{black!5}, basicstyle=\footnotesize\ttfamily, columns=fullflexible, breaklines, frame= tb}
 
-  \linespread{1.1}
-  \hypersetup{pdfborder=0 0 0}
-\author{vijay panchal}
+    \linespread{1.1}
+    \hypersetup{pdfborder=0 0 0}
+\author{Ved Patel 67 Vijay Panchal 68}
 \date{\today}
 \title{Timebomb of approximation in physics}
 \hypersetup{
- pdfauthor={vijay panchal},
+ pdfauthor={Ved Patel 67 Vijay Panchal 68},
  pdftitle={Timebomb of approximation in physics},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 27.1 (Org mode 9.4.6)}, 
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 \tableofcontents
 
-
-
+\pagebreak
 \section{Introduction}
-\label{sec:org7144f46}
+\label{sec:org2832ecd}
 
-Approximation method is yet most essential topic in physics. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to \textbf{doing physics} instead going in to maze of exactness in mathematics. Getting interpretation or more i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics \textbf{Navier-Stoke equation} can be imposible to solve but as physicist they know what it is.
+Approximation method is yet most essential topic in physics. Also, approximation is yet essential trick for physicists. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to \textbf{seeing through physics} instead of going in to maze of exactness in formidable  mathematics. Getting interpretation or i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics \textbf{Navier-Stoke equation} can be imposible to solve but as physicist they know what it is.
 
 Be aware, that approximation is just approximation. We should remember everytime we do that. Sometime we forgot actual system which is far from ideal. We should know that we are on mission to know nature not just building new theories.
 
-Let's dive into one example, what do i imply by consequences of approximation methods. In classical mechanics, we have merely some major theories. In Oscillation theory we studied \textbf{Simple Harmonic Oscillation}, but as we are going to see that simple harmonic oscillation is not exactly that simple. 
-
-\textbf{Write more}
+Let's dive into one example, that showes implication of approximations. In classical mechanics, we have some major theories, one is of oscillatory motions. In Oscillation theory we studied \textbf{Simple Harmonic Oscillation}, but as we are going to see that simple harmonic oscillation is not exactly that simple without approximation. We had actually changed whole system unknowingly, but beauty of physics is that it is still help to understand concept and motion of it. 
 
 \section{Example of Approximation}
-\label{sec:orgbb8d41a}
+\label{sec:org994e3a4}
 
-Approximation is very used in almost every in physics. Not, just physics but every field in sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
+Approximation is used in almost every branch of physics, not just physics but every field of sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
-\subsection{Defining problem}
-\label{sec:orgeeb96a9}
+\subsection{Defining a problem}
+\label{sec:orgac3f1ab}
 
-We learned simple pendulum from early time of physics course. But what if say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
+We learned simple pendulum from very starting of physics course. But what if i say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
 
-We took physical pendulum. By taking length \(l = 1 m\) string (assuming non expanding) attaching to bob of mass \(m = 0.1 kg\) . String attached to rigid wall as shown in figure. 
+Let's take one pendulum,by taking length \(l = 1 m\) string (assuming non deforming) attaching to bob of mass \(m = 0.1 kg\). String attached to rigid wall as shown in figure. Then we give it a initial deviation. We have accelaration of \(g=9.8\) downward.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.3 \textwidth]{./figure1.png}
-\caption{\label{fig:org800f4ce}pendulum with string lenth \(l\) and mass \(m\)}
+\caption{\label{fig:orgab0b11b}pendulum with string lenth \(l\) and mass \(m\)}
 \end{figure}
 
-For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used \textbf{Newtonian formulation} which is quite easy to work with in this type of problems, since we are working with \textbf{non conservative} system. This is our derivation of equation of motion.
+For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used \textbf{Newtonian formulation} which is quite easy to work with in this type of problems, since we are working with \textbf{non conservative} system.
+
+
+\subsection{Pendulum motion in presence of damping force}
+\label{sec:org9f9e7f6}
+
+In real situations we have non-conservative forces affecting on system. In our system we have air resistance acting on bab. This drag force will always be proportional to it's physical shape and size. Since, we can't tell exactly drag force mathematically, We have \textbf{two often used approximations}. Firstly, there is stockes's law which is linearly proportional to the velocity. Then we have Newton's drag law which is quadratically proportional to the velocity. \textbf{\textbf{[1]}}   
+
+
 
 First of all, we took horizontal and vertical forces.
 \begin{equation}
-\label{eq:org3414f20}
+\label{eq:orga01b24f}
    F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
 \end{equation}
 \begin{equation}
-\label{eq:orgc1e8885}
-   F_{damping}sin(\theta)+Tsin(\theta)-mg=ma_{y}
+\label{eq:orged11d8f}
+   F_{damping}sin(\theta)+Tcos(\theta)-mg=ma_{y}
 \end{equation}
 
-Adding equation \ref{eq:org3414f20} and equation \ref{eq:orgc1e8885} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
+Adding equation \ref{eq:orga01b24f} and equation \ref{eq:orged11d8f} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
 
 \begin{equation*}
-\label{eq:orgcb04107}
+\label{eq:org1654464}
 F_{damping}sin^{2}(\theta)+F_{damping}cos^{2}(\theta)-mgsin(\theta)=ma_{x}cos(\theta)+ma_{y}sin(\theta)
 \end{equation*}
 
 \begin{equation*}
-\label{eq:org80b5f60}
+\label{eq:org877166e}
 F_{damping}-mgsin(\theta)=m(asin^{2}(\theta)+acos^{2}(\theta))
 \end{equation*}
 
 \begin{equation}
-\label{eq:org924218a}
+\label{eq:orgbd84f0f}
 F_{damping}-mgsin(\theta)=ma
 \end{equation}
 
 From,
 \begin{equation*}
-\label{eq:orgcb67140}
+\label{eq:org20d75d8}
 a = (\ddot{r}-r\dot{\theta}^{2})\hat{r} + (r \ddot{\theta}+2\dot{r}\dot{\theta})\hat{\theta}
 \end{equation*}
 
-Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:org924218a} becomes,
+Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:orgbd84f0f} becomes,
 
 \begin{equation*}
-\label{eq:orgff68107}
+\label{eq:org9f84f10}
 F_{damping}-mgsin(\theta)=ml\ddot{\theta}
 \end{equation*}
 
 We are taking damping force to velocity proportional. So, \(F_{damping}=-bl\dot{\theta}\) ( since, \(\dot{l}=0\)). Here, we are assuming that damping is linear. 
 
 \begin{equation*}
-\label{eq:org3933c19}
+\label{eq:org254e8b7}
 -bl\dot{\theta}-mgsin(\theta)=ml\ddot{\theta}
 \end{equation*}
 
@@ -126,45 +131,45 @@ We are taking damping force to velocity proportional. So, \(F_{damping}=-bl\dot{
 Rearranging this equation will give our equation of motion,
 
 \begin{equation}
-\label{eq:org38b83cb}
+\label{eq:org00bdaf7}
 \ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
 \end{equation}
 
 This is \textbf{exact equation of motion}. Which is \textbf{second order non linear equation}. Finding it's exact solution is massive task. We will use numerical methods to find it's solution. This equation has much more to say than looks. Will learn about this in later.
 
 \subsection{Approximation of equation of motion : Linear differential equation}
-\label{sec:orgb95765f}
+\label{sec:org0518d21}
 
-Solving \ref{eq:org38b83cb} is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. This becomes,
+Solving \ref{eq:org00bdaf7} is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. This becomes,
 
 \begin{equation}
-\label{eq:org217be5e}
+\label{eq:org2a3279e}
 \ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
 \end{equation}
 
 \begin{equation}
-\label{eq:org7f1424d}
+\label{eq:org38f388f}
 \ddot{\theta}+\Gamma\dot{\theta}+w_{0}^{2}\theta=0
 \end{equation}
 
 Where we took \(\Gamma = \frac{b}{m}\) and \(w_{0}^{2}\).
 
-We can solve this linear equation \ref{eq:org7f1424d} by usual methods of linear differential equation. Simply taking \(\theta=e^{\lambda t}\), which gives polynomials of second order.
+We can solve this linear equation \ref{eq:org38f388f} by usual methods of linear differential equation. Simply taking \(\theta=e^{\lambda t}\), which gives polynomials of second order.
 
 \begin{equation}
-\label{eq:org7932375}
+\label{eq:org6d5f5aa}
 \lambda^{2}+\Gamma\lambda+w_{0}^{2}=0
 \end{equation}
 
 We can find roots of this quadratic equation.
 
 \begin{equation}
-\label{eq:org6611d7e}
+\label{eq:org4a1c80c}
 \lambda = \frac{-\Gamma}{2} \pm \frac{\sqrt{\Gamma^{2}-4w_{0}^{2}}}{2}
 \end{equation}
 
 \begin{equation}
-\label{eq:org99d361b}
+\label{eq:org29a5e8b}
 \lambda = \frac{-\Gamma}{2} \pm \sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}
 \end{equation}
 
@@ -184,20 +189,20 @@ Without forgetting our initial system we came to we took third case as our solut
 \begin{fleqn}
 \therefore \qquad \qquad \qquad \qquad \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
 \\
-\label{org3be4859}
+\label{orgf6f592a}
 \end{fleqn}
 
 Taking \(w^{2} = w_{0}^{2}-\frac{\Gamma}{2}^{2}\). And writing our solution in linear combination from above equation,
 
 \begin{equation}
-\label{eq:org9c0837d}
+\label{eq:org3601395}
 \theta = e^{\frac{-\Gamma}{2}t}(C_{1}e^{iwt}+C_{2}e^{-iwt})
 \end{equation}
 
-Taking real part of equation \ref{eq:org9c0837d}. Since it'll represent real motion of system. At last we get equation like this,
+Taking real part of equation \ref{eq:org3601395}. Since it'll represent real motion of system. At last we get equation like this,
 
 \begin{equation}
-\label{eq:org0582501}
+\label{eq:org41e7a74}
 \theta = e^{\frac{-\Gamma}{2}t}A cos(wt-\delta)
 \end{equation}
 
@@ -206,21 +211,30 @@ Where, \(A\) and \(\delta\) can be find from initial conditions and \(w = \sqrt{
 
 
 \subsection{Understanding with little simulations}
-\label{sec:org2787399}
+\label{sec:org4c19526}
 
 For understaning what is we want to tell. Basically we made simulation of both the equation of motion side by side. This simulation tales that motion of both solution will be very near onto small position where \(\theta\) is quite small, but not from other. We also, try to compare with physical model \textbf{give nice view}.
 
 Firstly exact equation of motion is nonlinear differential equation. We can't get exact solution of it. So, we just use numerical methods. We use \textbf{fourth order Runge-Kutta method}. Basically, we elaborated whole method in short down here. 
 
 \subsubsection{Understand Runge-Kutta method}
-\label{sec:org7744c20}
+\label{sec:orgc0cb7f2}
+
+In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
+
+Runge Kutta Method is not predictor-corrector method like other numerical method (namely, modified Euler method, Adams-Bashmoth-Moulton method) for solving differential equation. It uses four different new variables and then simply addition and multiplication predict our initial value problem with good accuracy.
+
+
+
+
+
 
 \subsubsection{Animations}
-\label{sec:org0c22d84}
+\label{sec:org3c26531}
 
 Now, come animation part. Which we basically used \textbf{pygame} in \textbf{python}. We first get array of both solutions with interval of \(\frac{1}{60} second\) and give this data in position function in my \emph{main.py} file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because \emph{pygame} screen rectangular coordinates with units in pixel of screen.
 
-Following data, we used as constant which i defined in \emph{constant.py} file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen.
+Following data, we used as constant which i defined in \emph{constant.py} file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen. Remember, we made this code for reconstruct purpose only.
 
 My \emph{constant.py} file
 
@@ -320,7 +334,15 @@ This is my \emph{main.py} file, in which i defined all functions for calculation
 
 \end{lstlisting}
 
-
 \section{What is meaning of all this ?}
-\label{sec:org94dedd6}
+\label{sec:org5d33c53}
+\section{Appendix}
+\label{sec:org0693602}
+
+This is my simulation fi
+
+\section{References}
+\label{sec:org2a1b454}
+
+[1] Lubarda, Marko V., and Vlado A. Lubarda. "An analysis of pendulum motion in the presence of quadratic and linear drag." Eur. J. Phys 42.055014 (2021): 055014.
 \end{document}

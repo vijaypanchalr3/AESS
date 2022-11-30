@@ -1,36 +1,51 @@
 #+title: Timebomb of approximation in physics
+#+author:  Ved Patel 67
+#+author:  Vijay Panchal 68
+
 #+LaTeX_HEADER: \usepackage{listings}
 #+LaTeX_HEADER: \usepackage{xcolor}
 #+LaTeX_HEADER: \lstset{language=Python,backgroundcolor=\color{black!5}, basicstyle=\footnotesize\ttfamily, columns=fullflexible, breaklines, frame= tb}
 # #+LateX_HEADER: \newcommand\pythonstyle{\lstset{language=Python,basicstyle=\ttm,morekeywords={self,def, if, else, for, while, return},keywordstyle=\ttb\color{deepblue},emph={MyClass,__init__},emphstyle=\ttb\color{deepred},stringstyle=\color{deepgreen},frame=tb,showstringspaces=false}}
 
 
+\pagebreak
 * Introduction
 
-Approximation method is yet most essential topic in physics. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to *doing physics* instead going in to maze of exactness in mathematics. Getting interpretation or more i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics *Navier-Stoke equation* can be imposible to solve but as physicist they know what it is.
+Approximation method is yet most essential topic in physics. Also, approximation is yet essential trick for physicists. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to *seeing through physics* instead of going in to maze of exactness in formidable  mathematics. Getting interpretation or i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics *Navier-Stoke equation* can be imposible to solve but as physicist they know what it is.
 
 Be aware, that approximation is just approximation. We should remember everytime we do that. Sometime we forgot actual system which is far from ideal. We should know that we are on mission to know nature not just building new theories.
 
-Let's dive into one example, what do i imply by consequences of approximation methods. In classical mechanics, we have merely some major theories. In Oscillation theory we studied *Simple Harmonic Oscillation*, but as we are going to see that simple harmonic oscillation is not exactly that simple. 
-
-*Write more*
+Let's dive into one example, that showes implication of approximations. In classical mechanics, we have some major theories, one is of oscillatory motions. In Oscillation theory we studied *Simple Harmonic Oscillation*, but as we are going to see that simple harmonic oscillation is not exactly that simple without approximation. We had actually changed whole system unknowingly, but beauty of physics is that it is still help to understand concept and motion of it. 
 
 * Example of Approximation 
 
-Approximation is very used in almost every in physics. Not, just physics but every field in sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
+Approximation is used in almost every branch of physics, not just physics but every field of sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
-** Defining problem
+** Defining a problem
 
-We learned simple pendulum from early time of physics course. But what if say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
+We learned simple pendulum from very starting of physics course. But what if i say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
 
-We took physical pendulum. By taking length $l = 1 m$ string (assuming non expanding) attaching to bob of mass $m = 0.1 kg$ . String attached to rigid wall as shown in figure. 
+Let's take one pendulum,by taking length $l = 1 m$ string (assuming non deforming) attaching to bob of mass $m = 0.1 kg$. String attached to rigid wall as shown in figure. Then we give it a initial deviation as $\theta$ initial $\theta_{0}$. Initial velocity of system $v_{0}=0$. We have accelaration of $g=9.8$ downward.
 
 #+CAPTION: pendulum with string lenth $l$ and mass $m$
 #+NAME: pendulum
 #+ATTR_LATEX:  :width 0.3 \textwidth
 [[./figure1.png]]
 
-For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used *Newtonian formulation* which is quite easy to work with in this type of problems, since we are working with *non conservative* system. This is our derivation of equation of motion.
+For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used *Newtonian formulation* which is quite easy to work with in this type of problems, since we are working with *non conservative* system.
+
+
+** Pendulum motion in presence of damping force
+
+In real situations we have non-conservative forces affecting on system. In our system we have air resistance acting on bab. This drag force will always be proportional to it's physical shape and size. Since, we can't tell exactly drag force mathematically, We have *two often used approximations*. Firstly, there is stockes's law of drag which is linearly proportional to the velocity. Then we have Newton's drag law which is quadratically proportional to the velocity.
+
+We will see that how this two approximation affect our system and it's simulation. We also see mathematical forms of this two but firstly, let's define this two damping coefficient.
+
+*** Damping by linear to the velocity approximation
+
+Let's discuss coffiecient of linear damping. Linear to the velocity drag is also called stoke's drag. We can write equation of damping by $F_{damping} = k_{l}$. Where, $k_{l}$ is damping coefficient, value of it depend on shape of object. For our spherical bob it has for of $k_{l} = 3\pi\eta d$, where $\eta$ is dynamic viscosity of medium and have values of $\eta = \rho \nu$
+
+
 
 First of all, we took horizontal and vertical forces.
 #+NAME: eqn:1
@@ -39,7 +54,7 @@ First of all, we took horizontal and vertical forces.
 \end{equation}
 #+NAME: eqn:2
 \begin{equation}
-   F_{damping}sin(\theta)+Tsin(\theta)-mg=ma_{y}
+   F_{damping}sin(\theta)+Tcos(\theta)-mg=ma_{y}
 \end{equation}
 
 Adding equation [[eqn:1]] and equation [[eqn:2]] with multiplication by $cos(\theta)$ and $sin(\theta)$ respectively.
@@ -169,6 +184,9 @@ Firstly exact equation of motion is nonlinear differential equation. We can't ge
 
 In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
 
+Runge Kutta Method is not predictor-corrector method like other numerical method (namely, modified Euler method, Adams-Bashmoth-Moulton method) for solving differential equation. It uses four different new variables and then simply addition and multiplication predict our initial value problem with good accuracy.
+
+
 
 
 
@@ -280,7 +298,12 @@ This is my /main.py/ file, in which i defined all functions for calculations. In
 
   \end{lstlisting}
 #+end_src
-
-
 * What is meaning of all this ?
+* Appendix
+
+This is my simulation fi
+
+* References
+
+[1] Lubarda, Marko V., and Vlado A. Lubarda. "An analysis of pendulum motion in the presence of quadratic and linear drag." Eur. J. Phys 42.055014 (2021): 055014.
 
