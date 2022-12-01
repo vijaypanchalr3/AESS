@@ -18,6 +18,8 @@ Be aware, that approximation is just approximation. We should remember everytime
 
 Let's dive into one example, that showes implication of approximations. In classical mechanics, we have some major theories, one is of oscillatory motions. In Oscillation theory we studied *Simple Harmonic Oscillation*, but as we are going to see that simple harmonic oscillation is not exactly that simple without approximation. We had actually changed whole system unknowingly, but beauty of physics is that it is still help to understand concept and motion of it. 
 
+Before that we would like to show gratitude to literature that helped us to finish this project. Firstly, for our classical mechanics textbooks classical mechanics by goldstein \cite{goldstein2002classical} and by J.C. Upadhyay \cite{upadhyay2016classical}. Then book on differential equations \cite{bronson2014schaum} and \cite{jordan2007nonlinear}. Estimation of parameters of damping forces \cite{salamon2020estimation}.
+
 * Example of Approximation 
 
 Approximation is used in almost every branch of physics, not just physics but every field of sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
@@ -116,7 +118,7 @@ So, equation [[eqn:7]] becomes,
 
 #+NAME:eqn:10
 \begin{equation}
-\ddot{\theta}+\frac{k_{l}l}{m}\dot{\theta}+\frac{g}{l}\theta=0
+\ddot{\theta}+\frac{k_{l}}{m}\dot{\theta}+\frac{g}{l}\theta=0
 \end{equation}
 
 #+NAME:eqn:11
@@ -191,12 +193,12 @@ Here, putting $F_{damping}=-k_{l}l\dot{\theta}$ will give us,
 
 #+NAME:eqn:19
 \begin{equation}
-\ddot{\theta}+\frac{k_{l}l}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
+\ddot{\theta}+\frac{k_{l}}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
 \end{equation}
 
 This is second order nonlinear equation we can't get it's closed form solution but we can get numerical one. Let's make it easy to use in numerical methods.
 
-Take $\phi = \dot{\theta}$ and $\frac{k_{l}l}{m}=\Gamma$so, equation [[eqn:19]] becomes,
+Take $\phi = \dot{\theta}$ and $\frac{k_{l}}{m}=\Gamma$. So, equation [[eqn:19]] becomes,
 
 #+NAME:eqn:20
 \begin{equation}
@@ -239,8 +241,27 @@ For more information, i gave all my code in appendix and also in my github page 
 
 ** Equation of motion with quadratic damping
 
-Quadratic damping gives better approximations over as linear damping but also gives burden of nonlinearization. 
+Quadratic damping gives better approximations over as linear damping but also gives burden of nonlinearization. In equation [[eqn:7]] we can put value of quadratic damping approximation. 
 
+\begin{equation*}
+F_{damping}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+We can put value of damping force as $F_{damping} = -k_{q}l^{2}\theta^{2}$,
+
+\begin{equation*}
+-k_{q}l^{2}\theta^{2}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+\begin{equation*}
+\ddot{\theta}+\frac{k_{q}l}{m}\theta^{2}+\frac{g}{l}sin(\theta)=0
+\end{equation*}
+
+\begin{equation*}
+\ddot{\theta}+\Gamma_{q}\theta^{2}+\frac{g}{l}sin(\theta)=0
+\end{equation*}
+
+This is also second order differential. Even with approximation this have still no close form solution. We will solve this numerically in simulation just see difference between linear damping.
 
 * Results and conclusion
 
@@ -248,9 +269,9 @@ As we seen earlier our simulations discuss how exact solution differs from appro
 
 ** Effect on angular frequency of pendulum with approximation and exact solution
 
-As we have seen in our simulation that in linear solution equation [[eqn:17]], we got single constant frequency with $\theta$ but not in nonlinear one. Nonlinear equation has non constant frequency. We can see from graph of it that how it differs from constant frequency of linear solution.
+As we have seen in our simulation that in linear solution equation [[eqn:17]], we got single constant frequency with $\theta$ but not in nonlinear one. Nonlinear equation has non constant frequency. We can see from graph of it that how it differs from constant frequency of linear solution. \cite{sobamowo2020exact}\cite{johannessen2014analytical}
 
-#+CAPTION: figure 4   how angular frequency change with $\theta_{0}$ in nonlinear solution and shows constant at value $\sqrt{\frac{g}{l}}$
+#+CAPTION: How angular frequency change with $\theta_{0}$ in nonlinear solution and shows constant at value $\sqrt{\frac{g}{l}}$
 #+NAME: angfre
 #+ATTR_LATEX:  :width 0.8 \textwidth
 [[file:angfre.png]]
@@ -260,8 +281,10 @@ As we have seen in our simulation that in linear solution equation [[eqn:17]], w
 
 Let's look at how our two solution exactly changes with time. For that we took values of $\theta$ on time scale and changed it's $\theta_{0}$.
 
-
-
+#+CAPTION: For different $\theta$ we have completely different type of solution
+#+NAME: thetawitht
+#+ATTR_LATEX:  :width 0.8 \textwidth
+[[file:thetawitht.png]]
 
 
 ** Hidden informations
@@ -329,12 +352,12 @@ This is our equation of motion which give trajectory for exact solution and simi
 Ploting this two will give two distinct phase planes which gives important properties of system. Two phase plane plots are as following, 
 
 
-#+CAPTION: figure 5 this is phase plane of approximate solution where we took $sin(\theta) \to \theta$. here you can see big vortex.
+#+CAPTION: This is phase plane of approximate solution where we took $sin(\theta) \to \theta$. here you can see big vortex.
 #+NAME: approstrl
 #+ATTR_LATEX:  :width 0.8 \textwidth
 [[file:approlstr.png]]
 
-#+CAPTION: figure 6 this is phase plane of exact solution without previous approximation.
+#+CAPTION: This is phase plane of exact solution without previous approximation.
 #+NAME: exactstrl
 #+ATTR_LATEX:  :width 0.8 \textwidth
 [[file:exactlstr.png]]
@@ -350,16 +373,12 @@ In first area, which is vortex like previous has stable and periodic with energy
 
 
 
+\pagebreak
 
 
-
-
-
-
-
-\break
 
 * Appendix
+
 ** (Appendix:1) Understand Runge-Kutta method
 
 In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
@@ -653,7 +672,7 @@ I am writing here my linear damping file for regeneration perpose in other two i
 
 ** (Appendix:3) Code for graphs
 
-This is code for all the graphs in pdf.
+This is code for all the graphs in this document. I have written two functions which gives one plot for angular frequancy and other gives $\theta$ vs time $t$ for different $\theta_{0}$.
 #+begin_src latex
   \begin{lstlisting}[language=Python]
     from main import *
@@ -684,32 +703,61 @@ def angfre():
     plt.close
     
 def thetawitht(total_time):
-    fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
-    # add a big axes, hide frame
-    fig.add_subplot(111, frameon=False)
-    
-    # hide tick and tick label of the big axes
-    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
-    # plt.grid(False)
-    plt.xlabel("time")
-    plt.ylabel("angular displacement")
-    plt.title("angualar displacement with time")
+    fig = plt.figure()
+    # fig, ((ax1,ax2),(ax3,ax4)) = plt.subplots(2, 2, sharex=True, sharey=True)
+    gs = fig.add_gridspec(2, 2)
+    (ax1, ax2), (ax3, ax4) = gs.subplots()
+
+    fig.suptitle('Angular displacement vs time t')
+    # plt.xlabel("time")
+    # plt.ylabel("angular displacement")
+
     time  = np.linspace(0,total_time,1002)
 
-    # fig.add_subplot(411,frameon=False)
-    # ax1 = plt.subplot(111)
-    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
+
+
     theta_initial = pi/10
     soll = linear_linear(theta_initial,total_time,int(1000/total_time))
     soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
-    plt.plot(time,soll)
-    
-    plt.show()
+    ax1.plot(time,soll)
+    ax1.plot(time,soln)
+    ax1.set_title("theta = pi/10")
+    # plt.ylabel("angular displacement")
+
+
+    theta_initial = theta_initial*2
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    ax2.plot(time,soll)
+    ax2.plot(time,soln)
+    ax2.set_title("theta = pi/5")
+
+    theta_initial = pi/2
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    ax3.plot(time,soll)
+    ax3.plot(time,soln)
+    ax3.set_title("theta = pi/2")
+
+    theta_initial = pi
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    ax4.plot(time,soll)
+    ax4.plot(time,soln)
+    ax4.set_title("theta = pi")
+    fig.tight_layout()
+    plt.savefig("thetawitht.png")
+    plt.close()
+
+
+angfre()
+thetawitht(40)
+
 
   \end{lstlisting}
 #+end_src
 
-And this code for phase plane plots,
+And this is the code that i written for plotting phase planes,
 #+begin_src latex
   \begin{lstlisting}[language=Python]
     from numpy import linspace, meshgrid

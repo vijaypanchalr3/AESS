@@ -28,8 +28,8 @@
      inkscape:document-units="cm"
      showgrid="false"
      inkscape:zoom="0.58905922"
-     inkscape:cx="427.80079"
-     inkscape:cy="286.04934"
+     inkscape:cx="430.34722"
+     inkscape:cy="287.74696"
      inkscape:window-width="1366"
      inkscape:window-height="699"
      inkscape:window-x="0"
@@ -85,65 +85,71 @@
        x="129.31522"
        y="127.21049"
        id="text1262" />
-    <path
-       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.62970833;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       d="m 179.89444,107.18852 22.89862,75.14985"
-       id="path243" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.606729;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
-       id="rect851"
-       width="45.651318"
-       x="156.59431"
-       y="105.17995"
-       ry="0.61206144"
-       height="3.919004" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:0.747646;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.747646, 4.48587;stroke-dashoffset:0"
-       d="M 179.45558,192.0787 V 106.00302"
-       id="path1024" />
-    <circle
-       style="fill:#2b1100;stroke:none;stroke-width:0.606729;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.606729, 3.64037;stroke-dashoffset:0"
-       id="path1078"
-       cx="204.11472"
-       cy="184.62471"
-       r="3.6929505" />
-    <text
-       xml:space="preserve"
-       transform="matrix(0.3459528,0,0,0.3459528,160.69646,69.469814)"
-       id="text1187"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:Z003;-inkscape-font-specification:'Z003, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1189);display:inline;fill:#000000;stroke:none;stroke-width:0.982677;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.982677, 5.89606;stroke-dashoffset:0"><tspan
-         x="93.283203"
-         y="216.20701"
-         id="tspan1671">l</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.36179543,0,0,0.36179543,87.798148,9.5745733)"
-       id="text354"
-       style="font-size:26.6667px;font-family:Z003;-inkscape-font-specification:'Z003, Normal';white-space:pre;shape-inside:url(#rect356);display:inline;fill:#000000;stroke:none;stroke-width:0.982677;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.982677, 5.89606"><tspan
-         x="336.75195"
-         y="489.21872"
-         id="tspan1673">m</tspan></text>
-    <path
-       id="path1187"
-       style="fill:none;stroke:#000000;stroke-width:0.540295;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
-       d="m 184.62079,123.69717 0.0765,0.25371 v 0 a 17.620689,17.620689 0 0 1 -5.26034,0.74898 l 0.001,-0.14202" />
-    <path
-       style="fill:#000000;stroke:none;stroke-width:0.629708;stroke-dasharray:none"
-       d="m 197.04578,163.28831 -0.51894,4.5891 1.34019,-1.72773 1.75207,0.89346 z"
-       id="path1345" />
-    <text
-       xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,67.743011,50.535049)"
-       id="text1453"
-       style="white-space:pre;shape-inside:url(#rect1455);fill:#000000;stroke:none;stroke-width:2.38;stroke-dasharray:none;-inkscape-font-specification:'Latin Modern Math, Normal';font-family:'Latin Modern Math';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:20px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"><tspan
-         x="504.51172"
-         y="438.32508"
-         id="tspan1675">T</tspan></text>
+    <g
+       id="g266"
+       inkscape:export-filename="./figure1.png"
+       inkscape:export-xdpi="80"
+       inkscape:export-ydpi="80">
+      <path
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.62970833;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+         d="m 179.89444,107.18852 22.89862,75.14985"
+         id="path243" />
+      <rect
+         style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.606729;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         id="rect851"
+         width="45.651318"
+         x="156.59431"
+         y="105.17995"
+         ry="0.61206144"
+         height="3.919004" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.747646;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.747646, 4.48587;stroke-dashoffset:0"
+         d="M 179.45558,192.0787 V 106.00302"
+         id="path1024" />
+      <circle
+         style="fill:#2b1100;stroke:none;stroke-width:0.606729;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.606729, 3.64037;stroke-dashoffset:0"
+         id="path1078"
+         cx="204.11472"
+         cy="184.62471"
+         r="3.6929505" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.3459528,0,0,0.3459528,160.69646,69.469814)"
+         id="text1187"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:Z003;-inkscape-font-specification:'Z003, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1189);display:inline;fill:#000000;stroke:none;stroke-width:0.982677;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.982677, 5.89606;stroke-dashoffset:0"><tspan
+           x="93.283203"
+           y="216.20701"
+           id="tspan209">l</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.36179543,0,0,0.36179543,87.798148,9.5745733)"
+         id="text354"
+         style="font-size:26.6667px;font-family:Z003;-inkscape-font-specification:'Z003, Normal';white-space:pre;shape-inside:url(#rect356);display:inline;fill:#000000;stroke:none;stroke-width:0.982677;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.982677, 5.89606"><tspan
+           x="336.75195"
+           y="489.21872"
+           id="tspan211">m</tspan></text>
+      <path
+         id="path1187"
+         style="fill:none;stroke:#000000;stroke-width:0.540295;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none"
+         d="m 184.62079,123.69717 0.0765,0.25371 v 0 a 17.620689,17.620689 0 0 1 -5.26034,0.74898 l 0.001,-0.14202" />
+      <path
+         style="fill:#000000;stroke:none;stroke-width:0.629708;stroke-dasharray:none"
+         d="m 197.04578,163.28831 -0.51894,4.5891 1.34019,-1.72773 1.75207,0.89346 z"
+         id="path1345" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,67.743011,50.535049)"
+         id="text1453"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1455);display:inline;fill:#000000;stroke:none;stroke-width:2.38;stroke-dasharray:none"><tspan
+           x="504.51172"
+           y="438.32508"
+           id="tspan213">T</tspan></text>
+    </g>
     <text
        xml:space="preserve"
        transform="matrix(0.26458333,0,0,0.26458333,67.743011,50.535049)"
        id="text1509"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1511);fill:#000000;stroke:none;stroke-width:2.38;stroke-dasharray:none" />
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:'Latin Modern Math';-inkscape-font-specification:'Latin Modern Math, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect1511);display:inline;fill:#000000;stroke:none;stroke-width:2.38;stroke-dasharray:none" />
   </g>
   <script
      id="mesh_polyfill"

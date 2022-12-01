@@ -30,7 +30,7 @@ eta = 0.0001834
 kl = 3*pi*eta*d
 kq = (1/8)*pi*cd*rho*d*d
 
-gammal = (kl*l)/m
+gammal = (kl)/m
 gammaq = (kq*l)/m
 w0 = sqrt(g/l)                  # natural frequncy of SHM
 theta_initial = 3.141592/10      # initial theta in radian

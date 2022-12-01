@@ -38,9 +38,9 @@ def mainloop(window,fps):
                 break
         clock.tick(fps)
 
-        x,y = position(l,exact[c])
-        x2,y2 = position(l,appro[c])
-        if c==len(exact):
+        x,y = position(l,first[c])
+        x2,y2 = position(l,second[c])
+        if c==len(first):
             break
         window.fill("#ffffff")
         surface(window,200,origin_y-15)
@@ -55,7 +55,7 @@ def mainloop(window,fps):
 if __name__ == "__main__":
     pygame.init()
     window = pygame.display.set_mode((width,height))
-    exact = nonlinear_nonlinear(theta_initial,300,fps)
-    appro = linear_nonlinear(theta_initial,300,fps)
+    first = nonlinear_linear(theta_initial,300,fps)
+    second = nonlinear_nonlinear(theta_initial,300,fps)
     t = time.perf_counter()
     mainloop(window, fps)

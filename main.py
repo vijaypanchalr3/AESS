@@ -5,13 +5,13 @@ def f2nonlinear_linear(theta,phi):     # we defined second auxillary equation fr
     return -((gammal)*phi)-(w0*sin(theta))
 
 def f2linear_linear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((gammaq)*phi)-(w0*theta)
+    return -((gammal)*phi)-(w0*theta)
 
 def f2llinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((kq)*phi*phi)-(w0*theta)
+    return -((gammaq)*phi*phi)-(w0*theta)
 
 def f2nonlinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((kq)*phi*phi)-(w0*sin(theta))
+    return -((gammaq)*phi*phi)-(w0*sin(theta))
 
 
 

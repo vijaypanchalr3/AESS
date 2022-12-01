@@ -1,10 +1,31 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{bronson2014schaum}
+Richard Bronson and Gabriel~B Costa.
+\newblock {\em Schaum's outline of differential equations}.
+\newblock McGraw-Hill Education, 2014.
+
+\bibitem{goldstein2002classical}
+Herbert Goldstein, Charles Poole, and John Safko.
+\newblock Classical mechanics, 2002.
 
 \bibitem{goossens2019review}
 Walter~RA Goossens.
 \newblock Review of the empirical correlations for the drag coefficient of
   rigid spheres.
 \newblock {\em Powder Technology}, 352:350--359, 2019.
+
+\bibitem{johannessen2014analytical}
+Kim Johannessen.
+\newblock An analytical solution to the equation of motion for the damped
+  nonlinear pendulum.
+\newblock {\em European Journal of Physics}, 35(3):035014, 2014.
+
+\bibitem{jordan2007nonlinear}
+Dominic Jordan and Peter Smith.
+\newblock {\em Nonlinear ordinary differential equations: an introduction for
+  scientists and engineers}.
+\newblock OUP Oxford, 2007.
 
 \bibitem{lubarda2021analysis}
 Marko~V Lubarda and Vlado~A Lubarda.
@@ -17,5 +38,22 @@ VD~Majumdar and MB~Vajifdar.
 \newblock Coefficient of viscosity of air.
 \newblock In {\em Proceedings of the Indian Academy of Sciences-Section A},
   volume~8, pages 171--178. Springer, 1938.
+
+\bibitem{salamon2020estimation}
+Robert Salamon, Henryk Kami{\'n}ski, and Pawe{\l} Fritzkowski.
+\newblock Estimation of parameters of various damping models in planar motion
+  of a pendulum.
+\newblock {\em Meccanica}, 55(9):1655--1677, 2020.
+
+\bibitem{sobamowo2020exact}
+MG~Sobamowo.
+\newblock Exact analytical solutions of nonlinear differential equation of a
+  large amplitude simple pendulum.
+\newblock {\em World Scientific News}, 144:70--88, 2020.
+
+\bibitem{upadhyay2016classical}
+JC~UPADHYAY.
+\newblock {\em CLASSICAL MECHANICS.}
+\newblock Himalaya Publishing House, 2016.
 
 \end{thebibliography}

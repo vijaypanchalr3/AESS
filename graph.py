@@ -26,25 +26,56 @@ def angfre():
     plt.close
     
 def thetawitht(total_time):
-    fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
-    # add a big axes, hide frame
-    fig.add_subplot(111, frameon=False)
-    
-    # hide tick and tick label of the big axes
-    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
-    # plt.grid(False)
-    plt.xlabel("time")
-    plt.ylabel("angular displacement")
-    plt.title("angualar displacement with time")
+    fig = plt.figure()
+    # fig, ((ax1,ax2),(ax3,ax4)) = plt.subplots(2, 2, sharex=True, sharey=True)
+    gs = fig.add_gridspec(2, 2)
+    (ax1, ax2), (ax3, ax4) = gs.subplots()
+
+    fig.suptitle('Angular displacement vs time t')
+    # plt.xlabel("time")
+    # plt.ylabel("angular displacement")
+
     time  = np.linspace(0,total_time,1002)
 
-    # fig.add_subplot(411,frameon=False)
-    # ax1 = plt.subplot(111)
-    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
+
+
     theta_initial = pi/10
     soll = linear_linear(theta_initial,total_time,int(1000/total_time))
     soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
-    plt.plot(time,soll)
-    
-    plt.show()
+    ax1.plot(time,soll)
+    ax1.plot(time,soln)
+    ax1.set_title("theta = pi/10")
+    # plt.ylabel("angular displacement")
 
+
+    theta_initial = theta_initial*2
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    ax2.plot(time,soll)
+    ax2.plot(time,soln)
+    ax2.set_title("theta = pi/5")
+
+    theta_initial = pi/2
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    ax3.plot(time,soll)
+    ax3.plot(time,soln)
+    ax3.set_title("theta = pi/2")
+
+    theta_initial = pi
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    ax4.plot(time,soll)
+    ax4.plot(time,soln)
+    ax4.set_title("theta = pi")
+    fig.tight_layout()
+    plt.savefig("thetawitht.png")
+    plt.close()
+
+
+angfre()
+thetawitht(40)
+
+
+
+    
