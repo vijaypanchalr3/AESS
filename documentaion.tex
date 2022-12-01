@@ -1,4 +1,4 @@
-% Created 2022-11-29 Tue 11:06
+% Created 2022-12-01 Thu 12:09
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
     \usepackage[utf8]{inputenc}
@@ -44,7 +44,7 @@
 
 \pagebreak
 \section{Introduction}
-\label{sec:org2832ecd}
+\label{sec:org5ac4def}
 
 Approximation method is yet most essential topic in physics. Also, approximation is yet essential trick for physicists. Physicists love to do approximations, like in functional expansion for getting polynomials for their ease or may be specialized idealization in particular topic. Approximation help them to \textbf{seeing through physics} instead of going in to maze of exactness in formidable  mathematics. Getting interpretation or i say knowing system is sometime more important then going for regorious mathematics. For example, famous equation of fluid dynamics \textbf{Navier-Stoke equation} can be imposible to solve but as physicist they know what it is.
 
@@ -53,123 +53,137 @@ Be aware, that approximation is just approximation. We should remember everytime
 Let's dive into one example, that showes implication of approximations. In classical mechanics, we have some major theories, one is of oscillatory motions. In Oscillation theory we studied \textbf{Simple Harmonic Oscillation}, but as we are going to see that simple harmonic oscillation is not exactly that simple without approximation. We had actually changed whole system unknowingly, but beauty of physics is that it is still help to understand concept and motion of it. 
 
 \section{Example of Approximation}
-\label{sec:org994e3a4}
+\label{sec:org8096303}
 
 Approximation is used in almost every branch of physics, not just physics but every field of sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
 \subsection{Defining a problem}
-\label{sec:orgac3f1ab}
+\label{sec:orge23eda3}
 
 We learned simple pendulum from very starting of physics course. But what if i say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
 
-Let's take one pendulum,by taking length \(l = 1 m\) string (assuming non deforming) attaching to bob of mass \(m = 0.1 kg\). String attached to rigid wall as shown in figure. Then we give it a initial deviation. We have accelaration of \(g=9.8\) downward.
+Let's take one pendulum,by taking length \(l = 1 m\) string (assuming non deforming) attaching to bob of mass \(m = 0.1 kg\). String attached to rigid wall as shown in figure. Then we give it a initial deviation as \(\theta\) initial \(\theta_{0}\). Initial velocity of system \(v_{0}=0\). We have accelaration of \(g=9.8\) downward.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.3 \textwidth]{./figure1.png}
-\caption{\label{fig:orgab0b11b}pendulum with string lenth \(l\) and mass \(m\)}
+\caption{\label{fig:org673929b}pendulum with string lenth \(l\) and mass \(m\)}
 \end{figure}
 
 For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used \textbf{Newtonian formulation} which is quite easy to work with in this type of problems, since we are working with \textbf{non conservative} system.
 
 
 \subsection{Pendulum motion in presence of damping force}
-\label{sec:org9f9e7f6}
+\label{sec:org38c3a8a}
 
-In real situations we have non-conservative forces affecting on system. In our system we have air resistance acting on bab. This drag force will always be proportional to it's physical shape and size. Since, we can't tell exactly drag force mathematically, We have \textbf{two often used approximations}. Firstly, there is stockes's law which is linearly proportional to the velocity. Then we have Newton's drag law which is quadratically proportional to the velocity. \textbf{\textbf{[1]}}   
+In real situations we have non-conservative forces affecting on system. In our system we have air resistance acting on bob. This drag force will always be proportional to it's physical shape and size. Since, we can't tell exactly drag force mathematically, We have \textbf{two often used approximations}. Firstly, there is stockes's law of drag which is linearly proportional to the velocity. Then we have Newton's drag law which is quadratically proportional to the velocity.
+
+We will see that how this two approximation affect our system and it's simulation. We also see mathematical forms of this two but firstly, let's define this two damping coefficient.
+
+\subsubsection{Damping by linear to the velocity approximation}
+\label{sec:org6b15d0a}
+
+Let's discuss coffiecient of linear damping. Linear to the velocity drag is also called stoke's drag. We can write equation of damping by \(F_{damping} = k_{l}v\). Where, \(k_{l}\) is damping coefficient, value of it depend on shape of object. For our spherical bob it has for of \(k_{l} = 3\pi\eta d\), where \(\eta\) is dynamic viscosity of medium and have values of \(\eta = \rho \nu\). We have \(d\) as diameter of sphere, for our purpose we are using as \(d=0.01m\). 
+
+\subsubsection{Damping by nonlinar to the velocity approximation}
+\label{sec:org68c5fbd}
+
+We used quadratic damping approximation as nonlinear damping approximation. This is also called newton's drag and it's better approximation then linear one. As quantitatively it can work with turbulent flow with 1000 to 100000 reynolds number. Where linear approximation works reynold's number upto 1. Quadratic damping is better than linear approximation but we can't have close form solution, it is the reason we use linear damping approximation. In quadratic damping it has following form, \(F_{damping} = k_{q} v^{2}\). Here, \(k_{q} = \frac{1}{8}c_{d}\rho \pi d^{2}\), where \(c_{d}\) is drag coefficient and has value of 0.47. \(\rho\) and \(d\) are density of fluid and diameter.\cite{lubarda2021analysis}\cite{goossens2019review}
 
 
+\subsection{General equation motion}
+\label{sec:org97af04b}
 
-First of all, we took horizontal and vertical forces.
+Let's derive equation of motion for our system which can be modified as we took approximations in it. We have Figure 1 showing pendulum with unextensible string of length \(l\) with sphere of diameter \(d\) and mass \(m\). Our system is in fluid with density \(\rho\) and viscosity \(\eta\). Let's use newton's law of motion to derive equation of motion,
+
+First of all, we compared horizontal and vertical forces.
+
 \begin{equation}
-\label{eq:orga01b24f}
+\label{eq:org9466630}
    F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
 \end{equation}
 \begin{equation}
-\label{eq:orged11d8f}
+\label{eq:orgb99c293}
    F_{damping}sin(\theta)+Tcos(\theta)-mg=ma_{y}
 \end{equation}
 
-Adding equation \ref{eq:orga01b24f} and equation \ref{eq:orged11d8f} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
+Adding equation \ref{eq:org9466630} and equation \ref{eq:orgb99c293} with multiplication by \(cos(\theta)\) and \(sin(\theta)\) respectively.
 
 \begin{equation*}
-\label{eq:org1654464}
+\label{eq:org29dbf24}
 F_{damping}sin^{2}(\theta)+F_{damping}cos^{2}(\theta)-mgsin(\theta)=ma_{x}cos(\theta)+ma_{y}sin(\theta)
 \end{equation*}
 
 \begin{equation*}
-\label{eq:org877166e}
+\label{eq:org760e1bb}
 F_{damping}-mgsin(\theta)=m(asin^{2}(\theta)+acos^{2}(\theta))
 \end{equation*}
 
 \begin{equation}
-\label{eq:orgbd84f0f}
+\label{eq:org66f6102}
 F_{damping}-mgsin(\theta)=ma
 \end{equation}
 
 From,
 \begin{equation*}
-\label{eq:org20d75d8}
+\label{eq:org4b2ded3}
 a = (\ddot{r}-r\dot{\theta}^{2})\hat{r} + (r \ddot{\theta}+2\dot{r}\dot{\theta})\hat{\theta}
 \end{equation*}
 
-Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:orgbd84f0f} becomes,
+Where,  \(r=l\) and since \(\dot{l}=0\), \(a=l\ddot{\theta}\). So, equation \ref{eq:org66f6102} becomes,
 
-\begin{equation*}
-\label{eq:org9f84f10}
+\begin{equation}
+\label{eq:org9ffa3ad}
 F_{damping}-mgsin(\theta)=ml\ddot{\theta}
-\end{equation*}
+\end{equation}
 
-We are taking damping force to velocity proportional. So, \(F_{damping}=-bl\dot{\theta}\) ( since, \(\dot{l}=0\)). Here, we are assuming that damping is linear. 
+This is \textbf{exact equation of motion}. Which will be \textbf{second order non linear equation}. Finding it's exact solution is another ordeal. Let's take our approximations and cases for it.
+
+\subsection{Approximation of equation of motion : Linear differential equation with linear damping}
+\label{sec:org0c5ae05}
+
+In class, we approximated equation \ref{eq:org9ffa3ad} as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. Also, damping force will be,
 
 \begin{equation*}
-\label{eq:org254e8b7}
--bl\dot{\theta}-mgsin(\theta)=ml\ddot{\theta}
+\label{eq:orge7bf037}
+F_{damping}=-k_{l}v
 \end{equation*}
 
+\begin{equation*}
+\label{eq:orga31bb06}
+F_{damping}=-k_{l}l\dot{\theta}
+\end{equation*}
 
-Rearranging this equation will give our equation of motion,
-
-\begin{equation}
-\label{eq:org00bdaf7}
-\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
-\end{equation}
-
-This is \textbf{exact equation of motion}. Which is \textbf{second order non linear equation}. Finding it's exact solution is massive task. We will use numerical methods to find it's solution. This equation has much more to say than looks. Will learn about this in later.
-
-\subsection{Approximation of equation of motion : Linear differential equation}
-\label{sec:org0518d21}
-
-Solving \ref{eq:org00bdaf7} is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as \(\theta \to 0\) as \(sin(\theta) \to \theta\). Consequently, this equation becomes very easy to solve. This becomes,
+So, equation \ref{eq:org9ffa3ad} becomes,
 
 \begin{equation}
-\label{eq:org2a3279e}
-\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
+\label{eq:org832e462}
+\ddot{\theta}+\frac{k_{l}l}{m}\dot{\theta}+\frac{g}{l}\theta=0
 \end{equation}
 
 \begin{equation}
-\label{eq:org38f388f}
+\label{eq:orgc2a99f4}
 \ddot{\theta}+\Gamma\dot{\theta}+w_{0}^{2}\theta=0
 \end{equation}
 
-Where we took \(\Gamma = \frac{b}{m}\) and \(w_{0}^{2}\).
+Where, we took \(\Gamma = \frac{k_{l}l}{m}\) and \(w_{0}^{2}\).
 
-We can solve this linear equation \ref{eq:org38f388f} by usual methods of linear differential equation. Simply taking \(\theta=e^{\lambda t}\), which gives polynomials of second order.
+We can solve this linear equation \ref{eq:orgc2a99f4} by usual methods of linear differential equation. Simply taking \(\theta=e^{\lambda t}\), which gives polynomials of second order.
 
 \begin{equation}
-\label{eq:org6d5f5aa}
+\label{eq:org8455fc8}
 \lambda^{2}+\Gamma\lambda+w_{0}^{2}=0
 \end{equation}
 
 We can find roots of this quadratic equation.
 
 \begin{equation}
-\label{eq:org4a1c80c}
+\label{eq:org11ba213}
 \lambda = \frac{-\Gamma}{2} \pm \frac{\sqrt{\Gamma^{2}-4w_{0}^{2}}}{2}
 \end{equation}
 
 \begin{equation}
-\label{eq:org29a5e8b}
+\label{eq:orgf108521}
 \lambda = \frac{-\Gamma}{2} \pm \sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}
 \end{equation}
 
@@ -186,39 +200,116 @@ Here we getting three type of roots,
 
 Without forgetting our initial system we came to we took third case as our solution.
 
-\begin{fleqn}
-\therefore \qquad \qquad \qquad \qquad \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
-\\
-\label{orgf6f592a}
-\end{fleqn}
+\begin{equation*}
+\label{eq:orge594baf}
+\Therefore \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
+\end{equation*}
 
 Taking \(w^{2} = w_{0}^{2}-\frac{\Gamma}{2}^{2}\). And writing our solution in linear combination from above equation,
 
 \begin{equation}
-\label{eq:org3601395}
+\label{eq:org292f6cb}
 \theta = e^{\frac{-\Gamma}{2}t}(C_{1}e^{iwt}+C_{2}e^{-iwt})
 \end{equation}
 
-Taking real part of equation \ref{eq:org3601395}. Since it'll represent real motion of system. At last we get equation like this,
+Taking real part of equation \ref{eq:org292f6cb}. Since it'll represent real motion of system. At last we get equation like this,
 
 \begin{equation}
-\label{eq:org41e7a74}
+\label{eq:orga5d27d2}
 \theta = e^{\frac{-\Gamma}{2}t}A cos(wt-\delta)
 \end{equation}
 
 Where, \(A\) and \(\delta\) can be find from initial conditions and \(w = \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}\).
 
+\subsection{Non linear equation of motion with linear damping}
+\label{sec:orgeed83eb}
+
+In equation \ref{eq:org9ffa3ad} we can write linear damping term without taking approximation as \(sin(\theta) \to \theta\),
+
+Writing again \ref{eq:org9ffa3ad}, 
+\begin{equation*}
+\label{eq:org2de7a26}
+F_{damping}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+Here, putting \(F_{damping}=-k_{l}l\dot{\theta}\) will give us,
+
+\begin{equation}
+\label{eq:orgd177085}
+\ddot{\theta}+\frac{k_{l}l}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
+\end{equation}
+
+This is second order nonlinear equation we can't get it's closed form solution but we can get numerical one. Let's make it easy to use in numerical methods.
+
+Take \(\phi = \dot{\theta}\) and \$\frac\{k\textsubscript{l}l\}\{m\}=\(\Gamma\)\$so, equation \ref{eq:orgd177085} becomes,
+
+\begin{equation}
+\label{eq:org16e2d0c}
+\dot{\phi}+\Gamma\phi=-\frac{g}{l} sin(\theta)
+\end{equation}
+
+We can use numerical methods like Runge-Kutta method to solve this equation. I have given brief overview of runge kutta methods in appendix 1. For that we define \(\phi\) and \(\dot{\phi}\) as following,
+
+\begin{equation}
+\label{eq:org77ee4f6}
+\phi=\dot{\theta}
+\end{equation}
+
+\begin{equation}
+\label{eq:orgeef4963}
+\dot{\phi}=-\Gamma\phi-\frac{g}{l} sin(\theta)
+\end{equation}
 
 
+
+\subsection{Simulations of the two equation}
+\label{sec:org4ab607b}
+
+I have done nice simulation which give hands on experience of two equation, both have very similar results when \(\theta\) is very small, again understandable as \(\theta \to 0\) we can approximate \(sin(\theta) \to \theta\). But when \(\theta\) increase slightly we have massive changes in solution with time. Let's look at \(\theta = \frac{\pi}{10}\), (here, we take viscosity of air at \((1834·38\pm0.35)\times10^{−7}\) c.g.s. units. \cite{majumdar1938coefficient})
+
+Initially both are same as you can see in pictures (at \(t=0\)),
+\begin{center}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8 \textwidth]{t0.png}
+\caption{\label{fig:orge198a76}pendulum at \(t=0s\)}
+\end{figure}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8 \textwidth]{t100.png}
+\caption{\label{fig:org8ff0b09}pendulum at \(t=100s\)}
+\end{figure}
+\end{center}
+
+
+
+Now, as we look with increment in time we can see it deflecting slightly with it. This is picture at \(t = 100s\),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{appendix}
+\label{sec:orgc6f06c9}
 \subsection{Understanding with little simulations}
-\label{sec:org4c19526}
+\label{sec:org7a39735}
 
 For understaning what is we want to tell. Basically we made simulation of both the equation of motion side by side. This simulation tales that motion of both solution will be very near onto small position where \(\theta\) is quite small, but not from other. We also, try to compare with physical model \textbf{give nice view}.
 
 Firstly exact equation of motion is nonlinear differential equation. We can't get exact solution of it. So, we just use numerical methods. We use \textbf{fourth order Runge-Kutta method}. Basically, we elaborated whole method in short down here. 
 
 \subsubsection{Understand Runge-Kutta method}
-\label{sec:orgc0cb7f2}
+\label{sec:org7e14d13}
 
 In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
 
@@ -230,7 +321,7 @@ Runge Kutta Method is not predictor-corrector method like other numerical method
 
 
 \subsubsection{Animations}
-\label{sec:org3c26531}
+\label{sec:org015bda6}
 
 Now, come animation part. Which we basically used \textbf{pygame} in \textbf{python}. We first get array of both solutions with interval of \(\frac{1}{60} second\) and give this data in position function in my \emph{main.py} file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because \emph{pygame} screen rectangular coordinates with units in pixel of screen.
 
@@ -335,14 +426,15 @@ This is my \emph{main.py} file, in which i defined all functions for calculation
 \end{lstlisting}
 
 \section{What is meaning of all this ?}
-\label{sec:org5d33c53}
+\label{sec:org7cd4f08}
 \section{Appendix}
-\label{sec:org0693602}
+\label{sec:org9787935}
 
 This is my simulation fi
 
-\section{References}
-\label{sec:org2a1b454}
 
-[1] Lubarda, Marko V., and Vlado A. Lubarda. "An analysis of pendulum motion in the presence of quadratic and linear drag." Eur. J. Phys 42.055014 (2021): 055014.
+\break
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plain}
+\bibliography{documentaion}
 \end{document}

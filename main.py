@@ -1,15 +1,17 @@
 from constants import *
 from numpy import sin, sqrt, zeros
 
-def f2nonlinear(theta,phi):     # we defined second auxillary equation from nonlinear term.
-    return -((gamma/m)*phi*phi)-(w0*sin(theta))
+def f2nonlinear_linear(theta,phi):     # we defined second auxillary equation from nonlinear term.
+    return -((gammal)*phi)-(w0*sin(theta))
 
-def f2linear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((gamma/m)*phi*phi)-(w0*theta)
+def f2linear_linear(theta,phi):        # we defined second auxillary equation from linear term.
+    return -((gammaq)*phi)-(w0*theta)
 
-def f2llinear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((gamma/m)*phi)-(w0*theta)
+def f2llinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
+    return -((kq)*phi*phi)-(w0*theta)
 
+def f2nonlinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
+    return -((kq)*phi*phi)-(w0*sin(theta))
 
 
 
@@ -32,34 +34,44 @@ def RK4(theta,phi,h,K):
     return theta,phi
 
 # Solutions of linear term ---- gives array of length (Total_time*fps)
-def linear(theta_initial,Total_time,fps):
+def linear_linear(theta_initial,Total_time,fps):
     linear_solutions = zeros([Total_time*fps+2])
     linear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
     phi[0],t = 0,0
     while t<Total_time*fps:
-        linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2linear)
+        linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2linear_linear)
+        t+=1
+    return linear_solutions
+
+def linear_nonlinear(theta_initial,Total_time,fps):
+    linear_solutions = zeros([Total_time*fps+2])
+    linear_solutions[0] = theta_initial
+    phi = zeros([Total_time*fps+2])
+    phi[0],t = 0,0
+    while t<Total_time*fps:
+        linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2llinear_nonlinear)
         t+=1
     return linear_solutions
 
 # Solutions of nonlinear term ---- gives array of length (Total_time*fps)
-def nonlinear(theta_initial,Total_time,fps):
+def nonlinear_linear(theta_initial,Total_time,fps):
     nonlinear_solutions = zeros([Total_time*fps+2])
     nonlinear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
     phi[0],t= 0,0
     while t<Total_time*fps:
-        nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+        nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear_linear)
         t+=1
     return nonlinear_solutions
 
-def lnonlinear(theta_initial,Total_time,fps):
+def nonlinear_nonlinear(theta_initial,Total_time,fps):
     nonlinear_solutions = zeros([Total_time*fps+2])
     nonlinear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
     phi[0],t= 0,0
     while t<Total_time*fps:
-        nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
+        nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear_nonlinear)
         t+=1
     return nonlinear_solutions
 
@@ -72,12 +84,12 @@ def w_nonliner(theta_initial):
 # phase plane definations
 def linear_phase_plane(theta,phi):
     f1 = phi
-    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+    f2 = -((kq)*phi*phi)-(w0*sin(theta))
     return f1,f2
 
 def nonlinear_phase_plane(theta,phi):
     f1 = phi
-    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
+    f2 = -((kq)*phi*phi)-(w0*sin(theta))
     return f1,f2
 
 # ----------------------------------

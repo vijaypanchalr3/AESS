@@ -2,6 +2,7 @@
 #+author:  Ved Patel 67
 #+author:  Vijay Panchal 68
 
+#+BIBLIOGRAPHY: documentaion plain option:-d
 #+LaTeX_HEADER: \usepackage{listings}
 #+LaTeX_HEADER: \usepackage{xcolor}
 #+LaTeX_HEADER: \lstset{language=Python,backgroundcolor=\color{black!5}, basicstyle=\footnotesize\ttfamily, columns=fullflexible, breaklines, frame= tb}
@@ -37,17 +38,25 @@ For understanding consequences of approximation, we took simulations by solving 
 
 ** Pendulum motion in presence of damping force
 
-In real situations we have non-conservative forces affecting on system. In our system we have air resistance acting on bab. This drag force will always be proportional to it's physical shape and size. Since, we can't tell exactly drag force mathematically, We have *two often used approximations*. Firstly, there is stockes's law of drag which is linearly proportional to the velocity. Then we have Newton's drag law which is quadratically proportional to the velocity.
+In real situations we have non-conservative forces affecting on system. In our system we have air resistance acting on bob. This drag force will always be proportional to it's physical shape and size. Since, we can't tell exactly drag force mathematically, We have *two often used approximations*. Firstly, there is stockes's law of drag which is linearly proportional to the velocity. Then we have Newton's drag law which is quadratically proportional to the velocity.
 
 We will see that how this two approximation affect our system and it's simulation. We also see mathematical forms of this two but firstly, let's define this two damping coefficient.
 
 *** Damping by linear to the velocity approximation
 
-Let's discuss coffiecient of linear damping. Linear to the velocity drag is also called stoke's drag. We can write equation of damping by $F_{damping} = k_{l}$. Where, $k_{l}$ is damping coefficient, value of it depend on shape of object. For our spherical bob it has for of $k_{l} = 3\pi\eta d$, where $\eta$ is dynamic viscosity of medium and have values of $\eta = \rho \nu$
+Let's discuss coffiecient of linear damping. Linear to the velocity drag is also called stoke's drag. We can write equation of damping by $F_{damping} = k_{l}v$. Where, $k_{l}$ is damping coefficient, value of it depend on shape of object. For our spherical bob it has for of $k_{l} = 3\pi\eta d$, where $\eta$ is dynamic viscosity of medium and have values of $\eta = \rho \nu$. We have $d$ as diameter of sphere, for our purpose we are using as $d=0.01m$. 
+
+*** Damping by nonlinar to the velocity approximation
+
+We used quadratic damping approximation as nonlinear damping approximation. This is also called newton's drag and it's better approximation then linear one. As quantitatively it can work with turbulent flow with 1000 to 100000 reynolds number. Where linear approximation works reynold's number upto 1. Quadratic damping is better than linear approximation but we can't have close form solution, it is the reason we use linear damping approximation. In quadratic damping it has following form, $F_{damping} = k_{q} v^{2}$. Here, $k_{q} = \frac{1}{8}c_{d}\rho \pi d^{2}$, where $c_{d}$ is drag coefficient and has value of 0.47. $\rho$ and $d$ are density of fluid and diameter.\cite{lubarda2021analysis}\cite{goossens2019review}
 
 
+** General equation motion 
 
-First of all, we took horizontal and vertical forces.
+Let's derive equation of motion for our system which can be modified as we took approximations in it. We have Figure 1 showing pendulum with unextensible string of length $l$ with sphere of diameter $d$ and mass $m$. Our system is in fluid with density $\rho$ and viscosity $\eta$. Let's use newton's law of motion to derive equation of motion,
+
+First of all, we compared horizontal and vertical forces.
+
 #+NAME: eqn:1
 \begin{equation}
    F_{damping}cos(\theta)-Tsin(\theta)=ma_{x}
@@ -83,34 +92,31 @@ a = (\ddot{r}-r\dot{\theta}^{2})\hat{r} + (r \ddot{\theta}+2\dot{r}\dot{\theta})
 Where,  $r=l$ and since $\dot{l}=0$, $a=l\ddot{\theta}$. So, equation [[eqn:5]] becomes,
 
 #+NAME:eqn:7
-\begin{equation*}
-F_{damping}-mgsin(\theta)=ml\ddot{\theta}
-\end{equation*}
-
-We are taking damping force to velocity proportional. So, $F_{damping}=-bl\dot{\theta}$ ( since, $\dot{l}=0$). Here, we are assuming that damping is linear. 
-
-#+NAME:eqn8
-\begin{equation*}
--bl\dot{\theta}-mgsin(\theta)=ml\ddot{\theta}
-\end{equation*}
-
-
-Rearranging this equation will give our equation of motion,
-
-#+NAME:eqn:9
 \begin{equation}
-\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
+F_{damping}-mgsin(\theta)=ml\ddot{\theta}
 \end{equation}
 
-This is *exact equation of motion*. Which is *second order non linear equation*. Finding it's exact solution is massive task. We will use numerical methods to find it's solution. This equation has much more to say than looks. Will learn about this in later.
+This is *exact equation of motion*. Which will be *second order non linear equation*. Finding it's exact solution is another ordeal. Let's take our approximations and cases for it.
 
-** Approximation of equation of motion : Linear differential equation
+** Approximation of equation of motion : Linear differential equation with linear damping
 
-Solving [[eqn:9]] is very hard tasks. So, we as physics majors try to make this as friendly as possible. In class, we approximated this as $\theta \to 0$ as $sin(\theta) \to \theta$. Consequently, this equation becomes very easy to solve. This becomes,
+In class, we approximated equation [[eqn:7]] as $\theta \to 0$ as $sin(\theta) \to \theta$. Consequently, this equation becomes very easy to solve. Also, damping force will be,
+
+#+NAME:eqn:8
+\begin{equation*}
+F_{damping}=-k_{l}v
+\end{equation*}
+
+#+NAME:eqn:9
+\begin{equation*}
+F_{damping}=-k_{l}l\dot{\theta}
+\end{equation*}
+
+So, equation [[eqn:7]] becomes,
 
 #+NAME:eqn:10
 \begin{equation}
-\ddot{\theta}+\frac{b}{m}\dot{\theta}+\frac{g}{l}\theta=0
+\ddot{\theta}+\frac{k_{l}l}{m}\dot{\theta}+\frac{g}{l}\theta=0
 \end{equation}
 
 #+NAME:eqn:11
@@ -118,7 +124,7 @@ Solving [[eqn:9]] is very hard tasks. So, we as physics majors try to make this 
 \ddot{\theta}+\Gamma\dot{\theta}+w_{0}^{2}\theta=0
 \end{equation}
 
-Where we took $\Gamma = \frac{b}{m}$ and $w_{0}^{2}$.
+Where, we took $\Gamma = \frac{k_{l}l}{m}$ and $w_{0}^{2}$.
 
 We can solve this linear equation [[eqn:11]] by usual methods of linear differential equation. Simply taking $\theta=e^{\lambda t}$, which gives polynomials of second order.
 
@@ -143,7 +149,7 @@ Here we getting three type of roots,
 
 1) Roots where $\frac{\Gamma}{2}=w$. this is *critical damping condition*, where we getting $\lambda=\frac{-\Gamma}{2}$. Putting \lambda into our solutions, $\theta = e^{\frac{-\Gamma}{2}t}$. Which suggest this will only decay with time and never overshoots from equilibrium position. Which is desired in certain condition but not for us.
    
-2)  Roots where $\frac{\Gamma}{2}>w$. this is *overdamping condition*, where we getting $\lambda=\frac{-\Gamma}{2}\pm\sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}$. So from here we get $\theta = e^{\frac{-\Gamma}{2}t}e^{\pm\sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}t}$. This also have exponential term in it which will only decay with time and never overshoots from equilibrium position.
+2) Roots where $\frac{\Gamma}{2}>w$. this is *overdamping condition*, where we getting $\lambda=\frac{-\Gamma}{2}\pm\sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}$. So from here we get $\theta = e^{\frac{-\Gamma}{2}t}e^{\pm\sqrt{\frac{\Gamma}{2}^{2}-w_{0}^{2}}t}$. This also have exponential term in it which will only decay with time and never overshoots from equilibrium position.
    
 3) Roots where $\frac{\Gamma}{2}<w$. this is *underdamping condition*, here  $\lambda=\frac{-\Gamma}{2}\pm i\sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}$. $\theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}$. This has complex term, which implicitly suggest that it'll overshoot and oscillate. This our topic of interest for this project.
 
@@ -151,10 +157,9 @@ Here we getting three type of roots,
 Without forgetting our initial system we came to we took third case as our solution.
 
 #+NAME:eqn:15
-\begin{fleqn}
-\therefore \qquad \qquad \qquad \qquad \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
-\\
-\end{fleqn}
+\begin{equation*}
+\Therefore \theta = e^{\frac{-\Gamma}{2}t}e^{\pm i \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}t}
+\end{equation*}
 
 Taking $w^{2} = w_{0}^{2}-\frac{\Gamma}{2}^{2}$. And writing our solution in linear combination from above equation,
 
@@ -172,8 +177,79 @@ Taking real part of equation [[eqn:16]]. Since it'll represent real motion of sy
 
 Where, $A$ and $\delta$ can be find from initial conditions and $w = \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}$.
 
+** Non linear equation of motion with linear damping
+
+In equation [[eqn:7]] we can write linear damping term without taking approximation as $sin(\theta) \to \theta$,
+
+Writing again [[eqn:7]], 
+#+NAME:eqn:18
+\begin{equation*}
+F_{damping}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+Here, putting $F_{damping}=-k_{l}l\dot{\theta}$ will give us,
+
+#+NAME:eqn:19
+\begin{equation}
+\ddot{\theta}+\frac{k_{l}l}{m}\dot{\theta}+\frac{g}{l}sin(\theta)=0
+\end{equation}
+
+This is second order nonlinear equation we can't get it's closed form solution but we can get numerical one. Let's make it easy to use in numerical methods.
+
+Take $\phi = \dot{\theta}$ and $\frac{k_{l}l}{m}=\Gamma$so, equation [[eqn:19]] becomes,
+
+#+NAME:eqn:20
+\begin{equation}
+\dot{\phi}+\Gamma\phi=-\frac{g}{l} sin(\theta)
+\end{equation}
+
+We can use numerical methods like Runge-Kutta method to solve this equation. I have given brief overview of runge kutta methods in appendix 1. For that we define $\phi$ and $\dot{\phi}$ as following,
+
+#+NAME:eqn:21
+\begin{equation}
+\phi=\dot{\theta}
+\end{equation}
+
+#+NAME:eqn:22
+\begin{equation}
+\dot{\phi}=-\Gamma\phi-\frac{g}{l} sin(\theta)
+\end{equation}
+
+We have two complementary equations [[eqn:21]] and [[eqn:22]]. We can use now Runge-Kutta method on it. I have used in my code file /main.py/, you can access it in appendix. 
+
+** Simulations of the two equation
+
+I have done nice simulation which give hands on experience of two equation, both have very similar results when $\theta$ is very small, again understandable as $\theta \to 0$ we can approximate $sin(\theta) \to \theta$. But when $\theta$ increase slightly we have massive changes in solution with time. Let's look at $\theta = \frac{\pi}{10}$, (here, we take viscosity of air at $(1834·38\pm0.35)\times10^{−7}$ c.g.s. units. \cite{majumdar1938coefficient})
+
+Initially both are same as you can see in pictures (at $t=0$),
+#+CAPTION: pendulum at $t=0s$
+#+NAME: t0
+#+ATTR_LATEX:  :width 0.8 \textwidth
+[[file:t0.png]]
+
+Now, as we look with increment in time we can see it deflecting slightly with it. This is picture at $t = 100s$,
+#+CAPTION: pendulum at $t=100s$
+#+NAME: t100
+#+ATTR_LATEX:  :width 0.8 \textwidth
+[[file:t100.png]]
+
+Here, red bob is exact solution (nonlinear equation) where green is linear equations solution.
+
+For more information, i gave all my code in appendix and also in my github page [[https://github.com/vijaypanchalr3][vijaypanchalr3]].
+
+* Results and discussion
+
+As we seen earlier my 
 
 
+
+
+
+
+
+
+
+* appendix
 ** Understanding with little simulations
 
 For understaning what is we want to tell. Basically we made simulation of both the equation of motion side by side. This simulation tales that motion of both solution will be very near onto small position where $\theta$ is quite small, but not from other. We also, try to compare with physical model *give nice view*.
@@ -303,7 +379,8 @@ This is my /main.py/ file, in which i defined all functions for calculations. In
 
 This is my simulation fi
 
-* References
 
-[1] Lubarda, Marko V., and Vlado A. Lubarda. "An analysis of pendulum motion in the presence of quadratic and linear drag." Eur. J. Phys 42.055014 (2021): 055014.
-
+\break
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{plain}
+\bibliography{documentaion}
