@@ -78,18 +78,30 @@ def nonlinear_nonlinear(theta_initial,Total_time,fps):
 # ------------(for graphs)----------
 # this describes frequncy of nonlinear term.
 def w_nonliner(theta_initial):
-    T = (sqrt(l/g))*(1+(0.24*(sin(0.5*theta_initial))**2)+((9/24)*(sin(theta_initial*0.5))**4))
-    return 1/T
+    w_ = (sqrt(l/g))*(1+(0.25*(sin(0.5*theta_initial))**2)+((9/64)*(sin(theta_initial*0.5))**4))
+    return 1/w_
 
 # phase plane definations
 def linear_phase_plane(theta,phi):
     f1 = phi
-    f2 = -((kq)*phi*phi)-(w0*sin(theta))
+    f2 = -((gammal)*phi)-(w0*theta)
     return f1,f2
 
 def nonlinear_phase_plane(theta,phi):
     f1 = phi
-    f2 = -((kq)*phi*phi)-(w0*sin(theta))
+    f2 = -((gammal)*phi)-(w0*sin(theta))
     return f1,f2
+
+def linear_phase_planeq(theta,phi):
+    f1 = phi
+    f2 = -((gammaq)*phi*phi)-(w0*theta)
+    return f1,f2
+
+def nonlinear_phase_planeq(theta,phi):
+    f1 = phi
+    f2 = -((gammaq)*phi*phi)-(w0*sin(theta))
+    return f1,f2
+
+
 
 # ----------------------------------

@@ -1,4 +1,4 @@
-#+title: Timebomb of approximation in physics
+#+title: Approximations in physics
 #+author:  Ved Patel 67
 #+author:  Vijay Panchal 68
 
@@ -22,7 +22,7 @@ Let's dive into one example, that showes implication of approximations. In class
 
 Approximation is used in almost every branch of physics, not just physics but every field of sciences. We are going to give profound example of understanding advantages and disadvantages of approximation.
 
-** Defining a problem
+** Defining our problem
 
 We learned simple pendulum from very starting of physics course. But what if i say that simple pendulum is not actually simple in sense that approximation hide most of things away from our eyes to see.
 
@@ -46,7 +46,7 @@ We will see that how this two approximation affect our system and it's simulatio
 
 Let's discuss coffiecient of linear damping. Linear to the velocity drag is also called stoke's drag. We can write equation of damping by $F_{damping} = k_{l}v$. Where, $k_{l}$ is damping coefficient, value of it depend on shape of object. For our spherical bob it has for of $k_{l} = 3\pi\eta d$, where $\eta$ is dynamic viscosity of medium and have values of $\eta = \rho \nu$. We have $d$ as diameter of sphere, for our purpose we are using as $d=0.01m$. 
 
-*** Damping by nonlinar to the velocity approximation
+*** Damping by quadratic to the velocity approximation
 
 We used quadratic damping approximation as nonlinear damping approximation. This is also called newton's drag and it's better approximation then linear one. As quantitatively it can work with turbulent flow with 1000 to 100000 reynolds number. Where linear approximation works reynold's number upto 1. Quadratic damping is better than linear approximation but we can't have close form solution, it is the reason we use linear damping approximation. In quadratic damping it has following form, $F_{damping} = k_{q} v^{2}$. Here, $k_{q} = \frac{1}{8}c_{d}\rho \pi d^{2}$, where $c_{d}$ is drag coefficient and has value of 0.47. $\rho$ and $d$ are density of fluid and diameter.\cite{lubarda2021analysis}\cite{goossens2019review}
 
@@ -217,7 +217,7 @@ We can use numerical methods like Runge-Kutta method to solve this equation. I h
 
 We have two complementary equations [[eqn:21]] and [[eqn:22]]. We can use now Runge-Kutta method on it. I have used in my code file /main.py/, you can access it in appendix. 
 
-** Simulations of the two equation
+** Simulations of the two equations
 
 I have done nice simulation which give hands on experience of two equation, both have very similar results when $\theta$ is very small, again understandable as $\theta \to 0$ we can approximate $sin(\theta) \to \theta$. But when $\theta$ increase slightly we have massive changes in solution with time. Let's look at $\theta = \frac{\pi}{10}$, (here, we take viscosity of air at $(1834·38\pm0.35)\times10^{−7}$ c.g.s. units. \cite{majumdar1938coefficient})
 
@@ -237,37 +237,178 @@ Here, red bob is exact solution (nonlinear equation) where green is linear equat
 
 For more information, i gave all my code in appendix and also in my github page [[https://github.com/vijaypanchalr3][vijaypanchalr3]].
 
-* Results and discussion
+** Equation of motion with quadratic damping
 
-As we seen earlier my 
-
-
+Quadratic damping gives better approximations over as linear damping but also gives burden of nonlinearization. 
 
 
+* Results and conclusion
+
+As we seen earlier our simulations discuss how exact solution differs from approximation. Also, we see that linear damping is still a approximation and can be replaced by better approximation when medium have turbulant flow by bob of our pendulum.
+
+** Effect on angular frequency of pendulum with approximation and exact solution
+
+As we have seen in our simulation that in linear solution equation [[eqn:17]], we got single constant frequency with $\theta$ but not in nonlinear one. Nonlinear equation has non constant frequency. We can see from graph of it that how it differs from constant frequency of linear solution.
+
+#+CAPTION: figure 4   how angular frequency change with $\theta_{0}$ in nonlinear solution and shows constant at value $\sqrt{\frac{g}{l}}$
+#+NAME: angfre
+#+ATTR_LATEX:  :width 0.8 \textwidth
+[[file:angfre.png]]
+
+
+** For different $\theta_{0}$ it has different $\theta(t)$
+
+Let's look at how our two solution exactly changes with time. For that we took values of $\theta$ on time scale and changed it's $\theta_{0}$.
 
 
 
 
 
-* appendix
-** Understanding with little simulations
+** Hidden informations
 
-For understaning what is we want to tell. Basically we made simulation of both the equation of motion side by side. This simulation tales that motion of both solution will be very near onto small position where $\theta$ is quite small, but not from other. We also, try to compare with physical model *give nice view*.
+Approximation not only affect in quantitatively but also sometimes qualitatively. Let's discuss part of that lost in approximation. Phase planes are geometrical procedures of obtaining properties of system (here solutions). If write our equation of motion for the pendulum from [[eqn:7]].
 
-Firstly exact equation of motion is nonlinear differential equation. We can't get exact solution of it. So, we just use numerical methods. We use *fourth order Runge-Kutta method*. Basically, we elaborated whole method in short down here. 
+#+NAME:eqn:23
+\begin{equation*}
+F_{damping}-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
 
-*** Understand Runge-Kutta method
+Here, $F_{damping}$ is velocity depend term. Also, velocity $v=l\dot{\theta}$. So, we can write equation [[eqn:7]] in following way,
+
+
+#+NAME:eqn:24
+\begin{equation*}
+F_{d}(\dot{\theta})-mgsin(\theta)=ml\ddot{\theta}
+\end{equation*}
+
+Taking $\phi=\dot{\theta}$ led to,
+
+#+NAME:eqn:25
+\begin{equation}
+\dot{\phi}=(\frac{1}{ml})F_{d}(\phi)-\frac{g}{l}sin(\theta)
+\end{equation}
+
+#+NAME:eqn:26
+\begin{equation}
+\dot{\theta} = P(\theta,\phi)
+\end{equation}
+
+#+NAME:eqn:27
+\begin{equation}
+\dot{\phi} = Q(\theta,\phi)
+\end{equation}
+
+Dividinge equation [[eqn:27]] and [[eqn:26]] will give us,
+
+#+NAME:eqn:28
+\begin{equation}
+\frac{\dot{\phi}}{\dot{\theta}}= \frac{\frac{d(\phi)}{dt}}{\frac{d{\theta}}{dt}} = \frac{d\phi}{d\theta}= \frac{Q(\theta,\phi)}{P(\theta,\phi)}
+\end{equation}
+
+This equation [[eqn:28]] will give *phase trajectory* of our system. By, equation [[eqn:25]] value of $\phi$ gives,
+
+#+NAME:eqn:29
+\begin{equation}
+\frac{d\phi}{d\theta}=\frac{(\frac{1}{ml})F_{d}(\phi)-\frac{g}{l}sin(\theta)}{phi}
+\end{equation}
+
+In equation [[eqn:29]] if we put value of $F_{d} = k_{l}l\dot{\theta} = k_{l}l\phi$ for linear damping damping force, we will get,
+
+#+NAME:eqn:30
+\begin{equation}
+\frac{d\phi}{d\theta}=\frac{\Gamma\phi-\frac{g}{l}sin(\theta)}{phi}
+\end{equation}
+
+This is our equation of motion which give trajectory for exact solution and similarly approximated solution would be,
+
+#+NAME:eqn:31
+\begin{equation}
+\frac{d\phi}{d\theta}=\frac{\Gamma\phi-\frac{g}{l}\theta}{phi}
+\end{equation}
+
+Ploting this two will give two distinct phase planes which gives important properties of system. Two phase plane plots are as following, 
+
+
+#+CAPTION: figure 5 this is phase plane of approximate solution where we took $sin(\theta) \to \theta$. here you can see big vortex.
+#+NAME: approstrl
+#+ATTR_LATEX:  :width 0.8 \textwidth
+[[file:approlstr.png]]
+
+#+CAPTION: figure 6 this is phase plane of exact solution without previous approximation.
+#+NAME: exactstrl
+#+ATTR_LATEX:  :width 0.8 \textwidth
+[[file:exactlstr.png]]
+
+As we can see that in approximated equation we have only one big vortex. In contrast to that we have vortexs with lines.
+
+In first figure in approximated equation we have phase trajectory of simplest, spiral. This suggest a simple harmonic motion which will always have stable and periodic motion.
+
+In second figure we got completely different phase trajectory. We got three are with completely different behavior of system. The three cases of it are following,
+
+In first area, which is vortex like previous has stable and periodic with energy $E<2mgl$, second area we got *seddle point*, in which we got unstable and aperiodic motion ($E=2mgl$). In last area which is upper and lower part of plot are just lines, this are shows circular motion around pivot of string with wall. Energy for this kind of motion is $E>2mgl$.
+
+
+
+
+
+
+
+
+
+
+
+\break
+
+* Appendix
+** (Appendix:1) Understand Runge-Kutta method
 
 In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
 
 Runge Kutta Method is not predictor-corrector method like other numerical method (namely, modified Euler method, Adams-Bashmoth-Moulton method) for solving differential equation. It uses four different new variables and then simply addition and multiplication predict our initial value problem with good accuracy.
 
+We can use RK method in following manor,
+
+\begin{equation*}
+y_{n+1} = y_{n}+\frac{1}{6}(k_{1}+2k_{2}+2k_{3}+k_{4})
+\end{equation*}
+
+\begin{equation*}
+z_{n+1} = z_{n}+\frac{1}{6}(l_{1}+2l_{2}+2l_{3}+l_{4})
+\end{equation*}
+
+Where,
+\begin{equation*}
+k_{1}=hf(x_{n},y_{n},z_{n})
+\end{equation*}
+\begin{equation*}
+l_{1}=hg(x_{n},y_{n},z_{n})
+\end{equation*}
+\begin{equation*}
+k_{2}=hf(x_{n}+\frac{h}{2},y_{n}+\frac{k_{1}}{2},z_{n}+\frac{l_{1}}{2})
+\end{equation*}
+\begin{equation*}
+l_{2}=hg(x_{n}+\frac{h}{2},y_{n}+\frac{k_{1}}{2},z_{n}+\frac{l_{1}}{2})
+\end{equation*}
+\begin{equation*}
+k_{3}=hf(x_{n}+\frac{h}{2},y_{n}+\frac{k_{2}}{2},z_{n}+\frac{l_{2}}{2})
+\end{equation*}
+\begin{equation*}
+l_{3}=hg(x_{n}+\frac{h}{2},y_{n}+\frac{k_{2}}{2},z_{n}+\frac{l_{2}}{2})
+\end{equation*}
+\begin{equation*}
+k_{4}=hf(x_{n}+h,y_{n}+k_{3},z_{n}+l_{2})
+\end{equation*}
+\begin{equation*}
+l_{4}=hg(x_{n}+h,y_{n}+k_{3},z_{n}+l_{2})
+\end{equation*}
+
+Where, $h$ is step and $f,g$ are two complimetry function, in our purpose we used $f = \theta$ and $f = \phi$.
 
 
 
 
 
-*** Animations
+** (Appendix:2) Simulation code
 
 Now, come animation part. Which we basically used *pygame* in *python*. We first get array of both solutions with interval of $\frac{1}{60} second$ and give this data in position function in my /main.py/ file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because /pygame/ screen rectangular coordinates with units in pixel of screen.
 
@@ -281,20 +422,43 @@ My /constant.py/ file
 
     # defining constants in C.G.S.
 
-
+    pi = 3.141592
     width,height = 1360,720         # pygame window size in pixel units
     origin_x,origin_y = width/2,height/8 # setting up the origin O
-    b = 100                              # damping coefficient
-    m = 100                              # 100 grams of mass
-    l = 100                              # 100 cm length
-    g = 980                              # gravitation accelaraiotion in cgs
 
-    gamma = b/m
+    # density
+    rho = 0.001293
 
+    # newton's drag coefficient
+    cd = 0.47
+
+    # diameter
+    d = 0.05
+
+    # mass 
+    m = 500
+
+    # length of string
+    l = 500
+
+    # gravitation accelaration
+    g = 980
+
+    # viscosity of air
+    eta = 0.0001834
+
+    kl = 3*pi*eta*d
+    kq = (1/8)*pi*cd*rho*d*d
+
+    gammal = (kl*l)/m
+    gammaq = (kq*l)/m
     w0 = sqrt(g/l)                  # natural frequncy of SHM
-    theta_initial = 3.141591/4      # initial theta in radian
+    theta_initial = 3.141592/10      # initial theta in radian
     radius = 10                     # radius of ball in pixel
-    fps = 60                        # frame per second
+    fps = 120                        # frame per second
+
+
+
   \end{lstlisting}
 #+end_src
 
@@ -302,85 +466,298 @@ This is my /main.py/ file, in which i defined all functions for calculations. In
 
 #+begin_src latex
   \begin{lstlisting}[language=Python]
+
     from constants import *
     from numpy import sin, sqrt, zeros
 
-    def f2nonlinear(theta,phi):     # we defined second auxillary equation from nonlinear term.
-    return -((gamma/m)*phi*phi)-(w0*sin(theta))
+    def f2nonlinear_linear(theta,phi):     # we defined second auxillary equation from nonlinear term.
+        return -((gammal)*phi)-(w0*sin(theta))
 
-    def f2linear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((gamma/m)*phi*phi)-(w0*theta)
+    def f2linear_linear(theta,phi):        # we defined second auxillary equation from linear term.
+        return -((gammaq)*phi)-(w0*theta)
+
+    def f2llinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
+        return -((kq)*phi*phi)-(w0*theta)
+
+    def f2nonlinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
+        return -((kq)*phi*phi)-(w0*sin(theta))
+
+
 
     # range-kutta method defined
-    def RK4(t,theta,phi,h,K): 
-    h = h/8
-    for i in range(8):
-    k1 = h*phi
-    l1 = h*K(theta,phi)
-    k2 = h*(phi+(l1*0.5))
-    l2 = h*(K(theta+(k1*0.5),phi+(l1*0.5)))
-    k3 = h*(phi+(l2*0.5))
-    l3 = h*(K(theta+(k2*0.5),phi+(l2*0.5)))
-    k4 = h*(phi+l3)
-    l4 = h*(K(theta+k3,phi+l3))
-    k_ = (1/6)*(k1+k4+2*(k2+k3))
-    l_ = (1/6)*(l1+l4+2*(l2+l3))
-    t+=h
-    theta+=k_
-    phi+=l_
-    return  t,theta,phi
+    def RK4(theta,phi,h,K): 
+        h = h/8
+        for i in range(8):
+            k1 = h*phi
+            l1 = h*K(theta,phi)
+            k2 = h*(phi+(l1*0.5))
+            l2 = h*(K(theta+(k1*0.5),phi+(l1*0.5)))
+            k3 = h*(phi+(l2*0.5))
+            l3 = h*(K(theta+(k2*0.5),phi+(l2*0.5)))
+            k4 = h*(phi+l3)
+            l4 = h*(K(theta+k3,phi+l3))
+            k_ = (1/6)*(k1+k4+2*(k2+k3))
+            l_ = (1/6)*(l1+l4+2*(l2+l3))
+            theta+=k_
+            phi+=l_
+        return theta,phi
 
     # Solutions of linear term ---- gives array of length (Total_time*fps)
-    def linear(theta_initial,Total_time,fps):
-    linear_solutions = zeros([Total_time*fps])
-    linear_solutions[0] = theta_initial
-    phi = zeros([Total_time*fps])
-    phi[0],t,time = 0,0,0
-    while t-1<Total_time*fps:
-    time, linear_solutions[t+1], phi[t+1] = RK4(time,linear_solutions[t],phi[t],1/fps,f2linear)
-    t+=1
-    return linear_solutions
+    def linear_linear(theta_initial,Total_time,fps):
+        linear_solutions = zeros([Total_time*fps+2])
+        linear_solutions[0] = theta_initial
+        phi = zeros([Total_time*fps+2])
+        phi[0],t = 0,0
+        while t<Total_time*fps:
+            linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2linear_linear)
+            t+=1
+        return linear_solutions
+
+    def linear_nonlinear(theta_initial,Total_time,fps):
+        linear_solutions = zeros([Total_time*fps+2])
+        linear_solutions[0] = theta_initial
+        phi = zeros([Total_time*fps+2])
+        phi[0],t = 0,0
+        while t<Total_time*fps:
+            linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2llinear_nonlinear)
+            t+=1
+        return linear_solutions
 
     # Solutions of nonlinear term ---- gives array of length (Total_time*fps)
-    def nonlinear(theta_initial,Total_time,fps):
-    nonlinear_solutions = zeros([Total_time*fps])
-    nonlinear_solutions[0] = theta_initial
-    phi = zeros([Total_time*fps])
-    phi[0],t,time = 0,0,0
-    while t-1<Total_time*fps:
-    time, nonlinear_solutions[t+1], phi[t+1] = RK4(time,nonlinear_solutions[t],phi[t],1/fps,f2nonlinear)
-    t+=1
-    return nonlinear_solutions
+    def nonlinear_linear(theta_initial,Total_time,fps):
+        nonlinear_solutions = zeros([Total_time*fps+2])
+        nonlinear_solutions[0] = theta_initial
+        phi = zeros([Total_time*fps+2])
+        phi[0],t= 0,0
+        while t<Total_time*fps:
+            nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear_linear)
+            t+=1
+        return nonlinear_solutions
 
+    def nonlinear_nonlinear(theta_initial,Total_time,fps):
+        nonlinear_solutions = zeros([Total_time*fps+2])
+        nonlinear_solutions[0] = theta_initial
+        phi = zeros([Total_time*fps+2])
+        phi[0],t= 0,0
+        while t<Total_time*fps:
+        nonlinear_solutions[t+1], phi[t+1] =     RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear_nonlinear)
+        t+=1
+        return nonlinear_solutions
 
     # ------------(for graphs)----------
     # this describes frequncy of nonlinear term.
     def w_nonliner(theta_initial):
-    T = (sqrt(l/g))*(1+(0.24*(sin(0.5*theta_initial))**2)+((9/24)*(sin(theta_initial*0.5))**4))
-    return 1/T
+    w_ =     (sqrt(l/g))*(1+(0.25*(sin(0.5*theta_initial))**2)+((9/64)*(sin(theta_initial*0.5))**4))
+    return 1/w_
 
     # phase plane definations
     def linear_phase_plane(theta,phi):
-    f1 = phi
-    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
-    return f1,f2
+        f1 = phi
+        f2 = -((gammal)*phi)-(w0*theta)
+        return f1,f2
 
     def nonlinear_phase_plane(theta,phi):
-    f1 = phi
-    f2 = -((gamma/m)*phi*phi)-(w0*sin(theta))
-    return f1,f2
+        f1 = phi
+        f2 = -((gammal)*phi)-(w0*sin(theta))
+        return f1,f2
+
+    def linear_phase_planeq(theta,phi):
+        f1 = phi
+        f2 = -((gammaq)*phi*phi)-(w0*theta)
+        return f1,f2
+
+    def nonlinear_phase_planeq(theta,phi):
+        f1 = phi
+        f2 = -((gammaq)*phi*phi)-(w0*sin(theta))
+        return f1,f2
+
+
 
     # ----------------------------------
 
   \end{lstlisting}
 #+end_src
-* What is meaning of all this ?
-* Appendix
 
-This is my simulation fi
+Simulation files are /lindamsamepos.py/, /nonlindamsamepos.py/ and also two other /lindamdiffpos.py/ and /nonlindamdiffpos.py/. In the files respecevely i put my code for linear damping with same pivot position and also quadratic damping with same position of pivot. Other two files are complementary for different pivot position not much of importance.
+
+I am writing here my linear damping file for regeneration perpose in other two i just changed fuction name from /main.py/.
+
+#+begin_src latex
+  \begin{lstlisting}[language=Python]
+
+    from main import *
+    import pygame
+    import time
+    from numpy import cos, sin, pi
 
 
-\break
+    # this part done.
+    # just do - [ ] dual color balls
+
+
+
+    def bob1(window,x,y):
+        image = pygame.image.load("bitmap1.png")
+        window.blit(image, (x,y))
+
+    def bob2(window,x,y):
+        image = pygame.image.load("bitmap2.png")
+        window.blit(image, (x,y))
+
+    def surface(window,x,y):
+       image = pygame.image.load("surface.png")
+       window.blit(image, (x, y))
+
+
+
+    def position(l,theta):
+       return origin_x-10+l*cos((1.5*pi)-theta),origin_y-10-l*sin((1.5*pi)-theta)
+
+    def mainloop(window,fps):
+        global t
+        run = True
+        clock = pygame.time.Clock()
+        c = 0
+        while run:
+            for event in pygame.event.get():
+                if event.type== pygame.QUIT:
+                    run= False
+                    break
+            clock.tick(fps)
+
+            x,y = position(l,exact[c])
+            x2,y2 = position(l,appro[c])
+            if c==len(exact):
+                break
+            window.fill("#ffffff")
+            surface(window,200,origin_y-15)
+            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
+            pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
+            bob1(window,x,y)
+            bob2(window,x2,y2)
+            pygame.display.update()
+            c+=1
+            pygame.quit()
+
+    if __name__ == "__main__":
+        pygame.init()
+        window = pygame.display.set_mode((width,height))
+        exact = nonlinear_linear(theta_initial,300,fps)
+        appro = linear_linear(theta_initial,300,fps)
+        t = time.perf_counter()
+        mainloop(window, fps)
+
+
+  \end{lstlisting}
+#+end_src
+
+** (Appendix:3) Code for graphs
+
+This is code for all the graphs in pdf.
+#+begin_src latex
+  \begin{lstlisting}[language=Python]
+    from main import *
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+
+
+def angfre():
+    A = np.linspace(-np.pi,np.pi,6000)
+    w = np.zeros(np.size(A))
+    w0 = np.zeros(np.size(A))
+
+    for i in range(np.size(A)):
+        w[i] = w_nonliner(A[i])
+        w0[i] = np.sqrt(g/l)
+
+    
+    plt.figure()
+    plt.plot(A,w, label="angular frequency of nonlinear solution")
+    plt.plot(A,w0, label="angular frequency of linear solution")
+    plt.title("angular frequency")
+    plt.ylabel("angular frequency")
+    plt.xlabel("initial displacement")
+    plt.legend()
+    plt.savefig("angfre.png")
+    plt.close
+    
+def thetawitht(total_time):
+    fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
+    # add a big axes, hide frame
+    fig.add_subplot(111, frameon=False)
+    
+    # hide tick and tick label of the big axes
+    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
+    # plt.grid(False)
+    plt.xlabel("time")
+    plt.ylabel("angular displacement")
+    plt.title("angualar displacement with time")
+    time  = np.linspace(0,total_time,1002)
+
+    # fig.add_subplot(411,frameon=False)
+    # ax1 = plt.subplot(111)
+    plt.tick_params(labelcolor='none', top=False, bottom=False, left=False, right=False)
+    theta_initial = pi/10
+    soll = linear_linear(theta_initial,total_time,int(1000/total_time))
+    soln = nonlinear_linear(theta_initial,total_time,int(1000/total_time))
+    plt.plot(time,soll)
+    
+    plt.show()
+
+  \end{lstlisting}
+#+end_src
+
+And this code for phase plane plots,
+#+begin_src latex
+  \begin{lstlisting}[language=Python]
+    from numpy import linspace, meshgrid
+from main import *
+import matplotlib.pyplot as plt
+
+
+def exact_lineardamp():
+    x1 = linspace(-6,6,2000)
+    x2 = linspace(-6,6,2000)
+
+    x1_,x2_ = meshgrid(x1,x2)
+
+    u,v = nonlinear_phase_plane(x1_,x2_)
+    vel = sqrt(u**2+v**2)
+
+    plt.figure()
+    plt.streamplot(x1_,x2_,u,v, color='k', linewidth=0.8,density=1.5, minlength=0.01, arrowsize=0.8,arrowstyle="->")
+    plt.title("stream plot of equation without approximation")
+    plt.xlabel("$\theta$")
+    plt.ylabel("$\phi$")
+    plt.savefig("exactlstr.png")
+
+def appro_lineardamp():
+    x1 = linspace(-6,6,2000)
+    x2 = linspace(-6,6,2000)
+
+    x1_,x2_ = meshgrid(x1,x2)
+
+    u,v = linear_phase_plane(x1_,x2_)
+    vel = sqrt(u**2+v**2)
+
+    plt.figure()
+    plt.streamplot(x1_,x2_,u,v, color='k', linewidth=0.8,density=1.5, minlength=0.01, arrowsize=0.8,arrowstyle="->")
+    plt.title("stream plot of approximated equation")
+    plt.xlabel("$\theta$")
+    plt.ylabel("$\phi$")
+    plt.savefig("approlstr.png")
+
+exact_lineardamp()
+appro_lineardamp()
+
+  \end{lstlisting}
+#+end_src
+
+
+
+
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{plain}
 \bibliography{documentaion}
