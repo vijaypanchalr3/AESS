@@ -1,8 +1,11 @@
-from math import sqrt
+from numpy import sin, sqrt, zeros, pi
+
+
+
 
 # defining constants in C.G.S.
 
-pi = 3.141592
+
 width,height = 1360,720         # pygame window size in pixel units
 origin_x,origin_y = width/2,height/8 # setting up the origin O
 
@@ -13,7 +16,7 @@ rho = 0.001293
 cd = 0.47
 
 # diameter
-d = 0.05
+d = 20
 
 # mass 
 m = 500
@@ -33,6 +36,6 @@ kq = (1/8)*pi*cd*rho*d*d
 gammal = (kl)/m
 gammaq = (kq*l)/m
 w0 = sqrt(g/l)                  # natural frequncy of SHM
-theta_initial = 3.141592/10      # initial theta in radian
+theta_initial = pi      # initial theta in radian
 radius = 10                     # radius of ball in pixel
 fps = 120                        # frame per second

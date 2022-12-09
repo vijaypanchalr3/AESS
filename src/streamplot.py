@@ -17,7 +17,7 @@ def exact_lineardamp():
     plt.title("stream plot of equation without approximation")
     plt.xlabel("$\theta$")
     plt.ylabel("$\phi$")
-    plt.savefig("exactlstr.png")
+    plt.savefig("../graphs/exactlstr.png")
 
 def appro_lineardamp():
     x1 = linspace(-6,6,2000)
@@ -33,7 +33,7 @@ def appro_lineardamp():
     plt.title("stream plot of approximated equation")
     plt.xlabel("$\theta$")
     plt.ylabel("$\phi$")
-    plt.savefig("approlstr.png")
+    plt.savefig("../graphs/approlstr.png")
 
 exact_lineardamp()
 appro_lineardamp()

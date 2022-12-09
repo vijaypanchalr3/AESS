@@ -22,7 +22,7 @@ def angfre():
     plt.ylabel("angular frequency")
     plt.xlabel("initial displacement")
     plt.legend()
-    plt.savefig("angfre.png")
+    plt.savefig("../graphs/angfre.png")
     plt.close
     
 def thetawitht(total_time):
@@ -69,7 +69,7 @@ def thetawitht(total_time):
     ax4.plot(time,soln)
     ax4.set_title("theta = pi")
     fig.tight_layout()
-    plt.savefig("thetawitht.png")
+    plt.savefig("../graphs/thetawitht.png")
     plt.close()
 
 

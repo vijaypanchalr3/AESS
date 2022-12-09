@@ -1,6 +1,12 @@
+
 #+title: Approximations in physics
 #+author:  Ved Patel 67
 #+author:  Vijay Panchal 68
+\linespread{1.3}
+\large
+
+
+
 
 #+BIBLIOGRAPHY: documentaion plain option:-d
 #+LaTeX_HEADER: \usepackage{listings}
@@ -18,7 +24,8 @@ Be aware, that approximation is just approximation. We should remember everytime
 
 Let's dive into one example, that showes implication of approximations. In classical mechanics, we have some major theories, one is of oscillatory motions. In Oscillation theory we studied *Simple Harmonic Oscillation*, but as we are going to see that simple harmonic oscillation is not exactly that simple without approximation. We had actually changed whole system unknowingly, but beauty of physics is that it is still help to understand concept and motion of it. 
 
-Before that we would like to show gratitude to literature that helped us to finish this project. Firstly, for our classical mechanics textbooks classical mechanics by goldstein \cite{goldstein2002classical} and by J.C. Upadhyay \cite{upadhyay2016classical}. Then book on differential equations \cite{bronson2014schaum} and \cite{jordan2007nonlinear}. Estimation of parameters of damping forces \cite{salamon2020estimation}.
+Before that we would like to show gratitude to literature that helped us to finish this project. Firstly, for our classical mechanics textbooks classical mechanics by goldstein \cite{goldstein2002classical} and by J.C. Upadhyay \cite{upadhyay2016classical}. Then book on differential equations \cite{bronson2014schaum} and \cite{jordan2007nonlinear}. Estimation of parameters of damping forces \cite{salamon2020estimation}. Also, some python library i used in this projects are numpy for calculation \cite{harris2020array} , matplotlib \cite{Hunter2007}  for graphs and pygame for simulation https://github.com/pygame/pygame . 
+
 
 * Example of Approximation 
 
@@ -33,7 +40,7 @@ Let's take one pendulum,by taking length $l = 1 m$ string (assuming non deformin
 #+CAPTION: pendulum with string lenth $l$ and mass $m$
 #+NAME: pendulum
 #+ATTR_LATEX:  :width 0.3 \textwidth
-[[./figure1.png]]
+[[../extras/figure1.png]]
 
 For understanding consequences of approximation, we took simulations by solving both equation of motion (approximated and exact). For getting equations of motion we used *Newtonian formulation* which is quite easy to work with in this type of problems, since we are working with *non conservative* system.
 
@@ -53,7 +60,9 @@ Let's discuss coffiecient of linear damping. Linear to the velocity drag is also
 We used quadratic damping approximation as nonlinear damping approximation. This is also called newton's drag and it's better approximation then linear one. As quantitatively it can work with turbulent flow with 1000 to 100000 reynolds number. Where linear approximation works reynold's number upto 1. Quadratic damping is better than linear approximation but we can't have close form solution, it is the reason we use linear damping approximation. In quadratic damping it has following form, $F_{damping} = k_{q} v^{2}$. Here, $k_{q} = \frac{1}{8}c_{d}\rho \pi d^{2}$, where $c_{d}$ is drag coefficient and has value of 0.47. $\rho$ and $d$ are density of fluid and diameter.\cite{lubarda2021analysis}\cite{goossens2019review}
 
 
-** General equation motion 
+
+
+** Equation of motion
 
 Let's derive equation of motion for our system which can be modified as we took approximations in it. We have Figure 1 showing pendulum with unextensible string of length $l$ with sphere of diameter $d$ and mass $m$. Our system is in fluid with density $\rho$ and viscosity $\eta$. Let's use newton's law of motion to derive equation of motion,
 
@@ -100,7 +109,7 @@ F_{damping}-mgsin(\theta)=ml\ddot{\theta}
 
 This is *exact equation of motion*. Which will be *second order non linear equation*. Finding it's exact solution is another ordeal. Let's take our approximations and cases for it.
 
-** Approximation of equation of motion : Linear differential equation with linear damping
+*** Approximation of equation of motion : Linear differential equation with linear damping
 
 In class, we approximated equation [[eqn:7]] as $\theta \to 0$ as $sin(\theta) \to \theta$. Consequently, this equation becomes very easy to solve. Also, damping force will be,
 
@@ -179,7 +188,7 @@ Taking real part of equation [[eqn:16]]. Since it'll represent real motion of sy
 
 Where, $A$ and $\delta$ can be find from initial conditions and $w = \sqrt{w_{0}^{2}-\frac{\Gamma}{2}^{2}}$.
 
-** Non linear equation of motion with linear damping
+*** Non linear equation of motion with linear damping
 
 In equation [[eqn:7]] we can write linear damping term without taking approximation as $sin(\theta) \to \theta$,
 
@@ -219,7 +228,7 @@ We can use numerical methods like Runge-Kutta method to solve this equation. I h
 
 We have two complementary equations [[eqn:21]] and [[eqn:22]]. We can use now Runge-Kutta method on it. I have used in my code file /main.py/, you can access it in appendix. 
 
-** Simulations of the two equations
+*** Simulations of the two equations
 
 I have done nice simulation which give hands on experience of two equation, both have very similar results when $\theta$ is very small, again understandable as $\theta \to 0$ we can approximate $sin(\theta) \to \theta$. But when $\theta$ increase slightly we have massive changes in solution with time. Let's look at $\theta = \frac{\pi}{10}$, (here, we take viscosity of air at $(1834·38\pm0.35)\times10^{−7}$ c.g.s. units. \cite{majumdar1938coefficient})
 
@@ -227,19 +236,18 @@ Initially both are same as you can see in pictures (at $t=0$),
 #+CAPTION: pendulum at $t=0s$
 #+NAME: t0
 #+ATTR_LATEX:  :width 0.8 \textwidth
-[[file:t0.png]]
+[[file:../graphs/t0.png]]
 
 Now, as we look with increment in time we can see it deflecting slightly with it. This is picture at $t = 100s$,
 #+CAPTION: pendulum at $t=100s$
 #+NAME: t100
 #+ATTR_LATEX:  :width 0.8 \textwidth
-[[file:t100.png]]
-
+[[file:../graphs/t100.png]]
 Here, red bob is exact solution (nonlinear equation) where green is linear equations solution.
 
 For more information, i gave all my code in appendix and also in my github page [[https://github.com/vijaypanchalr3][vijaypanchalr3]].
 
-** Equation of motion with quadratic damping
+*** Equation of motion with quadratic damping
 
 Quadratic damping gives better approximations over as linear damping but also gives burden of nonlinearization. In equation [[eqn:7]] we can put value of quadratic damping approximation. 
 
@@ -274,7 +282,7 @@ As we have seen in our simulation that in linear solution equation [[eqn:17]], w
 #+CAPTION: How angular frequency change with $\theta_{0}$ in nonlinear solution and shows constant at value $\sqrt{\frac{g}{l}}$
 #+NAME: angfre
 #+ATTR_LATEX:  :width 0.8 \textwidth
-[[file:angfre.png]]
+[[file:../graphs/angfre.png]]
 
 
 ** For different $\theta_{0}$ it has different $\theta(t)$
@@ -284,7 +292,7 @@ Let's look at how our two solution exactly changes with time. For that we took v
 #+CAPTION: For different $\theta$ we have completely different type of solution
 #+NAME: thetawitht
 #+ATTR_LATEX:  :width 0.8 \textwidth
-[[file:thetawitht.png]]
+[[file:../graphs/thetawitht.png]]
 
 
 ** Hidden informations
@@ -355,12 +363,13 @@ Ploting this two will give two distinct phase planes which gives important prope
 #+CAPTION: This is phase plane of approximate solution where we took $sin(\theta) \to \theta$. here you can see big vortex.
 #+NAME: approstrl
 #+ATTR_LATEX:  :width 0.8 \textwidth
-[[file:approlstr.png]]
+[[file:../graphs/approlstr.png]]
 
 #+CAPTION: This is phase plane of exact solution without previous approximation.
 #+NAME: exactstrl
 #+ATTR_LATEX:  :width 0.8 \textwidth
-[[file:exactlstr.png]]
+[[file:../graphs/exactlstr.png]]
+
 
 As we can see that in approximated equation we have only one big vortex. In contrast to that we have vortexs with lines.
 
@@ -379,7 +388,7 @@ In first area, which is vortex like previous has stable and periodic with energy
 
 * Appendix
 
-** (Appendix:1) Understand Runge-Kutta method
+** Runge-Kutta 4th order method
 
 In our this simulation we made use of Range Kutta fourth order method as numerical method for solving non-linear differential equation and linear differential equation with it. So, it is good idea to understand what is Range-Kutta fourth order method and how can we implement to solve present differential equations.
 
@@ -427,9 +436,9 @@ Where, $h$ is step and $f,g$ are two complimetry function, in our purpose we use
 
 
 
-** (Appendix:2) Simulation code
+** Simulation code
 
-Now, come animation part. Which we basically used *pygame* in *python*. We first get array of both solutions with interval of $\frac{1}{60} second$ and give this data in position function in my /main.py/ file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because /pygame/ screen rectangular coordinates with units in pixel of screen.
+Now, come animation part. Which we basically used *pygame* in *python*. We first get array of both solutions with interval of $\frac{1}{60} second$ and give this data in position function in my /main.py/ file which just use convert each to the Cartesian coordinates from initial Polar coordinate. This is because /pygame/ screen rectangular coordinates with units in pixel of screen.https://github.com/pygame/pygame
 
 Following data, we used as constant which i defined in /constant.py/ file, as per close inspection you can see that we used C.G.S. units because of better visual on computer screen. Remember, we made this code for reconstruct purpose only.
 
@@ -477,7 +486,7 @@ My /constant.py/ file
     fps = 120                        # frame per second
 
 
-
+    
   \end{lstlisting}
 #+end_src
 
@@ -597,9 +606,9 @@ This is my /main.py/ file, in which i defined all functions for calculations. In
   \end{lstlisting}
 #+end_src
 
-Simulation files are /lindamsamepos.py/, /nonlindamsamepos.py/ and also two other /lindamdiffpos.py/ and /nonlindamdiffpos.py/. In the files respecevely i put my code for linear damping with same pivot position and also quadratic damping with same position of pivot. Other two files are complementary for different pivot position not much of importance.
+Simulation files are /lindamsamepos.py/, /nonlindamsamepos.py/ and also two other /lindamdiffpos.py/ and /nonlindamdiffpos.py/. In the files respecevely i put my code for linear damping with same pivot position and also quadratic damping with same position of pivot. Other two files are complementary for different pivot position not much of importance. Thanks to pygame library this was possible. 
 
-I am writing here my linear damping file for regeneration perpose in other two i just changed fuction name from /main.py/.
+I am writing here my linear damping file for regeneration perpose in other two i just changed fuction name from /main.py/. I used numpy for my mathematics calculations.\cite{harris2020array} 
 
 #+begin_src latex
   \begin{lstlisting}[language=Python]
@@ -670,9 +679,9 @@ I am writing here my linear damping file for regeneration perpose in other two i
   \end{lstlisting}
 #+end_src
 
-** (Appendix:3) Code for graphs
+** Code for graphs
 
-This is code for all the graphs in this document. I have written two functions which gives one plot for angular frequancy and other gives $\theta$ vs time $t$ for different $\theta_{0}$.
+This is code for all the graphs in this document. I have written two functions which gives one plot for angular frequancy and other gives $\theta$ vs time $t$ for different $\theta_{0}$. I used matplotlib for as graphical library \cite{Hunter2007}.
 #+begin_src latex
   \begin{lstlisting}[language=Python]
     from main import *
@@ -808,4 +817,5 @@ appro_lineardamp()
 
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{plain}
-\bibliography{documentaion}
+\bibliography{documentation}
+[13] https://github.com/pygame/pygame

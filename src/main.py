@@ -1,5 +1,5 @@
 from constants import *
-from numpy import sin, sqrt, zeros
+
 
 def f2nonlinear_linear(theta,phi):     # we defined second auxillary equation from nonlinear term.
     return -((gammal)*phi)-(w0*sin(theta))
@@ -102,6 +102,10 @@ def nonlinear_phase_planeq(theta,phi):
     f2 = -((gammaq)*phi*phi)-(w0*sin(theta))
     return f1,f2
 
-
-
 # ----------------------------------
+
+
+if __name__=="__main__":
+    # print("plzz,define some tests")
+    from test import *
+    accuracy(RK4,60)
