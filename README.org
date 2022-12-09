@@ -1,0 +1,17 @@
+
+* AESS : Approximate and Exact Solution Simulation
+
+In this project i worked on how approximate and exact solution differ from each other. Approximate solution in where i took sin(t) to t, which gives linear differential equation of motion. In constrast to that Exact solution give nonlinearity.
+
+Look at the simple phase planes for this two,
+
+[[file:graphs/exactlstr.png]]
+
+
+And
+
+
+
+[[file:graphs/approlstr.png]]
+
+
