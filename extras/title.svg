@@ -7,7 +7,7 @@
    viewBox="0 0 210 297"
    version="1.1"
    id="svg5"
-   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    sodipodi:docname="title.svg"
    inkscape:export-filename="title2.pdf"
    inkscape:export-xdpi="96"
@@ -27,17 +27,42 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.33386194"
-     inkscape:cx="-286.04638"
-     inkscape:cy="633.49539"
+     inkscape:zoom="0.47015728"
+     inkscape:cx="178.66362"
+     inkscape:cy="628.51308"
      inkscape:window-width="1366"
-     inkscape:window-height="699"
+     inkscape:window-height="741"
      inkscape:window-x="0"
-     inkscape:window-y="32"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     showguides="true" />
   <defs
      id="defs2">
+    <rect
+       x="233.70739"
+       y="751.93838"
+       width="293.08433"
+       height="81.372823"
+       id="rect396" />
+    <rect
+       x="250.31624"
+       y="741.77954"
+       width="291.05693"
+       height="106.02592"
+       id="rect390" />
+    <rect
+       x="304.13609"
+       y="755.01339"
+       width="192.19391"
+       height="33.360503"
+       id="rect384" />
+    <rect
+       x="329.55113"
+       y="628.59452"
+       width="318.17897"
+       height="67.786701"
+       id="rect328" />
     <rect
        x="347.79415"
        y="609.90393"
@@ -65,8 +90,8 @@
     <rect
        x="107.39244"
        y="466.3922"
-       width="582.25988"
-       height="60.762316"
+       width="615.73817"
+       height="62.275865"
        id="rect1868" />
     <rect
        x="141.80208"
@@ -90,10 +115,10 @@
        inkscape:collect="always"
        style="color-interpolation-filters:sRGB"
        id="filter1224"
-       x="-0.52389368"
-       y="-1.3708021"
-       width="2.0477874"
-       height="3.7416042">
+       x="-0.54008055"
+       y="-1.4131561"
+       width="2.0801611"
+       height="3.8263122">
       <feGaussianBlur
          inkscape:collect="always"
          stdDeviation="4.9598824"
@@ -110,8 +135,8 @@
        id="text234"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48px;font-family:Caladea;-inkscape-font-specification:'Caladea, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect236);display:inline;fill:#000000;stroke-width:5.78268;stroke-linecap:round"><tspan
          x="163.14258"
-         y="63.971467"
-         id="tspan559">Approximations in Physics</tspan></text>
+         y="63.75025"
+         id="tspan1750">Approximations in Physics</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12.7px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;fill:#333333;stroke-width:1.53;stroke-linecap:round"
@@ -121,26 +146,21 @@
          sodipodi:role="line"
          id="tspan290"
          style="stroke-width:1.53" /></text>
-    <circle
-       id="path1284"
-       style="fill:#b3b3b3;stroke:#000000;stroke-width:0.264583"
-       cx="105"
-       cy="115.69559"
-       r="0.43162894" />
     <g
-       id="g1858">
+       id="g1858"
+       style="fill:#b3b3b3;stroke:#b3b3b3">
       <g
          id="g1233"
-         style="opacity:0.063"
+         style="opacity:0.063;fill:#b3b3b3;stroke:#b3b3b3"
          transform="translate(-11.34301,83.208958)">
         <circle
-           style="fill:#1a1a1a;stroke-width:1.53;stroke-linecap:round"
+           style="fill:#b3b3b3;stroke-width:1.53;stroke-linecap:round;stroke:#b3b3b3"
            id="path456"
            cx="81.352112"
            cy="134.57567"
            r="20.206539" />
         <ellipse
-           style="mix-blend-mode:normal;fill:#b3b3b3;stroke-width:0.735584;stroke-linecap:round;filter:url(#filter1224)"
+           style="mix-blend-mode:normal;fill:#b3b3b3;stroke-width:0.735584;stroke-linecap:round;filter:url(#filter1224);stroke:#b3b3b3"
            id="circle614"
            cx="32.243191"
            cy="142.55847"
@@ -148,7 +168,7 @@
            ry="4.3418803"
            transform="matrix(0.93628902,-0.35123051,0.32708018,0.94499659,-0.87314413,0.71482402)" />
         <ellipse
-           style="fill:#b3b3b3;stroke-width:0.735584;stroke-linecap:round;filter:url(#filter1224)"
+           style="fill:#b3b3b3;stroke-width:0.735584;stroke-linecap:round;filter:url(#filter1224);stroke:#b3b3b3"
            id="ellipse1228"
            cx="32.243191"
            cy="142.55847"
@@ -157,73 +177,125 @@
            transform="matrix(-0.78370676,-0.32242609,0.34243764,-0.77517182,61.586553,244.32759)" />
       </g>
       <path
-         style="opacity:0.063;fill:#333333;stroke:#666666;stroke-width:1.197;stroke-linecap:round;stroke-dasharray:none"
+         style="opacity:0.063;fill:#b3b3b3;stroke:#b3b3b3;stroke-width:1.197;stroke-linecap:round;stroke-dasharray:none"
          d="M 75.383258,198.46624 148.12763,0.0296841"
          id="path1351" />
     </g>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.26262557,0,0,0.26262557,-10.490639,12.66606)"
-       id="text1664"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:Cantarell;-inkscape-font-specification:'Cantarell, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1666);display:inline;opacity:1;fill:#4d4d4d;stroke:none;stroke-width:5.78268;stroke-linecap:round"><tspan
-         x="285.00195"
-         y="309.77843"
-         id="tspan561">Project Report</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,8.6343435,41.862251)"
-       id="text1888"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1890);display:inline;opacity:0.992564;fill:#333333;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
-         x="296.05664"
-         y="716.73488"
-         id="tspan563">Guided by:</tspan></text>
-    <text
-       xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,31.406773,35.33969)"
-       id="text1894"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1896);display:inline;opacity:0.992564;fill:#1a1a1a;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
-         x="133.76367"
-         y="801.12896"
-         id="tspan565">Dr. A. M. Vora sir</tspan></text>
     <g
-       id="g168"
-       transform="translate(4.1589853e-5,29.432944)">
+       id="g642"
+       transform="translate(0,22.546549)">
       <text
          xml:space="preserve"
-         transform="matrix(0.26458333,0,0,0.26458333,15.163726,46.700649)"
-         id="text1860"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.3333px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1862);display:inline;opacity:0.992564;fill:#333333;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
-           x="141.80273"
-           y="462.21801"
-           id="tspan567">Rudani Ved Hareshkumar</tspan></text>
+         transform="matrix(0.26458333,0,0,0.26458333,8.6343435,41.862251)"
+         id="text1888"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1890);display:inline;opacity:0.992564;fill:#333333;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
+           x="296.05664"
+           y="716.58741"
+           id="tspan1752">Guided by:</tspan></text>
       <text
          xml:space="preserve"
-         transform="matrix(0.26458333,0,0,0.26458333,-8.127836,33.342282)"
-         id="text2002"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.3333px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect2004);display:inline;opacity:0.992564;fill:#1a1a1a;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
-           x="343.47656"
-           y="546.95629"
-           id="tspan569">Roll no.: 67</tspan></text>
+         transform="matrix(0.26458333,0,0,0.26458333,31.406773,35.33969)"
+         id="text1894"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1896);display:inline;opacity:0.992564;fill:#1a1a1a;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
+           x="133.76367"
+           y="800.93233"
+           id="tspan1754">Dr. A. M. Vora sir</tspan></text>
     </g>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text382"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect384);display:inline;fill:#000000"><tspan
+         x="304.13672"
+         y="826.90108"
+         id="tspan1758"><tspan
+           dx="0 27.64797 23.807962 11.00798 20.65065 20.821304 17.663994 18.346611 11.861343 14.42131 21.503998 9.3866577 18.346603 20.821304 20.82132 14.421295 9.3866577 23.807953 22.655945 8.7466736 11.264008 9.3866272 23.637299"
+           id="tspan1756">University seat no.: 94</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text388"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.6667px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect390);display:inline;fill:#000000" />
     <g
-       id="g278"
-       transform="translate(5.3624936e-5,-25.544968)">
+       id="g636"
+       transform="matrix(0.89893829,0,0,0.89893829,10.611479,44.065284)">
       <text
          xml:space="preserve"
-         transform="matrix(0.26458333,0,0,0.26458333,9.4711604,63.262852)"
+         transform="matrix(0.24288056,0,0,0.24288056,16.601636,44.151542)"
+         id="text1860"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.6693px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1862);display:inline;opacity:0.992564;fill:#4d4d4d;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
+           x="141.80273"
+           y="465.05836"
+           id="tspan1760">Rudani Ved Hareshkumar</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.21213973,0,0,0.21213973,13.218393,47.964298)"
+         id="text2002"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.3333px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect2004);display:inline;opacity:0.992564;fill:#4d4d4d;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
+           x="343.47656"
+           y="546.78424"
+           id="tspan1762">Roll no.: 67</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.23401601,0,0,0.23401601,10.837802,72.950841)"
          id="text1866"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.3333px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1868);display:inline;opacity:0.992564;fill:#333333;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:42.2098px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1868);display:inline;opacity:0.992564;fill:#4d4d4d;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
            x="107.39258"
-           y="500.27661"
-           id="tspan571">Panchal Vijaykumar Rameshbhai</tspan></text>
+           y="504.50803"
+           id="tspan1764">Panchal Vijaykumar Rameshbhai</tspan></text>
       <text
          xml:space="preserve"
-         transform="matrix(0.26458333,0,0,0.26458333,-10.243356,35.359038)"
+         transform="matrix(0.20668044,0,0,0.20668044,13.877634,66.488281)"
          id="text2008"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.3333px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect2010);display:inline;opacity:0.992564;fill:#1a1a1a;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:37.3333px;font-family:Caladea;-inkscape-font-specification:Caladea;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect2010);display:inline;opacity:0.992564;fill:#4d4d4d;stroke:none;stroke-width:4.52409;stroke-linecap:round;stroke-dasharray:none"><tspan
            x="347.79492"
-           y="643.78833"
-           id="tspan573">Roll no. : 68</tspan></text>
+           y="643.61627"
+           id="tspan1766">Roll no. : 68</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,-18.597021,-2.8133629)"
+         id="text326"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect328);display:inline;fill:#4d4d4d"><tspan
+           x="329.55078"
+           y="655.08172"
+           id="tspan1768">University seat no.: 93</tspan></text>
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,6.6064159,-0.19643934)"
+         id="text394"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.3333px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;shape-inside:url(#rect396);display:inline;fill:#4d4d4d"><tspan
+           x="233.70703"
+           y="778.42547"
+           id="tspan1770">University seat no.: 94</tspan></text>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.7611px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#4d4d4d;stroke-width:0.264583"
+       x="-11.714117"
+       y="158.97668"
+       id="text612"><tspan
+         sodipodi:role="line"
+         id="tspan610"
+         style="stroke-width:0.264583"></tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26262557,0,0,0.26262557,-9.0030278,36.765275)"
+       id="text1664"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:48px;font-family:Caladea;-inkscape-font-specification:'Caladea, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:justify;white-space:pre;shape-inside:url(#rect1666);display:inline;fill:#4d4d4d;stroke:none;stroke-width:5.78268;stroke-linecap:round"><tspan
+         x="285.00195"
+         y="310.01783"
+         id="tspan1772">Project Report</tspan></text>
+    <g
+       id="g1443"
+       transform="translate(-0.83767451)">
+      <path
+         style="fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.809755;stroke-linecap:round;stroke-dasharray:none"
+         d="M 73.327939,123.93035 H 109.68787"
+         id="path698" />
+      <path
+         style="fill:#b3b3b3;stroke:#b3b3b3;stroke-width:0.809755;stroke-linecap:round;stroke-dasharray:none"
+         d="m 101.98748,106.7521 h 36.35993"
+         id="path1439" />
     </g>
   </g>
 </svg>

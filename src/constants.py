@@ -36,6 +36,11 @@ kq = (1/8)*pi*cd*rho*d*d
 gammal = (kl)/m
 gammaq = (kq*l)/m
 w0 = sqrt(g/l)                  # natural frequncy of SHM
-theta_initial = pi      # initial theta in radian
 radius = 10                     # radius of ball in pixel
 fps = 120                        # frame per second
+
+
+
+# initial conditions
+theta_initial = pi-pi/20      # initial theta in radian
+phi_initial = 0.0

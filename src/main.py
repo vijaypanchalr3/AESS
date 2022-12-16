@@ -11,7 +11,7 @@ def f2llinear_nonlinear(theta,phi):        # we defined second auxillary equatio
     return -((gammaq)*phi*phi)-(w0*theta)
 
 def f2nonlinear_nonlinear(theta,phi):        # we defined second auxillary equation from linear term.
-    return -((gammaq)*phi*phi)-(w0*sin(theta))
+    return -(gammaq*phi*phi)-(w0*sin(theta))
 
 
 
@@ -34,42 +34,42 @@ def RK4(theta,phi,h,K):
     return theta,phi
 
 # Solutions of linear term ---- gives array of length (Total_time*fps)
-def linear_linear(theta_initial,Total_time,fps):
+def linear_linear(theta_initial,phi_initial,Total_time,fps):
     linear_solutions = zeros([Total_time*fps+2])
     linear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
-    phi[0],t = 0,0
+    phi[0],t = phi_initial,0
     while t<Total_time*fps:
         linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2linear_linear)
         t+=1
     return linear_solutions
 
-def linear_nonlinear(theta_initial,Total_time,fps):
+def linear_nonlinear(theta_initial,phi_initial,Total_time,fps):
     linear_solutions = zeros([Total_time*fps+2])
     linear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
-    phi[0],t = 0,0
+    phi[0],t = phi_initial,0
     while t<Total_time*fps:
         linear_solutions[t+1], phi[t+1] = RK4(linear_solutions[t],phi[t],1/fps,f2llinear_nonlinear)
         t+=1
     return linear_solutions
 
 # Solutions of nonlinear term ---- gives array of length (Total_time*fps)
-def nonlinear_linear(theta_initial,Total_time,fps):
+def nonlinear_linear(theta_initial,phi_initial,Total_time,fps):
     nonlinear_solutions = zeros([Total_time*fps+2])
     nonlinear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
-    phi[0],t= 0,0
+    phi[0],t= phi_initial,0
     while t<Total_time*fps:
         nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear_linear)
         t+=1
     return nonlinear_solutions
 
-def nonlinear_nonlinear(theta_initial,Total_time,fps):
+def nonlinear_nonlinear(theta_initial,phi_initial,Total_time,fps):
     nonlinear_solutions = zeros([Total_time*fps+2])
     nonlinear_solutions[0] = theta_initial
     phi = zeros([Total_time*fps+2])
-    phi[0],t= 0,0
+    phi[0],t= phi_initial,0
     while t<Total_time*fps:
         nonlinear_solutions[t+1], phi[t+1] = RK4(nonlinear_solutions[t],phi[t],1/fps,f2nonlinear_nonlinear)
         t+=1

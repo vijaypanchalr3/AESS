@@ -38,15 +38,15 @@ def mainloop(window,fps):
                 break
         clock.tick(fps)
 
-        x,y = position(l,first[c])
+        # x,y = position(l,first[c])
         x2,y2 = position(l,second[c])
-        if c==len(first):
+        if c==len(second):
             break
         window.fill("#ffffff")
         surface(window,200,origin_y-15)
-        pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
+        # pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
         pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
-        bob1(window,x,y)
+        # bob1(window,x,y)
         bob2(window,x2,y2)
         pygame.display.update()
         c+=1
@@ -54,8 +54,8 @@ def mainloop(window,fps):
 
 if __name__ == "__main__":
     pygame.init()
-    window = pygame.display.set_mode((width,height))
-    first = nonlinear_linear(theta_initial,300,fps)
-    second = nonlinear_nonlinear(theta_initial,300,fps)
+    window = pygame.display.set_mode((width,height), pygame.NOFRAME)
+    # first = nonlinear_linear(theta_initial,phi_initial,300,fps)
+    second = nonlinear_nonlinear(theta_initial,phi_initial,300,fps)
     t = time.perf_counter()
     mainloop(window, fps)

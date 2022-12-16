@@ -54,8 +54,8 @@ def mainloop(window,fps):
 
 if __name__ == "__main__":
     pygame.init()
-    window = pygame.display.set_mode((width,height))
-    exact = nonlinear_linear(theta_initial,300,fps)
-    appro = linear_linear(theta_initial,300,fps)
+    window = pygame.display.set_mode((width,height), pygame.NOFRAME)
+    exact = nonlinear_linear(theta_initial,phi_initial,300,fps)
+    appro = linear_linear(theta_initial,phi_initial,300,fps)
     t = time.perf_counter()
     mainloop(window, fps)
