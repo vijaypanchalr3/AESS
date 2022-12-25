@@ -1,18 +1,49 @@
 from main import *
-import numpy as np
+from numpy import linspace, meshgrid,zeros,pi,sqrt,size
 import matplotlib.pyplot as plt
 
 
+def exact_lineardamp():
+    x1 = linspace(-6,6,2000)
+    x2 = linspace(-6,6,2000)
 
+    x1_,x2_ = meshgrid(x1,x2)
 
+    u,v = nonlinear_phase_plane(x1_,x2_)
+    vel = sqrt(u**2+v**2)
+
+    plt.figure()
+    plt.streamplot(x1_,x2_,u,v, color='k', linewidth=0.8,density=1.5, minlength=0.01, arrowsize=0.8,arrowstyle="->")
+    plt.title("stream plot of equation without approximation")
+    plt.xlabel("$\theta$")
+    plt.ylabel("$\phi$")
+    plt.savefig("../graphs/exactlstr.png")
+
+def appro_lineardamp():
+    x1 = linspace(-6,6,2000)
+    x2 = linspace(-6,6,2000)
+
+    x1_,x2_ = meshgrid(x1,x2)
+
+    u,v = linear_phase_plane(x1_,x2_)
+    vel = sqrt(u**2+v**2)
+
+    plt.figure()
+    plt.streamplot(x1_,x2_,u,v, color='k', linewidth=0.8,density=1.5, minlength=0.01, arrowsize=0.8,arrowstyle="->")
+    plt.title("stream plot of approximated equation")
+    plt.xlabel("$\theta$")
+    plt.ylabel("$\phi$")
+    plt.savefig("../graphs/approlstr.png")
+
+    
 def angfre():
-    A = np.linspace(-np.pi,np.pi,6000)
-    w = np.zeros(np.size(A))
-    w0 = np.zeros(np.size(A))
+    A = linspace(-pi,pi,6000)
+    w = zeros(size(A))
+    w0 = zeros(size(A))
 
-    for i in range(np.size(A)):
+    for i in range(size(A)):
         w[i] = w_nonliner(A[i])
-        w0[i] = np.sqrt(g/l)
+        w0[i] = sqrt(g/l)
 
     
     plt.figure()
@@ -35,7 +66,7 @@ def thetawitht(total_time):
     # plt.xlabel("time")
     # plt.ylabel("angular displacement")
 
-    time  = np.linspace(0,total_time,1002)
+    time  = linspace(0,total_time,1002)
 
 
 
@@ -73,8 +104,11 @@ def thetawitht(total_time):
     plt.close()
 
 
-angfre()
-thetawitht(40)
+if __name__=="__main__":
+    angfre()
+    thetawitht(40)
+    exact_lineardamp()
+    appro_lineardamp()
 
 
 

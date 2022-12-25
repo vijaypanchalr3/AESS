@@ -10,15 +10,15 @@ from numpy import cos, sin, pi
 
 
 def bob1(window,x,y):
-    image = pygame.image.load("bitmap1.png")
+    image = pygame.image.load("./imgs/bitmap1.png")
     window.blit(image, (x,y))
 
 def bob2(window,x,y):
-    image = pygame.image.load("bitmap2.png")
+    image = pygame.image.load("./imgs/bitmap2.png")
     window.blit(image, (x,y))
 
 def surface(window,x,y):
-    image = pygame.image.load("surface.png")
+    image = pygame.image.load("./imgs/surface.png")
     window.blit(image, (x, y))
 
 
@@ -46,6 +46,7 @@ def mainloop(window,fps):
         surface(window,200,origin_y-15)
         pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x+radius,y+radius))
         pygame.draw.aaline(window,color="#5BDEC1",start_pos=(origin_x,origin_y),end_pos=(x2+10,y2+10))
+        
         bob1(window,x,y)
         bob2(window,x2,y2)
         pygame.display.update()

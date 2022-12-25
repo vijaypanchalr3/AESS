@@ -15,3 +15,14 @@ And
 [[file:graphs/approlstr.png]]
 
 
+* Extension
+
+I thought of extending this project for chaos dynamics. Which will give rise to new project for second semester.
+
+Since my project is gateaway of chaos dynamics, i could make my project to follow that.
+
+Future works,
+
+- Research on best chaos dynamics projects
+
+
