@@ -1,7 +1,7 @@
 
 * AESS : Approximate and Exact Solution Simulation
 
-In this project i worked on how approximate and exact solution differ from each other. Approximate solution in where i took sin(t) to t, which gives linear differential equation of motion. In constrast to that Exact solution give nonlinearity.
+In this project i worked on how approximate and exact solution differ from each other. Approximate solution in where i took sin(t) to t, which gives linear differential equation of motion. In constrast to that Exact solution give nonlinearity. 
 
 Look at the simple phase planes for this two,
 
@@ -15,7 +15,7 @@ And
 [[file:graphs/approlstr.png]]
 
 
-* Extension
+* Extension <2022-12-25 Sun> 
 
 I thought of extending this project for chaos dynamics. Which will give rise to new project for second semester.
 
@@ -23,6 +23,7 @@ Since my project is gateaway of chaos dynamics, i could make my project to follo
 
 Future works,
 
-- Research on best chaos dynamics projects
+- [ ] Research on best chaos dynamics projects
+
 
 

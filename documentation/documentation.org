@@ -1,4 +1,3 @@
-
 #+title: Approximations in physics
 #+author:  Ved Patel 67
 #+author:  Vijay Panchal 68

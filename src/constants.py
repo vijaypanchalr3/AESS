@@ -42,5 +42,5 @@ fps = 120                        # frame per second
 
 
 # initial conditions
-theta_initial = pi+pi/2000      # initial theta in radian
+theta_initial = pi/4     # initial theta in radian
 phi_initial = 0.0

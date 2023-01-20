@@ -2,7 +2,7 @@ from constants import *
 
 
 def f2nonlinear_linear(theta,phi):     # we defined second auxillary equation from nonlinear term.
-    return -((gammal)*phi)-(w0*sin(theta))
+    return -(gammal*(1-theta*theta)*phi)-(w0*sin(theta))
 
 def f2linear_linear(theta,phi):        # we defined second auxillary equation from linear term.
     return -((gammal)*phi)-(w0*theta)
