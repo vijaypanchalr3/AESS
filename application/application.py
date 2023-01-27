@@ -1,30 +1,13 @@
-from numpy import sin,cos,pi
 import pygame as pg
+from numpy import sin,cos,pi
 import os
-from constants import *
-
+import sys
+from constants import gammal, w0
 
 
 # Size
 size = (1300,760)
 origin = (750,150)
-
-
-
-
-
-def inputk1_():
-    return 0
-
-def inputk2_():
-    return 0
-
-def f2nonlinear_linear(theta,phi):     # we defined second auxillary equation from nonlinear term.
-    return -((gammal)*phi)-(w0*sin(theta))
-
-def f2linear_linear(theta,phi):     # we defined second auxillary equation from nonlinear term.
-    return -((gammal)*phi)-(w0*theta)
-
 
 def load_image(image, scale=1):
     fullname = os.path.join("./imgs/", image)
@@ -40,19 +23,16 @@ def load_image(image, scale=1):
 
 class Pendulum():
     """
-
+    Pendulum object with all constants and all necesery functions.
     """
-    def __init__(self,length,theta,phi,K2,image,origin,color=(0,0,0),ball_radius = 10,fps=60):
-        self.length = length
-        self.theta = theta
-        self.phi = phi
-        self.h = 1/fps
-        self.K2 = K2
-        self.image = image
-        self.color = color
-        self.origin = origin
-        self.ball_radius = ball_radius
-        self.image = load_image(image)
+    def __init__(self,length,theta,phi,K2,image,origin,fps=60):
+        self.length = length    # length of pendulum
+        self.theta = theta      # initial angular displacement
+        self.phi = phi          # initial angular vel
+        self.h = 1/fps          # ! steps, need to be changed !
+        self.K2 = K2            # complimetry function
+        self.origin = origin    # origin
+        self.image = load_image(image) # images for pendulum
 
         
     def update(self):
@@ -79,104 +59,80 @@ class Pendulum():
         """
         x=self.origin[0]+(self.length*cos((pi*1.5)-self.theta))
         y=self.origin[1]-(self.length*sin((pi*1.5)-self.theta))
-        pg.draw.aaline(screen,self.color,start_pos=self.origin,end_pos=(x+self.ball_radius,y+self.ball_radius))
+        pg.draw.aaline(screen,"#000000",start_pos=self.origin,end_pos=(x+10,y+10))
         screen.blit(self.image,(x,y)) # better try something like drawing a circle
 
 
 class Simulation:
     """
-
+    main loop for simulation
     """
-    def __init__(self,bg,size):
+    def __init__(self):
         pg.init()
-        self.window = pg.display.set_mode(size, pg.NOFRAME)
-        self.bg = bg
+        size = (1300,760)       # need to give flexibility of all displays
+        self.window = pg.display.set_mode(size, pg.RESIZABLE)
+        pg.display.set_caption("Pendulum simulation - Menu")
+        self.ff = pg.font.Font("Lato",20)
+        self.size = self.window.get_size()
+
+
+        # colors
+        self.bg = "#000000"
+        self.fg = "#ffffff"
+        self.special = "#ffffff"
         
-    def run(self):
+    def menu(self):
         run = True
         clock = pg.time.Clock()
-        pendulum1 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2nonlinear_linear,image="bitmap1.png",origin=origin,fps=120)
-        pendulum2 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2linear_linear,image="bitmap2.png",origin=origin,fps=120)
+        user_text = '0'
+
+        heading = self.ff.render("Menu",True,self.fg,self.special)
+        heading_size = heading.get_size()
+        heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,0,heading_size[0]+20,heading_size[1]+10),border_radius=5)
+        self.window.blit(heading,heading_rect)
+        # option1 = self.ff.render("")
+        
+        
         while run:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     run = False
-                    break
-            clock.tick(fps)
-            self.window.fill(self.bg)
-            # draw pendulumswith class
-            pendulum1.draw(self.window)
-            pendulum2.draw(self.window)
-
-        
+                    sys.exit()
 
 
-        
-            # update pendulums
-            pendulum1.update()
-            pendulum2.update()
-            pg.display.update()
-        pg.quit()
+                # all the keys and control. 
 
 
-class Menu:
-    """
 
-    """
-    def __init__(self,bg,size):
-        pg.init()
-        self.window = pg.display.set_mode(size, pg.NOFRAME)
-        self.bg = bg
-        
+            # pygame quit 
+            pg.quit()
+
+                
     def run(self):
-        run = True
-        clock = pg.time.Clock()
-        pendulum1 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2nonlinear_linear,image="bitmap1.png",origin=origin,fps=120)
-        pendulum2 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2linear_linear,image="bitmap2.png",origin=origin,fps=120)
-        while run:
-            for event in pg.event.get():
-                if event.type == pg.QUIT:
-                    run = False
-                    break
-            clock.tick(fps)
-            self.window.fill(self.bg)
-            pendulum1.draw(self.window)
-            pendulum2.draw(self.window)
-            
-        
+        # run = True
+        # clock = pg.time.Clock()
+        # pendulum1 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2nonlinear_linear,image="bitmap1.png",origin=origin,fps=120)
+        # pendulum2 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2linear_linear,image="bitmap2.png",origin=origin,fps=120)
+        # while run:
+            # for event in pg.event.get():
+                # if event.type == pg.QUIT:
+                    # run = False
+                    # break
+            # clock.tick(fps)
+            # self.window.fill(self.bg)
+            # # draw pendulumswith class
+            # pendulum1.draw(self.window)
+            # pendulum2.draw(self.window)
 
 
-            pendulum1.update()
-            pendulum2.update()
-            pg.display.update()
-        pg.quit()
-
-class Demo:
-    """
-
-    """
-    def __init__(self,bg,size):
-        pg.init()
-        self.window = pg.display.set_mode(size, pg.NOFRAME)
-        self.bg = bg
-        
-    def run(self):
-        run = True
-        clock = pg.time.Clock()
-        pendulum1 = Pendulum(length=l,theta=theta_initial,phi=phi_initial, K2=f2nonlinear_linear,image="bitmap1.png",origin=origin,fps=120)
-        while run:
-            for event in pg.event.get():
-                if event.type == pg.QUIT:
-                    run = False
-                    break
-            clock.tick(fps)
-            self.window.fill(self.bg)
-
-        
 
 
         
-            pg.display.update()
+            # # update pendulums
+            # pendulum1.update()
+            # pendulum2.update()
+            # pg.display.update()
+        # pg.quit()
         pg.quit()
 
 
