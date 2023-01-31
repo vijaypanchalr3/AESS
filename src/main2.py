@@ -59,8 +59,8 @@ class Pendulum:
         """
         
         """
-        x=origin[0]+(self.length*cos((pi*1.5)-self.theta))
-        y=origin[1]-(self.length*sin((pi*1.5)-self.theta))
+        x=origin[0]+(self.length*cos((pi*1.5)+self.theta))
+        y=origin[1]-(self.length*sin((pi*1.5)+self.theta))
         pg.draw.aaline(screen,self.color,start_pos=origin,end_pos=(x,y))
         screen.blit(self.image,(x-10,y-10))
 
@@ -78,34 +78,103 @@ class Simulation:
     def __init__(self):
         pg.init()
         self.window = pg.display.set_mode((1360,720),pg.RESIZABLE)
+        self.size =self.window.get_size()
         self.ff=pg.font.Font("Lato-BoldItalic.ttf",28)
         self.ff2=pg.font.Font("Lato-BoldItalic.ttf",32)
         
-        self.color1 = 0
-        self.color2 = 0
-        self.color3 = 0
-        self.color4 = 0
+        color1 = "#FCE38A"
+        color2 = "#C68B59"
+        color3 = "#FBC687"
+        color4 = "#402218"
         
-        self.fg = "#000000"
-        self.bg = "#C7A68B"
-        self.special = "#dddddd"
+        self.fg = color4
+        self.bg = color1
+        self.special = color3
+        self.common = color2
+
+        
         self.length = 500
-        self.mass = 100
-        self.dampcoef = 10
-        self.gravity = 10
-        self.theta = 3.14
+        self.mass = 1000
+        self.dampcoef = 0.1
+        self.gravity = 980
+        self.theta = pi/10
         self.phi = 0
     def slider(self,x,y,pos):
         cursor = pg.mouse.get_pos()
         clicked_pos = pg.mouse.get_pressed()
-        pg.draw.rect(self.window,self.fg,(pos+x-5,y-15,10,30))
-        pg.draw.rect(self.window,self.fg,(x,y,200,2))
-        if x+200>=cursor[0]>x and y+25>=cursor[1]>=y-25:
+        pg.draw.rect(self.window,self.common,(x,y,200,2))
+        pg.draw.rect(self.window,self.common,(pos+x-5,y-15,10,30))
+        if x+200>cursor[0]>=x and y+25>=cursor[1]>=y-25:
             if clicked_pos[0]==1:
-                # pg.draw.rect(self.window,self.special,(x_scroll,y,50,50))
+                pg.draw.rect(self.window,self.special,(pos+x-5,y-15,10,30))
                 pos = cursor[0]-x
 
         return pos
+
+
+    def mainmenu(self):
+        run = True
+        clock = pg.time.Clock()
+        heading = self.ff2.render("Main Menu",True,self.fg,self.special)
+        heading_size = heading.get_size()
+        heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,50,heading_size[0]+20,heading_size[1]+10),border_radius=5)
+
+        save = self.ff2.render("run",True,self.fg,self.special)
+        save_size = save.get_size()
+        save_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200-save_size[0]//2,self.size[1]-100,save_size[0]+20,save_size[1]+10),border_radius=5)
+
+        cancel = self.ff2.render("exit",True,self.fg,self.special)
+        cancel_size = cancel.get_size()
+        cancel_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-cancel_size[0]//2,self.size[1]-100,cancel_size[0]+20,heading_size[1]+10),border_radius=5) 
+
+        option1 = self.ff2.render("Single pendulum",True,self.fg,self.bg)
+        option1_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-50,self.size[1]//2-250,200,200),border_radius=15)
+        option2 = self.ff2.render("Double pendulum (chaotic system)",True,self.fg,self.bg)
+        option2_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+50,self.size[1]//2-250,200,200),border_radius=15)
+        first = 1
+        while run:
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    run = False
+                    sys.exit()
+
+                if event.type == pg.MOUSEBUTTONDOWN:
+                    if option2_rect.collidepoint(event.pos):
+                        first = 0
+                    if save_rect.collidepoint(event.pos) and first:
+                        self.menu()
+                    elif save_rect.collidepoint(event.pos) and first==0:
+                        run =False
+                        sys.exit()
+                        
+        
+            clock.tick(60)
+            self.window.fill(self.bg)
+            self.size = self.window.get_size()
+            
+
+            # option1_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-50,self.size[1]//2-250,200,200),border_radius=15)
+            # option2_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+50,self.size[1]//2-250,200,200),border_radius=15)
+            # heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,50,heading_size[0]+20,heading_size[1]+10),border_radius=5)
+            # save_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200-save_size[0]//2,self.size[1]-100,save_size[0]+20,save_size[1]+10),border_radius=5)
+            # cancel_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-cancel_size[0]//2,self.size[1]-100,cancel_size[0]+20,heading_size[1]+10),border_radius=5) 
+
+
+            self.window.blit(heading,(heading_rect.x//2+10,heading_rect.y//2+5))
+            self.window.blit(option1,(option1_rect.x//2+90,option2_rect.y//2+90))
+            self.window.blit(option2,(option2_rect.x//2+90,option2_rect.y//2+90))
+            self.window.blit(save,(save_rect.x//2+10,save_rect.y//2+5))
+            self.window.blit(cancel,(cancel_rect.x//2+10,cancel_rect.y//2+5))
+
+
+            pg.display.flip()
+
+
+        pg.quit()
+            
+
+        
+        
     def menu(self):
         run = True
         clock = pg.time.Clock()
@@ -120,7 +189,7 @@ class Simulation:
         
 
 
-        save = self.ff2.render("save",True,self.fg,self.special)
+        save = self.ff2.render("run",True,self.fg,self.special)
         save_size = save.get_size()
         save_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200-save_size[0]//2,self.size[1]-100,save_size[0]+20,save_size[1]+10),border_radius=5)
 
@@ -153,18 +222,18 @@ class Simulation:
         option5_size = option5.get_size()
         
         option6 = self.ff.render("Initial angular velocity=   "+str(phi),True,self.fg,self.bg)
-        option6_size = option5.get_size()
+        option6_size = option6.get_size()
         
         single = self.ff.render("Single Pendulum",True,self.fg,self.special)
         single_size = single.get_size()
         double = self.ff.render("Double Pendulum",True,self.fg,self.special)
-        double_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2,450,300,40),border_top_right_radius=5,border_bottom_right_radius=5)
+        double_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2,550,300,40),border_top_right_radius=5,border_bottom_right_radius=5)
 
-        pos1 = length/10
-        pos2 = mass/100
+        pos1 = length/10-1
+        pos2 = (mass-50)/50
         pos3 = dampcoef
-        pos4 = gravity
-        pos5 = (theta/pi)*100
+        pos4 = gravity/100
+        pos5 = ((theta+pi)/pi)*100
         pos6 = phi/10
         while run:
             for event in pg.event.get():
@@ -191,53 +260,54 @@ class Simulation:
             self.size = self.window.get_size()
 
             # rectangle drawing
-            pg.draw.rect(self.window,self.fg,(self.size[0]//2-heading_size[0]//2+5,50+5,heading_size[0]+20,heading_size[1]+10),border_radius=5)
+            pg.draw.rect(self.window,self.common,(self.size[0]//2-heading_size[0]//2+5,50+5,heading_size[0]+20,heading_size[1]+10),border_radius=5)
             heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,50,heading_size[0]+20,heading_size[1]+10),border_radius=5)
             
-            option1_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option1_size[0],130,80,40))
-            option2_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option2_size[0],180,80,40))
-            option3_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option3_size[0],230,80,40))
-            option4_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option4_size[0],280,80,40))
-            option5_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option5_size[0],330,80,40))
-            option6_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option6_size[0],380,80,40))
-            single_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-single_size[0]-50,430,300,40),border_top_left_radius=5,border_bottom_left_radius=5)
+            option1_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option1_size[0]//2+20,130,10,40))
+            option2_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option2_size[0]//2+20,180,10,40))
+            option3_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option3_size[0]//2-80,230,10,40))
+            option4_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option4_size[0]//2-95,280,10,40))
+            option5_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option5_size[0]//2,330,10,40))
+            option6_rect = pg.draw.rect(self.window,self.bg,(self.size[0]//2-option6_size[0]//2-100,380,10,40))
+            single_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-single_size[0]-50,500,300,40),border_top_left_radius=5,border_bottom_left_radius=5)
             
-            double_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2,430,300,40),border_top_right_radius=5,border_bottom_right_radius=5)
+            double_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2,500,300,40),border_top_right_radius=5,border_bottom_right_radius=5)
             
             
-            pg.draw.rect(self.window,self.fg,(self.size[0]//2-200-cancel_size[0]//2+5,self.size[1]-100+5,cancel_size[0]+20,heading_size[1]+10),border_radius=5)
+            pg.draw.rect(self.window,self.common,(self.size[0]//2-200-cancel_size[0]//2+5,self.size[1]-100+5,cancel_size[0]+20,heading_size[1]+10),border_radius=5)
             cancel_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-cancel_size[0]//2,self.size[1]-100,cancel_size[0]+20,heading_size[1]+10),border_radius=5)
-            pg.draw.rect(self.window,self.fg,(self.size[0]//2+200-save_size[0]//2+5,self.size[1]-100+5,save_size[0]+20,save_size[1]+10),border_radius=5)
+            pg.draw.rect(self.window,self.common,(self.size[0]//2+200-save_size[0]//2+5,self.size[1]-100+5,save_size[0]+20,save_size[1]+10),border_radius=5)
             save_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200-save_size[0]//2,self.size[1]-100,save_size[0]+20,save_size[1]+10),border_radius=5)
 
        
 
 
             pos1 = self.slider(self.size[0]//2+option1_size[0],130+20,pos1)
-            length = (pos1/100)*1000
+            length = round((pos1*10)+10)
 
             pos2 = self.slider(self.size[0]//2+option1_size[0],180+20,pos2)
-            mass = (pos2/100)*10000
+            mass = round(pos2*50+50)
 
             pos3 = self.slider(self.size[0]//2+option1_size[0],230+20,pos3)
-            dampcoef = (pos3/10000)*100
-
-            pos4 = self.slider(self.size[0]//2+option1_size[0],280+20,pos4)
-            gravity = (pos4/100)*100
-
-            pos5 = self.slider(self.size[0]//2+option1_size[0],330+20,pos5)
-            theta = (pos5/100)*pi-pi
-
-            pos6 = self.slider(self.size[0]//2+option1_size[0],380+20,pos6)
-            phi = (pos6/100)*100
+            dampcoef = round(pos3/100,3)
             
 
-            option1 = self.ff.render("Length=   "+str(round(length)),True,self.fg,self.bg)
-            option2 = self.ff.render("Mass=   "+str(round(mass)),True,self.fg,self.bg)
-            option3 = self.ff.render("Damping Coeffiecient=   "+str(round(dampcoef,5)),True,self.fg,self.bg)
-            option4 = self.ff.render("gravity=   "+str(round(gravity)),True,self.fg,self.bg)
-            option5 = self.ff.render("Initial angular displacement=   "+str(round(theta,5)),True,self.fg,self.bg)
-            option6 = self.ff.render("Initial angular velocity=   "+str(round(phi)),True,self.fg,self.bg)
+            pos4 = self.slider(self.size[0]//2+option1_size[0],280+20,pos4)
+            gravity = round(100*pos4)
+
+            pos5 = self.slider(self.size[0]//2+option1_size[0],330+20,pos5)
+            theta = round((pos5/100)*pi-pi,5)
+
+            pos6 = self.slider(self.size[0]//2+option1_size[0],380+20,pos6)
+            phi = round((pos6/40))
+            
+
+            option1 = self.ff.render("Length =   "+str(round(length)),True,self.fg,self.bg)
+            option2 = self.ff.render("Mass =   "+str(round(mass)),True,self.fg,self.bg)
+            option3 = self.ff.render("Damping Coeffiecient =   "+str(round(dampcoef,3)),True,self.fg,self.bg)
+            option4 = self.ff.render("Gravity (in CGS) =   "+str(round(gravity)),True,self.fg,self.bg)
+            option5 = self.ff.render("Initial angular displacement =   "+str(round(theta,5)),True,self.fg,self.bg)
+            option6 = self.ff.render("Initial angular velocity =   "+str(round(phi)),True,self.fg,self.bg)
             
             # blitting
             self.window.blit(heading,(heading_rect.x+10,heading_rect.y+5))
@@ -248,7 +318,8 @@ class Simulation:
             self.window.blit(option5,option5_rect)
             self.window.blit(option6,option6_rect)
             self.window.blit(single,(single_rect.x+30,single_rect.y+3))
-            pg.draw.rect(self.window,self.fg,(self.size[0]//2,430,5,40))
+            
+            pg.draw.rect(self.window,self.common,(self.size[0]//2,500,5,40)) # line between one pendulum and two pendulum chooser
             self.window.blit(double,(double_rect.x+40,double_rect.y+3))
             self.window.blit(cancel,(cancel_rect.x+10,cancel_rect.y+5))
             self.window.blit(save,(save_rect.x+10,save_rect.y+5))
@@ -363,8 +434,23 @@ class Simulation:
     def run1(self):
         run = True
         clock = pg.time.Clock()
-        pen = Pendulum(self.length,self.mass,self.dampcoef,self.gravity*980,self.theta,self.phi,image="bitmap1.png")
+        pen = Pendulum(self.length,self.mass,self.dampcoef,self.gravity,self.theta,self.phi,image="bitmap1.png")
 
+
+        menu_option = self.ff2.render("Menu",True,self.fg,self.special)
+        exit_option = self.ff2.render("Exit",True,self.fg,self.special)
+        length_option = self.ff.render("length = "+str(self.length)+"cm",True,self.fg,self.bg)
+        mass_option = self.ff.render("mass = "+str(self.mass)+"gm",True,self.fg,self.bg)
+        damping_option = self.ff.render("Damping Coeff = "+str(self.dampcoef)+"dyne s/cm",True,self.fg,self.bg)
+        
+        exit_option = self.ff2.render("Exit",True,self.fg,self.special)
+        menu_option_size = menu_option.get_size()
+        menu_option_rect = pg.draw.rect(self.window,self.special,(100,100,200,menu_option_size[1]+200))
+        exit_option_rect = pg.draw.rect(self.window,self.special,(100,200,200,menu_option_size[1]+20))
+        length_option_rect = pg.draw.rect(self.window,self.special,(100,400,menu_option_size[0]+50,menu_option_size[1]+20))
+        mass_option_rect = pg.draw.rect(self.window,self.special,(100,500,menu_option_size[0]+50,menu_option_size[1]+20))
+        damping_option_rect = pg.draw.rect(self.window,self.special,(100,600,menu_option_size[0]+50,menu_option_size[1]+20))
+        
         while run:
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -375,11 +461,17 @@ class Simulation:
                         run = False
                         break
             # main loop 
-            clock.tick(60)
+            clock.tick(120)
             self.window.fill(self.bg)
             origin = (self.window.get_size()[0]//2,100)
             pen.draw(self.window,origin)
             pen.update()
+            pg.draw.rect(self.window,self.special,(100+5,100+5,200,menu_option_size[1]+20),border_radius=5)
+            self.window.blit(menu_option,menu_option_rect)
+            self.window.blit(exit_option,exit_option_rect)
+            self.window.blit(length_option,length_option_rect)
+            self.window.blit(mass_option,mass_option_rect)
+            self.window.blit(damping_option,damping_option_rect)
             pg.display.flip()
 
 
