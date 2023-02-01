@@ -115,7 +115,7 @@ class Simulation:
     def mainmenu(self):
         run = True
         clock = pg.time.Clock()
-        heading = self.ff2.render("Main Menu",True,self.fg,self.special)
+        heading = self.ff2.render("Welcome to simulations",True,self.fg,self.special)
         heading_size = heading.get_size()
         heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,50,heading_size[0]+20,heading_size[1]+10),border_radius=5)
 
@@ -127,9 +127,11 @@ class Simulation:
         cancel_size = cancel.get_size()
         cancel_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-cancel_size[0]//2,self.size[1]-100,cancel_size[0]+20,heading_size[1]+10),border_radius=5) 
 
-        option1 = self.ff2.render("Single pendulum",True,self.fg,self.bg)
+        option1 = self.ff2.render("Single pendulum",True,self.fg,self.special)
+        option1_size = option1.get_size()
         option1_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-50,self.size[1]//2-250,200,200),border_radius=15)
-        option2 = self.ff2.render("Double pendulum (chaotic system)",True,self.fg,self.bg)
+        option21 = self.ff2.render("Double pendulum",True,self.fg,self.bg)
+        option22 = self.ff2.render("(chaotic system)",True,self.fg,self.bg)
         option2_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+50,self.size[1]//2-250,200,200),border_radius=15)
         first = 1
         while run:
@@ -152,19 +154,23 @@ class Simulation:
             self.window.fill(self.bg)
             self.size = self.window.get_size()
             
+            pg.draw.rect(self.window,self.common,(self.size[0]//2-300+5,self.size[1]//2-145,300,200),border_radius=15)
+            option1_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-300,self.size[1]//2-150,300,200),border_radius=15)
 
-            # option1_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-50,self.size[1]//2-250,200,200),border_radius=15)
-            # option2_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+50,self.size[1]//2-250,200,200),border_radius=15)
-            # heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,50,heading_size[0]+20,heading_size[1]+10),border_radius=5)
-            # save_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200-save_size[0]//2,self.size[1]-100,save_size[0]+20,save_size[1]+10),border_radius=5)
-            # cancel_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-cancel_size[0]//2,self.size[1]-100,cancel_size[0]+20,heading_size[1]+10),border_radius=5) 
+            pg.draw.rect(self.window,self.common,(self.size[0]//2+55,self.size[1]//2-145,300,200),border_radius=15)
+            option2_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+50,self.size[1]//2-150,300,200),border_radius=15)
+            pg.draw.rect(self.window,self.common,(self.size[0]//2-heading_size[0]//2+5,55,heading_size[0]+20,heading_size[1]+10),border_radius=5)
+            heading_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-heading_size[0]//2,50,heading_size[0]+20,heading_size[1]+10),border_radius=5)
+            save_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2+200,self.size[1]-150,save_size[0]+20,save_size[1]+10),border_radius=5)
+            cancel_rect = pg.draw.rect(self.window,self.special,(self.size[0]//2-200-cancel_size[0],self.size[1]-150,cancel_size[0]+20,heading_size[1]+10),border_radius=5) 
 
 
-            self.window.blit(heading,(heading_rect.x//2+10,heading_rect.y//2+5))
-            self.window.blit(option1,(option1_rect.x//2+90,option2_rect.y//2+90))
-            self.window.blit(option2,(option2_rect.x//2+90,option2_rect.y//2+90))
-            self.window.blit(save,(save_rect.x//2+10,save_rect.y//2+5))
-            self.window.blit(cancel,(cancel_rect.x//2+10,cancel_rect.y//2+5))
+            self.window.blit(heading,(heading_rect.x+10,heading_rect.y+5))
+            self.window.blit(option1,(option1_rect.x+35,option1_rect.y+80))
+            self.window.blit(option21,(option2_rect.x+35,option2_rect.y+40))
+            self.window.blit(option22,(option2_rect.x+40,option2_rect.y+120))
+            self.window.blit(save,(save_rect.x+10,save_rect.y+5))
+            self.window.blit(cancel,(cancel_rect.x+10,cancel_rect.y+5))
 
 
             pg.display.flip()
@@ -505,4 +511,4 @@ class Simulation:
             
                 
 k = Simulation()
-k.menu()
+k.mainmenu()
